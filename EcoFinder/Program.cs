@@ -16,7 +16,7 @@ namespace EcoFinder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmsLogin());
+            Application.Run(new FrmLogin());
         }
     }
 }

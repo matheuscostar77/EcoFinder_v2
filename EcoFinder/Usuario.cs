@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    public partial class FrmUsuario : Form
+    public partial class Usuario : Form
     {
-        public FrmUsuario()
+        public Usuario()
         {
             InitializeComponent();
         }
