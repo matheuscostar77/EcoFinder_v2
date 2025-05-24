@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coletor.cs" />
     <Compile Include="Endereco.cs" />
     <Compile Include="FrmCadastrarEndereco.cs">
       <SubType>Form</SubType>
@@ -86,6 +87,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="FrmCadastrarEndereco.resx">
       <DependentUpon>FrmCadastrarEndereco.cs</DependentUpon>
     </EmbeddedResource>
