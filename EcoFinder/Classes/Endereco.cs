@@ -8,10 +8,10 @@ namespace EcoFinder
 {
     internal class Endereco
     {
-        private string nomeBairro = "";
-        private string cidade = "";
-        private string nomeRua = "";
-        private int numeroCasa = 0;
+        private string nomeBairro;
+        private string cidade;
+        private string nomeRua;
+        private int numeroCasa;
 
         public Endereco() { }
 
