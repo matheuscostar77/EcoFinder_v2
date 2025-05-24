@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    public partial class Login : Form
+    public partial class FrmLogin : Form
     {
-        public Login()
+        public FrmLogin()
         {
             InitializeComponent();
         }
@@ -44,7 +44,7 @@ namespace EcoFinder
 
         private void lblCriarConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var cadastro = new Cadastro();
+            var cadastro = new FrmCadastro();
             cadastro.Show();
         }
 
