@@ -46,62 +46,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmsCadastrarEndereco.cs">
+    <Compile Include="FrmCadastrarEndereco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmsCadastrarEndereco.Designer.cs">
-      <DependentUpon>FrmsCadastrarEndereco.cs</DependentUpon>
+    <Compile Include="FrmCadastrarEndereco.Designer.cs">
+      <DependentUpon>FrmCadastrarEndereco.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmsCadastro.cs">
+    <Compile Include="FrmCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmsCadastro.Designer.cs">
-      <DependentUpon>FrmsCadastro.cs</DependentUpon>
+    <Compile Include="FrmCadastro.Designer.cs">
+      <DependentUpon>FrmCadastro.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmsColetor.cs">
+    <Compile Include="FrmColetor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmsColetor.Designer.cs">
-      <DependentUpon>FrmsColetor.cs</DependentUpon>
+    <Compile Include="FrmColetor.Designer.cs">
+      <DependentUpon>FrmColetor.cs</DependentUpon>
     </Compile>
     <Compile Include="Pessoa.cs" />
-    <Compile Include="FrmsRealizarChamado.cs">
+    <Compile Include="FrmRealizarChamado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmsRealizarChamado.Designer.cs">
-      <DependentUpon>FrmsRealizarChamado.cs</DependentUpon>
+    <Compile Include="FrmRealizarChamado.Designer.cs">
+      <DependentUpon>FrmRealizarChamado.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmsUsuario.cs">
+    <Compile Include="FrmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmsUsuario.Designer.cs">
-      <DependentUpon>FrmsUsuario.cs</DependentUpon>
+    <Compile Include="FrmUsuario.Designer.cs">
+      <DependentUpon>FrmUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmsLogin.cs">
+    <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmsLogin.Designer.cs">
-      <DependentUpon>FrmsLogin.cs</DependentUpon>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmsCadastrarEndereco.resx">
-      <DependentUpon>FrmsCadastrarEndereco.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCadastrarEndereco.resx">
+      <DependentUpon>FrmCadastrarEndereco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmsCadastro.resx">
-      <DependentUpon>FrmsCadastro.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCadastro.resx">
+      <DependentUpon>FrmCadastro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmsColetor.resx">
-      <DependentUpon>FrmsColetor.cs</DependentUpon>
+    <EmbeddedResource Include="FrmColetor.resx">
+      <DependentUpon>FrmColetor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmsRealizarChamado.resx">
-      <DependentUpon>FrmsRealizarChamado.cs</DependentUpon>
+    <EmbeddedResource Include="FrmRealizarChamado.resx">
+      <DependentUpon>FrmRealizarChamado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmsUsuario.resx">
-      <DependentUpon>FrmsUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="FrmUsuario.resx">
+      <DependentUpon>FrmUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmsLogin.resx">
-      <DependentUpon>FrmsLogin.cs</DependentUpon>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

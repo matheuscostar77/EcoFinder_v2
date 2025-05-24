@@ -14,6 +14,11 @@ namespace EcoFinder
         protected string sex;
         protected string senha;
 
+
+        public Pessoa()
+        {
+
+        }
         public string getName()
         {
             return name;
