@@ -50,13 +50,19 @@ namespace EcoFinder
         {
             return numeroCasa;
         }
+        public void setNumeroCasa(int numeroCasa)
+        {
+            this.numeroCasa = numeroCasa;
+        }
+        
+        public string exibirEndereco()
+        {
+            StringBuilder sb = new StringBuilder();
 
+            sb.AppendFormat($" Rua: {nomeRua} \n N° Casa: {numeroCasa} \n Nome Bairro: {nomeBairro} \n Cidade: {cidade} ");
 
-
-
-
-
-
+            return sb.ToString();
+        }
 
     }
 }
