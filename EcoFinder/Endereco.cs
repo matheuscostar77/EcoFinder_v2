@@ -13,13 +13,8 @@ namespace EcoFinder
         private string nomeRua = "";
         private int numeroCasa = 0;
 
-        public Endereco(string nomeBairro, string cidade, string nomeRua, int numeroCasa)
-        {
-            this.nomeBairro = nomeBairro;
-            this.cidade = cidade;
-            this.nomeRua = nomeRua;
-            this.numeroCasa = numeroCasa;
-        }
+        public Endereco() { }
+
         public string getNomeBairro()
         {
             return nomeBairro;
