@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    public partial class Login : Form
+    public partial class FrmLogin : Form
     {
-        public Login()
+        public FrmLogin()
         {
             InitializeComponent();
         }
@@ -50,7 +50,7 @@ namespace EcoFinder
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var usuario = new Usuario();
+            var usuario = new FrmUsuario();
             usuario.Show();
             var coletor = new frmColetor();
             coletor.Show();
