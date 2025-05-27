@@ -55,7 +55,6 @@
             this.lblNome.Size = new System.Drawing.Size(123, 20);
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome Completo";
-            this.lblNome.Click += new System.EventHandler(this.lblNome_Click);
             // 
             // lblEmail
             // 
@@ -72,6 +71,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(215, 26);
             this.txtNome.TabIndex = 2;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtEmail
             // 
@@ -80,6 +80,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(215, 26);
             this.txtEmail.TabIndex = 3;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtSenha
             // 
@@ -96,6 +97,7 @@
             this.txtConfirmarSenha.Size = new System.Drawing.Size(211, 26);
             this.txtConfirmarSenha.TabIndex = 5;
             this.txtConfirmarSenha.UseSystemPasswordChar = true;
+            this.txtConfirmarSenha.Leave += new System.EventHandler(this.txtConfirmarSenha_Leave);
             // 
             // lblSenha
             // 
@@ -134,6 +136,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbxTermos
             // 
@@ -165,6 +168,7 @@
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(175, 28);
             this.cmbGenero.TabIndex = 15;
+            this.cmbGenero.SelectedIndexChanged += new System.EventHandler(this.cmbGenero_SelectedIndexChanged);
             // 
             // cmbTipoConta
             // 
@@ -176,6 +180,7 @@
             this.cmbTipoConta.Name = "cmbTipoConta";
             this.cmbTipoConta.Size = new System.Drawing.Size(175, 28);
             this.cmbTipoConta.TabIndex = 16;
+            this.cmbTipoConta.SelectedIndexChanged += new System.EventHandler(this.cmbTipoConta_SelectedIndexChanged);
             // 
             // lblTipoConta
             // 
@@ -186,7 +191,7 @@
             this.lblTipoConta.TabIndex = 17;
             this.lblTipoConta.Text = "Tipo de conta";
             // 
-            // Cadastro
+            // FrmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -206,7 +211,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblNome);
-            this.Name = "Cadastro";
+            this.Name = "FrmCadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro";
             this.Load += new System.EventHandler(this.Cadastro_Load);

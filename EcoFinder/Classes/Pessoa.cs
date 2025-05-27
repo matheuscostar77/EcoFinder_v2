@@ -1,9 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EcoFinder
 {
@@ -13,6 +15,8 @@ namespace EcoFinder
         protected string email;
         protected string sex;
         protected string senha;
+
+        MySqlConnection conn;
 
 
         public Pessoa()
@@ -33,7 +37,7 @@ namespace EcoFinder
             return email;
         }
 
-        public void setEmail()
+        public void setEmail(string email)
         {
             this.email = email;
         }
@@ -43,9 +47,49 @@ namespace EcoFinder
             return sex;
         }
 
-        public void conferirSenhaIgual(string confirmarSenha)
+        public void setSex(string sex) 
         {
+            this.sex = sex;
+        }
 
+        public void CadastrarPessoa()
+        {
+            try
+            {
+                string data_source = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+                conn = new MySqlConnection(data_source);
+
+                string sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
+                            " values ('" + name + "','" + email + "','" + senha + "','" + sex + "')";
+
+                MySqlCommand comando = new MySqlCommand(sql, conn);
+
+                conn.Open();
+
+                comando.ExecuteReader();
+
+                MessageBox.Show("Cadastrado!"); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        public bool conferirSenhaIgual(string senha1,string senha2)
+        {
+            if (senha1 == senha2)
+            {
+                senha = senha1;
+                return true;
+            }
+
+            return false;
         }
     }
 }
