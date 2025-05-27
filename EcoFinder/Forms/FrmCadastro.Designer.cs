@@ -129,6 +129,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.Enabled = false;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(539, 525);
             this.button1.Name = "button1";
@@ -147,6 +148,7 @@
             this.cbxTermos.TabIndex = 13;
             this.cbxTermos.Text = "Li e aceito termos de serviço";
             this.cbxTermos.UseVisualStyleBackColor = true;
+            this.cbxTermos.CheckedChanged += new System.EventHandler(this.cbxTermos_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -168,7 +170,7 @@
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(175, 28);
             this.cmbGenero.TabIndex = 15;
-            this.cmbGenero.SelectedIndexChanged += new System.EventHandler(this.cmbGenero_SelectedIndexChanged);
+            this.cmbGenero.Leave += new System.EventHandler(this.cmbGenero_Leave);
             // 
             // cmbTipoConta
             // 
@@ -180,7 +182,7 @@
             this.cmbTipoConta.Name = "cmbTipoConta";
             this.cmbTipoConta.Size = new System.Drawing.Size(175, 28);
             this.cmbTipoConta.TabIndex = 16;
-            this.cmbTipoConta.SelectedIndexChanged += new System.EventHandler(this.cmbTipoConta_SelectedIndexChanged);
+            this.cmbTipoConta.Leave += new System.EventHandler(this.cmbTipoConta_Leave);
             // 
             // lblTipoConta
             // 

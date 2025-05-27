@@ -56,27 +56,48 @@ namespace EcoFinder
         public void setTipoConta(string tipoConta)
         {
             this.tipoConta = tipoConta;
+
         }
 
-        public void CadastrarPessoa()
+        public string getTipoConta()
+        {
+            return tipoConta;
+        }
+
+        public bool conferirSenhaIgual(string senha1, string senha2)
+        {
+            if (senha1 == senha2)
+            {
+                senha = senha1;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CadastrarPessoa()
         {
             try
             {
-                string data_source = "datasource=localhost;username=root;password=;database=ecofinder";
+                string data_source = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
                 conn = new MySqlConnection(data_source);
 
-                string sql;
+                string sql = "3";
                 if (tipoConta == "Coletor")
                 {
                     sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
                             " values ('" + name + "','" + email + "','" + senha + "','" + sex + "');" +
                             "INSERT INTO tb_coletor(col_email) values('" + email + "');";
                 }
-                else
+                else if (tipoConta == "Usuário Comum")
                 {
                      sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
                             " values ('" + name + "','" + email + "','" + senha + "','" + sex + "');" +
                             "INSERT INTO tb_usuariocomum(user_email) values('" + email + "');";
+                }
+                else
+                {
+                    return false;
                 }
 
                     MySqlCommand comando = new MySqlCommand(sql, conn);
@@ -87,10 +108,16 @@ namespace EcoFinder
                     comando.ExecuteReader();
 
                     MessageBox.Show("Cadastrado!");
+                    conn.Close();
+
+                    return true;
+
                 } 
                 catch
                 {
                     MessageBox.Show("Email já cadastrado");
+                    conn.Close();
+                    return false;
                 }
 
               
@@ -98,23 +125,12 @@ namespace EcoFinder
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
-            finally
-            {
-                conn.Close();
-            }
+            
 
         }
 
-        public bool conferirSenhaIgual(string senha1,string senha2)
-        {
-            if (senha1 == senha2)
-            {
-                senha = senha1;
-                return true;
-            }
-
-            return false;
-        }
+        
     }
 }

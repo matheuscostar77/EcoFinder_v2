@@ -14,8 +14,8 @@ namespace EcoFinder
     public partial class FrmCadastro : Form
     {
 
-        MySqlConnection conn;
         Pessoa pessoa = new Pessoa();
+
         public FrmCadastro()
         {
             InitializeComponent();
@@ -48,28 +48,72 @@ namespace EcoFinder
             }
         }
 
-        private void cmbGenero_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbGenero_Leave(object sender, EventArgs e)
         {
-            pessoa.setSex(cmbGenero.SelectedItem.ToString());
+            try
+            {
+                pessoa.setSex(cmbGenero.SelectedItem.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Por favor, preencha corretamente as informações");
+            }
         }
 
-        private void cmbTipoConta_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void cbxTermos_CheckedChanged(object sender, EventArgs e)
         {
-            if(cmbTipoConta.SelectedItem.ToString() == "Coletor")
+            if (cbxTermos.Checked)
             {
-                pessoa.setTipoConta("Coletor");
+                button1.Enabled = true;
             }
             else
             {
-                pessoa.setTipoConta("Usuario");
+                button1.Enabled=false;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pessoa.CadastrarPessoa();
+            
+
+            if (cbxTermos.Checked == true && txtNome.Text != "" && txtEmail.Text != ""
+                && pessoa.conferirSenhaIgual(txtSenha.Text, txtConfirmarSenha.Text)
+                && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro")
+                && (pessoa.getTipoConta() == "Coletor" || pessoa.getTipoConta() == "Usuário Comum"))
+            {
+                bool cadastroSucesso = pessoa.CadastrarPessoa();
+                string tipo = pessoa.getTipoConta();
+
+                if (cadastroSucesso && tipo == "Coletor")
+                {
+                    var coletor = new frmColetor();
+                    coletor.Show();
+                }
+                else if (cadastroSucesso && tipo == "Usuário Comum")
+                {
+                    var usuario = new FrmUsuario();
+                    usuario.Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Falta dados");
+            }
+
         }
 
-        
+        private void cmbTipoConta_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                pessoa.setTipoConta(cmbTipoConta.SelectedItem.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Por favor, preencha corretamente as informações");
+            }
+        }
     }
 }
