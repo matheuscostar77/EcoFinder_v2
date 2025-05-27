@@ -55,7 +55,14 @@ namespace EcoFinder
 
         private void cmbTipoConta_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(cmbTipoConta.SelectedItem.ToString() == "Coletor")
+            {
+                pessoa.setTipoConta("Coletor");
+            }
+            else
+            {
+                pessoa.setTipoConta("Usuario");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

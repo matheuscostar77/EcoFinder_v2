@@ -15,6 +15,7 @@ namespace EcoFinder
         protected string email;
         protected string sex;
         protected string senha;
+        protected string tipoConta;
 
         MySqlConnection conn;
 
@@ -52,6 +53,11 @@ namespace EcoFinder
             this.sex = sex;
         }
 
+        public void setTipoConta(string tipoConta)
+        {
+            this.tipoConta = tipoConta;
+        }
+
         public void CadastrarPessoa()
         {
             try
@@ -59,16 +65,35 @@ namespace EcoFinder
                 string data_source = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
                 conn = new MySqlConnection(data_source);
 
-                string sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
-                            " values ('" + name + "','" + email + "','" + senha + "','" + sex + "')";
+                string sql;
+                if (tipoConta == "Coletor")
+                {
+                    sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
+                            " values ('" + name + "','" + email + "','" + senha + "','" + sex + "');" +
+                            "INSERT INTO tb_coletor(col_email) values('" + email + "');";
+                }
+                else
+                {
+                     sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
+                            " values ('" + name + "','" + email + "','" + senha + "','" + sex + "');" +
+                            "INSERT INTO tb_usuariocomum(user_email) values('" + email + "');";
+                }
 
-                MySqlCommand comando = new MySqlCommand(sql, conn);
-
+                    MySqlCommand comando = new MySqlCommand(sql, conn);
                 conn.Open();
 
-                comando.ExecuteReader();
+                try
+                { 
+                    comando.ExecuteReader();
 
-                MessageBox.Show("Cadastrado!"); 
+                    MessageBox.Show("Cadastrado!");
+                } 
+                catch
+                {
+                    MessageBox.Show("Email já cadastrado");
+                }
+
+              
             }
             catch (Exception ex)
             {
