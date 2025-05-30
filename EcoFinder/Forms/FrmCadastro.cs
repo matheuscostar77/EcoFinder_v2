@@ -19,6 +19,9 @@ namespace EcoFinder
         public FrmCadastro()
         {
             InitializeComponent();
+
+            cmbGenero.SelectedIndex = 0;   
+            cmbTipoConta.SelectedIndex = 0;
             
         }
 
@@ -53,6 +56,10 @@ namespace EcoFinder
                 MessageBox.Show("Senha diferente");
             }
         }
+        private void cmbGenero_TextUpdate(object sender, EventArgs e)
+        {
+            cmbGenero.SelectedIndex = 0;
+        }
 
         private void cmbGenero_Leave(object sender, EventArgs e)
         {
@@ -64,6 +71,11 @@ namespace EcoFinder
             {
                 MessageBox.Show("Por favor, preencha corretamente as informações");
             }
+        }
+
+        private void cmbTipoConta_TextUpdate(object sender, EventArgs e)
+        {
+            cmbTipoConta.SelectedIndex = 0;
         }
 
         private void cmbTipoConta_Leave(object sender, EventArgs e)
@@ -121,9 +133,6 @@ namespace EcoFinder
 
         }
 
-        private void cmbGenero_TextUpdate(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

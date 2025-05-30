@@ -183,6 +183,7 @@
             this.cmbTipoConta.Name = "cmbTipoConta";
             this.cmbTipoConta.Size = new System.Drawing.Size(175, 28);
             this.cmbTipoConta.TabIndex = 16;
+            this.cmbTipoConta.TextUpdate += new System.EventHandler(this.cmbTipoConta_TextUpdate);
             this.cmbTipoConta.Leave += new System.EventHandler(this.cmbTipoConta_Leave);
             // 
             // lblTipoConta
