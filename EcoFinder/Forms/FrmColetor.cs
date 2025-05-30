@@ -17,9 +17,24 @@ namespace EcoFinder
             InitializeComponent();
         }
 
+        private void frmColetor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            var login = new FrmLogin();
+            login.Show();
+
+            this.Hide();
+        }
+
+        
     }
 }

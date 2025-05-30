@@ -16,5 +16,10 @@ namespace EcoFinder
         {
             InitializeComponent();
         }
+
+        private void frmRealizarChamado_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
