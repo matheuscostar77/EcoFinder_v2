@@ -17,7 +17,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        MySqlConnection conn;
+        string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
 
 
         public Pessoa()
@@ -50,7 +50,10 @@ namespace EcoFinder
 
         public void setSex(string sex) 
         {
-            this.sex = sex;
+            if(sex == "Masculino" || sex == "Feminino" || sex == "Outro")
+            {
+                this.sex = sex;
+            }
         }
 
         public void setTipoConta(string tipoConta)
@@ -75,60 +78,65 @@ namespace EcoFinder
             return false;
         }
 
+       
+
         public bool CadastrarPessoa()
         {
-            try
+            int numSex;
+            switch (sex)
             {
-                string data_source = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
-                conn = new MySqlConnection(data_source);
-
-                string sql = "3";
-                if (tipoConta == "Coletor")
-                {
-                    sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
-                            " values ('" + name + "','" + email + "','" + senha + "','" + sex + "');" +
-                            "INSERT INTO tb_coletor(col_email) values('" + email + "');";
-                }
-                else if (tipoConta == "Usuário Comum")
-                {
-                     sql = "INSERT INTO tb_pessoa (nome,email,senha,sexo)" +
-                            " values ('" + name + "','" + email + "','" + senha + "','" + sex + "');" +
-                            "INSERT INTO tb_usuariocomum(user_email) values('" + email + "');";
-                }
-                else
-                {
-                    return false;
-                }
-
-                    MySqlCommand comando = new MySqlCommand(sql, conn);
-                conn.Open();
-
-                try
-                { 
-                    comando.ExecuteReader();
-
-                    MessageBox.Show("Cadastrado!");
-                    conn.Close();
-
-                    return true;
-
-                } 
-                catch
-                {
-                    MessageBox.Show("Email já cadastrado");
-                    conn.Close();
-                    return false;
-                }
-
-              
+                case "Masculino":
+                    numSex = 1;
+                    break;
+                case "Feminino":
+                    numSex = 2;
+                    break;
+                default:
+                    numSex = 3;
+                    break;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
+
+
             
+            using (MySqlConnection conn = new MySqlConnection(stringConexao))
+            {
 
+                using(MySqlCommand cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+
+                    cmd.CommandText = "INSERT INTO tb_pessoa(nome,email,senha,id_genero) " +
+                                        "VALUES (@name,@email,@senha,@idgenero);";
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@senha", senha);
+                    cmd.Parameters.AddWithValue("@idgenero", numSex);
+
+                    if (tipoConta == "Coletor") 
+                    {
+                        cmd.CommandText += @"INSERT INTO tb_coletor(id_coletor) " +
+                                            "VALUES (LAST_INSERT_ID());";
+                    }
+                    else if(tipoConta == "Usuário Comum")
+                    {
+                        cmd.CommandText += @"INSERT INTO tb_usuariocomum(id_usuarioComum) " +
+                                            "VALUES (LAST_INSERT_ID());";
+                    }
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Cadastrado");
+                        return true;
+                    }
+                    catch 
+                    {
+                        MessageBox.Show("Email já cadastrado");
+                        return false;
+                    }
+                }
+
+
+            }
         }
 
         

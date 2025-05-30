@@ -19,6 +19,12 @@ namespace EcoFinder
         public FrmCadastro()
         {
             InitializeComponent();
+            
+        }
+
+        private void FrmCadastro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Cadastro_Load(object sender, EventArgs e)
@@ -60,8 +66,17 @@ namespace EcoFinder
             }
         }
 
-        
-
+        private void cmbTipoConta_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                pessoa.setTipoConta(cmbTipoConta.SelectedItem.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Por favor, preencha corretamente as informações");
+            }
+        }
         private void cbxTermos_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxTermos.Checked)
@@ -70,10 +85,9 @@ namespace EcoFinder
             }
             else
             {
-                button1.Enabled=false;
+                button1.Enabled = false;
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -86,12 +100,14 @@ namespace EcoFinder
                 bool cadastroSucesso = pessoa.CadastrarPessoa();
                 string tipo = pessoa.getTipoConta();
 
-                if (cadastroSucesso && tipo == "Coletor")
+                if (cadastroSucesso && tipo == "Coletor" && 
+                    (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
                     var coletor = new frmColetor();
                     coletor.Show();
                 }
-                else if (cadastroSucesso && tipo == "Usuário Comum")
+                else if (cadastroSucesso && tipo == "Usuário Comum"
+                    && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
                     var usuario = new FrmUsuario();
                     usuario.Show();
@@ -104,16 +120,8 @@ namespace EcoFinder
 
         }
 
-        private void cmbTipoConta_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                pessoa.setTipoConta(cmbTipoConta.SelectedItem.ToString());
-            }
-            catch
-            {
-                MessageBox.Show("Por favor, preencha corretamente as informações");
-            }
-        }
+        
+
+        
     }
 }
