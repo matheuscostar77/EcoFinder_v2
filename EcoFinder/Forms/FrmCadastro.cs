@@ -115,7 +115,7 @@ namespace EcoFinder
             }
             else
             {
-                int i;
+                
                 MessageBox.Show("Falta dados");
             }
 
