@@ -170,6 +170,7 @@
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(175, 28);
             this.cmbGenero.TabIndex = 15;
+            this.cmbGenero.TextUpdate += new System.EventHandler(this.cmbGenero_TextUpdate);
             this.cmbGenero.Leave += new System.EventHandler(this.cmbGenero_Leave);
             // 
             // cmbTipoConta

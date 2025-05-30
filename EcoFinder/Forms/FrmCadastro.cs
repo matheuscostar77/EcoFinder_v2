@@ -121,8 +121,9 @@ namespace EcoFinder
 
         }
 
-        
+        private void cmbGenero_TextUpdate(object sender, EventArgs e)
+        {
 
-        
+        }
     }
 }
