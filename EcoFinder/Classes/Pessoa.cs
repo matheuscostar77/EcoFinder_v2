@@ -50,10 +50,7 @@ namespace EcoFinder
 
         public void setSex(string sex) 
         {
-            if(sex == "Masculino" || sex == "Feminino" || sex == "Outro")
-            {
-                this.sex = sex;
-            }
+            this.sex = sex;
         }
 
         public void setTipoConta(string tipoConta)

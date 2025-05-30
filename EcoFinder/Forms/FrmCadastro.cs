@@ -20,8 +20,6 @@ namespace EcoFinder
         {
             InitializeComponent();
 
-            cmbGenero.SelectedIndex = 0;   
-            cmbTipoConta.SelectedIndex = 0;
             
         }
 
@@ -56,39 +54,17 @@ namespace EcoFinder
                 MessageBox.Show("Senha diferente");
             }
         }
-        private void cmbGenero_TextUpdate(object sender, EventArgs e)
+
+        private void cmbGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbGenero.SelectedIndex = 0;
+            pessoa.setSex(cmbGenero.SelectedItem.ToString());
         }
 
-        private void cmbGenero_Leave(object sender, EventArgs e)
+        private void cmbTipoConta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                pessoa.setSex(cmbGenero.SelectedItem.ToString());
-            }
-            catch
-            {
-                MessageBox.Show("Por favor, preencha corretamente as informações");
-            }
+            pessoa.setTipoConta(cmbTipoConta.SelectedItem.ToString());
         }
 
-        private void cmbTipoConta_TextUpdate(object sender, EventArgs e)
-        {
-            cmbTipoConta.SelectedIndex = 0;
-        }
-
-        private void cmbTipoConta_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                pessoa.setTipoConta(cmbTipoConta.SelectedItem.ToString());
-            }
-            catch
-            {
-                MessageBox.Show("Por favor, preencha corretamente as informações");
-            }
-        }
         private void cbxTermos_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxTermos.Checked)

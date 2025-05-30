@@ -161,6 +161,7 @@
             // 
             // cmbGenero
             // 
+            this.cmbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenero.FormattingEnabled = true;
             this.cmbGenero.Items.AddRange(new object[] {
             "Masculino",
@@ -170,11 +171,11 @@
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(175, 28);
             this.cmbGenero.TabIndex = 15;
-            this.cmbGenero.TextUpdate += new System.EventHandler(this.cmbGenero_TextUpdate);
-            this.cmbGenero.Leave += new System.EventHandler(this.cmbGenero_Leave);
+            this.cmbGenero.SelectedIndexChanged += new System.EventHandler(this.cmbGenero_SelectedIndexChanged);
             // 
             // cmbTipoConta
             // 
+            this.cmbTipoConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoConta.FormattingEnabled = true;
             this.cmbTipoConta.Items.AddRange(new object[] {
             "Usuário Comum",
@@ -183,8 +184,7 @@
             this.cmbTipoConta.Name = "cmbTipoConta";
             this.cmbTipoConta.Size = new System.Drawing.Size(175, 28);
             this.cmbTipoConta.TabIndex = 16;
-            this.cmbTipoConta.TextUpdate += new System.EventHandler(this.cmbTipoConta_TextUpdate);
-            this.cmbTipoConta.Leave += new System.EventHandler(this.cmbTipoConta_Leave);
+            this.cmbTipoConta.SelectedIndexChanged += new System.EventHandler(this.cmbTipoConta_SelectedIndexChanged);
             // 
             // lblTipoConta
             // 
