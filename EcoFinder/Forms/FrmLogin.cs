@@ -22,31 +22,6 @@ namespace EcoFinder
             Application.Exit();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEcoFinder_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblCriarConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var cadastro = new FrmCadastro();

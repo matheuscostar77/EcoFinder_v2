@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.lblEmail = new System.Windows.Forms.Label();
-            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.tbxEmail = new System.Windows.Forms.TextBox();
             this.lblSenha = new System.Windows.Forms.Label();
-            this.tbSenha = new System.Windows.Forms.TextBox();
+            this.tbxSenha = new System.Windows.Forms.TextBox();
             this.lblEcoFinder = new System.Windows.Forms.Label();
             this.btnEntrar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,15 +50,13 @@
             this.lblEmail.Size = new System.Drawing.Size(50, 21);
             this.lblEmail.TabIndex = 1;
             this.lblEmail.Text = "Email";
-            this.lblEmail.Click += new System.EventHandler(this.label1_Click);
             // 
-            // tbEmail
+            // tbxEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(495, 215);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(239, 26);
-            this.tbEmail.TabIndex = 2;
-            this.tbEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbxEmail.Location = new System.Drawing.Point(495, 215);
+            this.tbxEmail.Name = "tbxEmail";
+            this.tbxEmail.Size = new System.Drawing.Size(239, 26);
+            this.tbxEmail.TabIndex = 2;
             // 
             // lblSenha
             // 
@@ -71,14 +69,13 @@
             this.lblSenha.TabIndex = 3;
             this.lblSenha.Text = "Senha";
             // 
-            // tbSenha
+            // tbxSenha
             // 
-            this.tbSenha.Location = new System.Drawing.Point(495, 280);
-            this.tbSenha.Name = "tbSenha";
-            this.tbSenha.Size = new System.Drawing.Size(239, 26);
-            this.tbSenha.TabIndex = 4;
-            this.tbSenha.UseSystemPasswordChar = true;
-            this.tbSenha.TextChanged += new System.EventHandler(this.tbSenha_TextChanged);
+            this.tbxSenha.Location = new System.Drawing.Point(495, 280);
+            this.tbxSenha.Name = "tbxSenha";
+            this.tbxSenha.Size = new System.Drawing.Size(239, 26);
+            this.tbxSenha.TabIndex = 4;
+            this.tbxSenha.UseSystemPasswordChar = true;
             // 
             // lblEcoFinder
             // 
@@ -90,7 +87,6 @@
             this.lblEcoFinder.Size = new System.Drawing.Size(356, 95);
             this.lblEcoFinder.TabIndex = 5;
             this.lblEcoFinder.Text = "EcoFinder";
-            this.lblEcoFinder.Click += new System.EventHandler(this.lblEcoFinder_Click);
             // 
             // btnEntrar
             // 
@@ -102,7 +98,6 @@
             this.btnEntrar.TabIndex = 6;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = false;
-            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // pictureBox1
             // 
@@ -136,16 +131,15 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.lblEcoFinder);
-            this.Controls.Add(this.tbSenha);
+            this.Controls.Add(this.tbxSenha);
             this.Controls.Add(this.lblSenha);
-            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.tbxEmail);
             this.Controls.Add(this.lblEmail);
             this.ForeColor = System.Drawing.SystemColors.GrayText;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,9 +148,9 @@
 
         #endregion
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.Label lblSenha;
-        private System.Windows.Forms.TextBox tbSenha;
+        private System.Windows.Forms.TextBox tbxSenha;
         private System.Windows.Forms.Label lblEcoFinder;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.PictureBox pictureBox1;
