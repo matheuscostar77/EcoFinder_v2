@@ -44,7 +44,7 @@
             this.btnPesquisarCEP = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.lblEstado = new System.Windows.Forms.Label();
-            this.txbEstado = new System.Windows.Forms.TextBox();
+            this.txtEstado = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,6 +154,7 @@
             this.btnPesquisarCEP.TabIndex = 12;
             this.btnPesquisarCEP.Text = "Pesquisar";
             this.btnPesquisarCEP.UseVisualStyleBackColor = true;
+            this.btnPesquisarCEP.Click += new System.EventHandler(this.btnPesquisarCEP_Click);
             // 
             // btnLimpar
             // 
@@ -173,19 +174,19 @@
             this.lblEstado.TabIndex = 14;
             this.lblEstado.Text = "Estado";
             // 
-            // txbEstado
+            // txtEstado
             // 
-            this.txbEstado.Location = new System.Drawing.Point(566, 160);
-            this.txbEstado.Name = "txbEstado";
-            this.txbEstado.Size = new System.Drawing.Size(81, 26);
-            this.txbEstado.TabIndex = 15;
+            this.txtEstado.Location = new System.Drawing.Point(566, 160);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(81, 26);
+            this.txtEstado.TabIndex = 15;
             // 
             // frmCadEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 595);
-            this.Controls.Add(this.txbEstado);
+            this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnPesquisarCEP);
@@ -227,6 +228,6 @@
         private System.Windows.Forms.Button btnPesquisarCEP;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.TextBox txbEstado;
+        private System.Windows.Forms.TextBox txtEstado;
     }
 }
