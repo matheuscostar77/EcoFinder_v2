@@ -136,6 +136,53 @@ namespace EcoFinder
             }
         }
 
-        
+        public string validarLogin(string email, string senha)
+        {
+            string tipoconta;
+            this.email = email;
+            this.senha = senha;
+
+            using (MySqlConnection conn = new MySqlConnection(stringConexao))
+            {
+
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+
+                    cmd.CommandText = $"SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);";
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@senha", senha);
+
+                    Object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        if (Convert.ToInt32(result) == 1)
+                        {
+                            tipoconta = "1";
+                        }
+                        else if (Convert.ToInt32(result) == 2)
+                        {
+                            tipoconta = "2";
+                        }
+                        else
+                        {
+                            tipoconta = "0";
+                        }
+                    }
+                    else
+                    {
+                        tipoconta = "0"; ;
+                    }
+
+
+                }
+
+                return tipoconta;
+            }
+
+        }// fim metodo login
+
+
     }
 }
