@@ -136,6 +136,7 @@
             this.Controls.Add(this.tbxEmail);
             this.Controls.Add(this.lblEmail);
             this.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";

@@ -41,6 +41,8 @@
             this.lblCidade = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.btnCadEndereco = new System.Windows.Forms.Button();
+            this.btnPesquisarCEP = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             // lblCEP
             // 
             this.lblCEP.AutoSize = true;
-            this.lblCEP.Location = new System.Drawing.Point(519, 84);
+            this.lblCEP.Location = new System.Drawing.Point(425, 69);
             this.lblCEP.Name = "lblCEP";
             this.lblCEP.Size = new System.Drawing.Size(41, 20);
             this.lblCEP.TabIndex = 1;
@@ -65,7 +67,7 @@
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(523, 218);
+            this.lblBairro.Location = new System.Drawing.Point(429, 203);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(51, 20);
             this.lblBairro.TabIndex = 2;
@@ -74,7 +76,7 @@
             // lblRua
             // 
             this.lblRua.AutoSize = true;
-            this.lblRua.Location = new System.Drawing.Point(523, 288);
+            this.lblRua.Location = new System.Drawing.Point(429, 273);
             this.lblRua.Name = "lblRua";
             this.lblRua.Size = new System.Drawing.Size(39, 20);
             this.lblRua.TabIndex = 3;
@@ -82,28 +84,28 @@
             // 
             // txtCEP
             // 
-            this.txtCEP.Location = new System.Drawing.Point(523, 107);
+            this.txtCEP.Location = new System.Drawing.Point(429, 92);
             this.txtCEP.Name = "txtCEP";
-            this.txtCEP.Size = new System.Drawing.Size(214, 26);
+            this.txtCEP.Size = new System.Drawing.Size(127, 26);
             this.txtCEP.TabIndex = 4;
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(523, 241);
+            this.txtBairro.Location = new System.Drawing.Point(429, 226);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(214, 26);
             this.txtBairro.TabIndex = 5;
             // 
             // txtRua
             // 
-            this.txtRua.Location = new System.Drawing.Point(527, 311);
+            this.txtRua.Location = new System.Drawing.Point(433, 296);
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(214, 26);
             this.txtRua.TabIndex = 6;
             // 
             // txtNumCasa
             // 
-            this.txtNumCasa.Location = new System.Drawing.Point(523, 388);
+            this.txtNumCasa.Location = new System.Drawing.Point(429, 373);
             this.txtNumCasa.Name = "txtNumCasa";
             this.txtNumCasa.Size = new System.Drawing.Size(214, 26);
             this.txtNumCasa.TabIndex = 7;
@@ -111,7 +113,7 @@
             // lblNumeroCasa
             // 
             this.lblNumeroCasa.AutoSize = true;
-            this.lblNumeroCasa.Location = new System.Drawing.Point(523, 362);
+            this.lblNumeroCasa.Location = new System.Drawing.Point(429, 347);
             this.lblNumeroCasa.Name = "lblNumeroCasa";
             this.lblNumeroCasa.Size = new System.Drawing.Size(65, 20);
             this.lblNumeroCasa.TabIndex = 8;
@@ -120,7 +122,7 @@
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(519, 152);
+            this.lblCidade.Location = new System.Drawing.Point(425, 137);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(59, 20);
             this.lblCidade.TabIndex = 9;
@@ -128,25 +130,45 @@
             // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(523, 176);
+            this.txtCidade.Location = new System.Drawing.Point(429, 161);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(214, 26);
             this.txtCidade.TabIndex = 10;
             // 
             // btnCadEndereco
             // 
-            this.btnCadEndereco.Location = new System.Drawing.Point(523, 463);
+            this.btnCadEndereco.Location = new System.Drawing.Point(429, 459);
             this.btnCadEndereco.Name = "btnCadEndereco";
             this.btnCadEndereco.Size = new System.Drawing.Size(243, 49);
             this.btnCadEndereco.TabIndex = 11;
             this.btnCadEndereco.Text = "Cadastrar endereço";
             this.btnCadEndereco.UseVisualStyleBackColor = true;
             // 
+            // btnPesquisarCEP
+            // 
+            this.btnPesquisarCEP.Location = new System.Drawing.Point(562, 90);
+            this.btnPesquisarCEP.Name = "btnPesquisarCEP";
+            this.btnPesquisarCEP.Size = new System.Drawing.Size(102, 28);
+            this.btnPesquisarCEP.TabIndex = 12;
+            this.btnPesquisarCEP.Text = "Pesquisar";
+            this.btnPesquisarCEP.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(485, 415);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(123, 29);
+            this.btnLimpar.TabIndex = 13;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            // 
             // frmCadEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 595);
+            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.btnPesquisarCEP);
             this.Controls.Add(this.btnCadEndereco);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.lblCidade);
@@ -182,5 +204,7 @@
         private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Button btnCadEndereco;
+        private System.Windows.Forms.Button btnPesquisarCEP;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

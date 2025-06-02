@@ -38,7 +38,5 @@ namespace EcoFinder
             coletor.Show();
             this.Hide();
         }
-
-        
     }
 }
