@@ -22,11 +22,6 @@ namespace EcoFinder
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSair_Click(object sender, EventArgs e)
         {
             var login = new FrmLogin();
