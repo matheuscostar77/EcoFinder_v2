@@ -17,7 +17,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+        string stringConexao = "datasource=127.0.0.1;username=root;password=mysqlpassword;database=ecofinder";
 
 
         public Pessoa()
@@ -138,9 +138,9 @@ namespace EcoFinder
 
         public string validarLogin(string email, string senha)
         {
-            string tipoconta;
-            this.email = email;
-            this.senha = senha;
+            string tipoconta = "0";
+            
+            
 
             using (MySqlConnection conn = new MySqlConnection(stringConexao))
             {
@@ -148,31 +148,33 @@ namespace EcoFinder
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
                     conn.Open();
+                    
 
                     cmd.CommandText = $"SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);";
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
 
                     Object result = cmd.ExecuteScalar();
+                    try
+                    {
+                        if (result != null)
+                        {
+                            if (Convert.ToInt32(result) == 1)
+                            {
+                                tipoconta = "1";
+                            }
+                            else if (Convert.ToInt32(result) == 2)
+                            {
+                                tipoconta = "2";
+                            }
 
-                    if (result != null)
-                    {
-                        if (Convert.ToInt32(result) == 1)
-                        {
-                            tipoconta = "1";
                         }
-                        else if (Convert.ToInt32(result) == 2)
-                        {
-                            tipoconta = "2";
-                        }
-                        else
-                        {
-                            tipoconta = "0";
-                        }
+                        
                     }
-                    else
+                    catch(Exception ex)
                     {
-                        tipoconta = "0"; ;
+                        tipoconta = "0";
+                        MessageBox.Show("Email ou senha incorretos!");
                     }
 
 

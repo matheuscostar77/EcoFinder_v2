@@ -33,6 +33,8 @@ namespace EcoFinder
                         txtEstado.Text = endereco.UF.ToString();
                         txtBairro.Text = endereco.Neighborhood;
                         txtRua.Text = endereco.Street;
+
+                        
                     }
                 }
                 catch (Exception ex)

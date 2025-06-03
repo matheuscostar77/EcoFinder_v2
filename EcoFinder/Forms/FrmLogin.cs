@@ -58,10 +58,7 @@ namespace EcoFinder
                     usuario.Show();
                     this.Hide();
                 }
-                else
-                {
-                    MessageBox.Show("Email ou senha invalidos!");
-                }
+                
             }
         }
     }
