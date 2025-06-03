@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SDKBrasilAPI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,35 +19,32 @@ namespace EcoFinder
             InitializeComponent();
         }
 
-        private void btnPesquisarCEP_Click(object sender, EventArgs e)
+        private async void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(txtCEP.Text))
+            if (!string.IsNullOrWhiteSpace(txtCEP.Text))
             {
-                
-                
                 try
                 {
-                    var endereco = new ViaCepClient().Search(txtCEP.Text);
+                    using (var brasilAPI = new BrasilAPI())
+                    {
+                        var endereco = await brasilAPI.CEP_V2(txtCEP.Text);
 
-                    txtCidade.Text = endereco.City;
-                    txtEstado.Text = endereco.StateInitials;
-                    txtBairro.Text = endereco.Neighborhood;
-                    txtBairro.Text = endereco.Street;
-                        
+                        txtCidade.Text = endereco.City;
+                        txtEstado.Text = endereco.UF.ToString();
+                        txtBairro.Text = endereco.Neighborhood;
+                        txtRua.Text = endereco.Street;
+                    }
                 }
                 catch (Exception ex)
                 {
-
-                    MessageBox.Show(ex.Message);
-
-
+                    MessageBox.Show($"Erro ao buscar o CEP: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
             }
             else
             {
-                MessageBox.Show("Informe um CEP válido!");
+                MessageBox.Show("Informe um CEP válido!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
     }
 }
