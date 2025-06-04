@@ -26,11 +26,6 @@ namespace EcoFinder
             return quantidadeColetas;
         }
 
-        public void verChamados()
-        {
-
-        }
-
         public void reservarChamados()
         {
 

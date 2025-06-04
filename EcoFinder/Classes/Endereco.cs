@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Org.BouncyCastle.Asn1.Misc;
 
 namespace EcoFinder
 {
     internal class Endereco
     {
+        private string cep;
         private string nomeBairro;
         private string cidade;
+        private string estado;
         private string nomeRua;
         private int numeroCasa;
 
@@ -49,14 +52,21 @@ namespace EcoFinder
         {
             this.numeroCasa = numeroCasa;
         }
-        
-        public string exibirEndereco()
+        public string getCep()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendFormat($" Rua: {nomeRua} \n N° Casa: {numeroCasa} \n Nome Bairro: {nomeBairro} \n Cidade: {cidade} ");
-
-            return sb.ToString();
+            return cep;
+        }
+        public void setCep(string cep)
+        {
+            this.cep = cep;
+        }
+        public string getEstado()
+        {
+            return estado;
+        }
+        public void setEstado(string estado)
+        {
+            this.estado = estado;
         }
 
     }
