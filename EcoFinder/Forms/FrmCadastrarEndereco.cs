@@ -14,6 +14,9 @@ namespace EcoFinder
 {
     public partial class frmCadEndereco : Form
     {
+
+        Endereco end = new Endereco();
+
         public frmCadEndereco()
         {
             InitializeComponent();
@@ -34,7 +37,10 @@ namespace EcoFinder
                         txtBairro.Text = endereco.Neighborhood;
                         txtRua.Text = endereco.Street;
 
-                        
+                        double latitude = Convert.ToDouble(endereco.Location.Coordinates.Latitude);
+                        double longitude = Convert.ToDouble(endereco.Location.Coordinates.Longitude);
+
+                        end.passarCoordenadas(latitude, longitude);
                     }
                 }
                 catch (Exception ex)

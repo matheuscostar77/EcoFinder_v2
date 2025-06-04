@@ -17,7 +17,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        string stringConexao = "datasource=127.0.0.1;username=root;password=mysqlpassword;database=ecofinder";
+        private string stringConexao = "datasource=127.0.0.1;username=root;password=mysqlpassword;database=ecofinder";
 
 
         public Pessoa()
