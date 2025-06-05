@@ -107,7 +107,7 @@ namespace EcoFinder
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
-                    cmd.Parameters.AddWithValue("@idgenero", numSex);
+                    cmd.Parameters.AddWithValue("@genero", numSex);
 
                     if (tipoConta == "Coletor") 
                     {

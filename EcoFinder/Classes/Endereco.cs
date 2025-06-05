@@ -3,6 +3,7 @@ using Org.BouncyCastle.Asn1.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace EcoFinder
 {
     internal class Endereco
     {
+        
         private string cep;
         private string nomeBairro;
         private string cidade;
@@ -21,7 +23,12 @@ namespace EcoFinder
 
         private string stringConexao = "datasource=127.0.0.1;username=root;password=mysqlpassword;database=ecofinder";
 
-        public Endereco() { }
+        Pessoa pessoa;
+
+        public Endereco(Pessoa pessoa) 
+        {
+            this.pessoa = pessoa;
+        }
 
         public string getNomeBairro()
         {
@@ -89,21 +96,27 @@ namespace EcoFinder
             {
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    
-                    
-                    cmd.CommandText = "SELECT id_pessoa FROM tb_pessoa WHERE email = @email";
-                    
+                    conn.Open();
+                    cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
+                    cmd.Parameters.AddWithValue("@email",pessoa.getEmail());
+
+                    int idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.Parameters.Clear();
 
                     cmd.CommandText = @"INSERT INTO tb_endereco(id_pessoa_endereco,cep,estado,
                                         cidade,bairro,rua,numerocasa,latitude,longitude) " +
-                                            "VALUES ();";
+                                            "VALUES (@id_pessoa_endereco,@cep,@estado," +
+                                            "@cidade,@bairro,@rua,@numerocasa,@latitude,@longitude);";
+                    cmd.Parameters.AddWithValue("@id_pessoa_endereco",idpessoa);
                     cmd.Parameters.AddWithValue("@cep", cep);
                     cmd.Parameters.AddWithValue("@estado", estado);
                     cmd.Parameters.AddWithValue("@cidade", cidade);
                     cmd.Parameters.AddWithValue("@bairro", nomeBairro);
                     cmd.Parameters.AddWithValue("@rua", nomeRua);
-                    cmd.Parameters.AddWithValue("@longitude", latitude);
-                    cmd.Parameters.AddWithValue("@latitude", longitude);
+                    cmd.Parameters.AddWithValue("@longitude", longitude);
+                    cmd.Parameters.AddWithValue("@latitude", latitude);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
             return true;

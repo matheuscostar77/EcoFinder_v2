@@ -16,14 +16,15 @@ namespace EcoFinder
     {
 
         FrmLogin loginTela;
-        Endereco end = new Endereco();
         Pessoa pessoa;
+        Endereco end;
 
         public frmCadEndereco(FrmLogin loginTela, Pessoa pessoa)
         {
             InitializeComponent();
             this.loginTela = loginTela;
             this.pessoa = pessoa;
+            this.end = new Endereco(pessoa);
         }
 
         private async void btnPesquisarCEP_Click(object sender, EventArgs e)

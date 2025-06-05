@@ -18,7 +18,8 @@ namespace EcoFinder
 
         public Chamado()
         {
-            endereco = new Endereco();
+            Pessoa pessoa = new Pessoa();
+            endereco = new Endereco(pessoa);
             tipoMaterial = "";
             quantUnitaria = 0;
             quantKilograma = 0;
