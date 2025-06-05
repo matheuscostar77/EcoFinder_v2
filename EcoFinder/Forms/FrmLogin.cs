@@ -62,5 +62,10 @@ namespace EcoFinder
                 
             }
         }
+
+        private void tbxEmail_TextChanged(object sender, EventArgs e)
+        {
+            pessoa.setEmail(tbxEmail.Text);
+        }
     }
 }
