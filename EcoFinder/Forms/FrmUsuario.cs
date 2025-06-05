@@ -12,19 +12,24 @@ namespace EcoFinder
 {
     public partial class FrmUsuario : Form
     {
-        public FrmUsuario()
+        FrmLogin loginTela;
+        Pessoa pessoa;
+        public FrmUsuario(FrmLogin loginTela, Pessoa pessoa)
         {
             InitializeComponent();
+
+            this.loginTela = loginTela;
+            this.pessoa = pessoa;
         }
 
         private void FrmUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            var cadastrarEndereco = new frmCadEndereco();
+            var cadastrarEndereco = new frmCadEndereco(loginTela, pessoa);
             cadastrarEndereco.Show();
         }
 
@@ -41,10 +46,9 @@ namespace EcoFinder
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            var login = new FrmLogin();
-            login.Show();
-
-            this.Hide();
+            this.Close();
+            loginTela.Show();
+            
         }
 
         

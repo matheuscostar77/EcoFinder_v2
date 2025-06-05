@@ -14,11 +14,14 @@ namespace EcoFinder
     public partial class FrmCadastro : Form
     {
 
-        Pessoa pessoa = new Pessoa();
-
-        public FrmCadastro()
+        
+        FrmLogin loginTela;
+        Pessoa pessoa;
+        public FrmCadastro(FrmLogin loginTela,Pessoa pessoa)
         {
             InitializeComponent();
+            this.loginTela = loginTela;
+            this.pessoa = pessoa;
 
             
         }
@@ -91,13 +94,13 @@ namespace EcoFinder
                 if (cadastroSucesso && tipo == "Coletor" && 
                     (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var coletor = new frmColetor();
+                    var coletor = new frmColetor(loginTela, pessoa);
                     coletor.Show();
                 }
                 else if (cadastroSucesso && tipo == "Usuário Comum"
                     && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var usuario = new FrmUsuario();
+                    var usuario = new FrmUsuario(loginTela, pessoa);
                     usuario.Show();
                 }
             }

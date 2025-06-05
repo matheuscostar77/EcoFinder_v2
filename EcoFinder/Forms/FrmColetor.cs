@@ -12,22 +12,28 @@ namespace EcoFinder
 {
     public partial class frmColetor : Form
     {
-        public frmColetor()
+        FrmLogin loginTela;
+        Pessoa pessoa;
+        public frmColetor(FrmLogin loginTela, Pessoa pessoa)
         {
             InitializeComponent();
+
+            this.loginTela = loginTela;
+            this.pessoa = pessoa;
         }
 
         private void frmColetor_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            
         }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            var login = new FrmLogin();
-            login.Show();
 
-            this.Hide();
+            loginTela.Show();
+            this.Close();
+
+            
         }
 
         

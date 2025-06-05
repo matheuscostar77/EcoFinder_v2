@@ -51,9 +51,6 @@ namespace EcoFinder
             this.quantKilograma = quantKilograma;
         }
 
-        public string ChamadoExibeEndereco()
-        {
-            return this.endereco.exibirEndereco();
-        }
+        
     }
 }

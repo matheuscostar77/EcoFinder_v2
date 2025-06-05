@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    internal class Pessoa
+    public class Pessoa
     {
         protected string name;
         protected string email;
@@ -17,7 +17,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        private string stringConexao = "datasource=127.0.0.1;username=root;password=mysqlpassword;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
 
 
         public Pessoa()
@@ -171,7 +171,7 @@ namespace EcoFinder
                         }
                         
                     }
-                    catch(Exception ex)
+                    catch
                     {
                         tipoconta = "0";
                         MessageBox.Show("Email ou senha incorretos!");

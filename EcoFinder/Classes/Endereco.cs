@@ -89,7 +89,21 @@ namespace EcoFinder
             {
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
+                    
+                    
+                    cmd.CommandText = "SELECT id_pessoa FROM tb_pessoa WHERE email = @email";
+                    
 
+                    cmd.CommandText = @"INSERT INTO tb_endereco(id_pessoa_endereco,cep,estado,
+                                        cidade,bairro,rua,numerocasa,latitude,longitude) " +
+                                            "VALUES ();";
+                    cmd.Parameters.AddWithValue("@cep", cep);
+                    cmd.Parameters.AddWithValue("@estado", estado);
+                    cmd.Parameters.AddWithValue("@cidade", cidade);
+                    cmd.Parameters.AddWithValue("@bairro", nomeBairro);
+                    cmd.Parameters.AddWithValue("@rua", nomeRua);
+                    cmd.Parameters.AddWithValue("@longitude", latitude);
+                    cmd.Parameters.AddWithValue("@latitude", longitude);
                 }
             }
             return true;

@@ -11,12 +11,15 @@ namespace EcoFinder
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
+        /// 
+        
         [STAThread]
         static void Main()
         {
+            Pessoa pessoa = new Pessoa();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmLogin(pessoa));
         }
     }
 }
