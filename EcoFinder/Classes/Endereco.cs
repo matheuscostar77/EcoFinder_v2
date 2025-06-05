@@ -85,8 +85,8 @@ namespace EcoFinder
 
         public void passarCoordenadas(double latitude, double longitude)
         {
-            this.latitude = latitude;
-            this.longitude = longitude;
+            this.latitude = latitude / 1e7;
+            this.longitude = longitude / 1e7;
 
         }
 

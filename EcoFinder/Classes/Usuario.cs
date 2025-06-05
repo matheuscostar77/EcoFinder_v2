@@ -8,12 +8,13 @@ namespace EcoFinder
 {
     internal class Usuario : Pessoa
     {
-        Pessoa p = new Pessoa();
+        Pessoa p;
         Endereco endereco;
 
-        public Usuario()
+        public Usuario(Pessoa p)
         {
             this.endereco = new Endereco(p);
+            this.p = p;
         }
 
 
