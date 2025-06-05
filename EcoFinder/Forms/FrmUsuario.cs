@@ -29,7 +29,7 @@ namespace EcoFinder
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            var cadastrarEndereco = new frmCadEndereco(loginTela, pessoa);
+            var cadastrarEndereco = new frmCadEndereco(loginTela,this, pessoa);
             cadastrarEndereco.Show();
         }
 

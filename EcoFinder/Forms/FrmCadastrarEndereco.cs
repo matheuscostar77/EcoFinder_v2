@@ -16,13 +16,17 @@ namespace EcoFinder
     {
 
         FrmLogin loginTela;
+        FrmUsuario usuarioTela;
+        
+        
         Pessoa pessoa;
         Endereco end;
 
-        public frmCadEndereco(FrmLogin loginTela, Pessoa pessoa)
+        public frmCadEndereco(FrmLogin loginTela,FrmUsuario usuarioTela, Pessoa pessoa)
         {
             InitializeComponent();
             this.loginTela = loginTela;
+            this.usuarioTela = usuarioTela;
             this.pessoa = pessoa;
             this.end = new Endereco(pessoa);
         }
@@ -99,6 +103,12 @@ namespace EcoFinder
         private void txtNumCasa_TextChanged(object sender, EventArgs e)
         {
             end.setNumeroCasa(txtNumCasa.Text);
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            usuarioTela.Show();
         }
     }
 }
