@@ -79,21 +79,7 @@ namespace EcoFinder
 
         public bool CadastrarPessoa()
         {
-            int numSex;
-            switch (sex)
-            {
-                case "Masculino":
-                    numSex = 1;
-                    break;
-                case "Feminino":
-                    numSex = 2;
-                    break;
-                default:
-                    numSex = 3;
-                    break;
-            }
-
-
+            
             
             using (MySqlConnection conn = new MySqlConnection(stringConexao))
             {
@@ -102,12 +88,12 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    cmd.CommandText = "INSERT INTO tb_pessoa(nome,email,senha,id_genero) " +
-                                        "VALUES (@name,@email,@senha,@idgenero);";
+                    cmd.CommandText = "INSERT INTO tb_pessoa(nome,email,senha,genero) " +
+                                        "VALUES (@name,@email,@senha,genero);";
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
-                    cmd.Parameters.AddWithValue("@genero", numSex);
+                    cmd.Parameters.AddWithValue("@genero", sex);
 
                     if (tipoConta == "Coletor") 
                     {
