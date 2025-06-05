@@ -145,6 +145,7 @@
             this.btnCadEndereco.TabIndex = 11;
             this.btnCadEndereco.Text = "Cadastrar endereço";
             this.btnCadEndereco.UseVisualStyleBackColor = true;
+            this.btnCadEndereco.Click += new System.EventHandler(this.btnCadEndereco_Click);
             // 
             // btnPesquisarCEP
             // 

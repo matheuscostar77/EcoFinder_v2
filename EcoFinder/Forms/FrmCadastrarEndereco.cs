@@ -59,5 +59,16 @@ namespace EcoFinder
             }
         }
 
+        private void btnCadEndereco_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                end.cadastrarEndereco();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
