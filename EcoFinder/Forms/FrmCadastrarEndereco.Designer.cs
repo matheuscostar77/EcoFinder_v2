@@ -90,6 +90,7 @@
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(127, 26);
             this.txtCEP.TabIndex = 4;
+            this.txtCEP.TextChanged += new System.EventHandler(this.txtCEP_TextChanged);
             // 
             // txtBairro
             // 
@@ -97,6 +98,7 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(235, 26);
             this.txtBairro.TabIndex = 5;
+            this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             // 
             // txtRua
             // 
@@ -104,6 +106,7 @@
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(167, 26);
             this.txtRua.TabIndex = 6;
+            this.txtRua.TextChanged += new System.EventHandler(this.txtRua_TextChanged);
             // 
             // txtNumCasa
             // 
@@ -111,6 +114,7 @@
             this.txtNumCasa.Name = "txtNumCasa";
             this.txtNumCasa.Size = new System.Drawing.Size(55, 26);
             this.txtNumCasa.TabIndex = 7;
+            this.txtNumCasa.TextChanged += new System.EventHandler(this.txtNumCasa_TextChanged);
             // 
             // lblNumeroCasa
             // 
@@ -136,6 +140,7 @@
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(147, 26);
             this.txtCidade.TabIndex = 10;
+            this.txtCidade.TextChanged += new System.EventHandler(this.txtCidade_TextChanged);
             // 
             // btnCadEndereco
             // 
@@ -181,6 +186,7 @@
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(81, 26);
             this.txtEstado.TabIndex = 15;
+            this.txtEstado.TextChanged += new System.EventHandler(this.txtEstado_TextChanged);
             // 
             // frmCadEndereco
             // 

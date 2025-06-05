@@ -70,5 +70,35 @@ namespace EcoFinder
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txtCEP_TextChanged(object sender, EventArgs e)
+        {
+            end.setCep(txtCEP.Text);
+        }
+
+        private void txtCidade_TextChanged(object sender, EventArgs e)
+        {
+            end.setCidade(txtCidade.Text);
+        }
+
+        private void txtEstado_TextChanged(object sender, EventArgs e)
+        {
+            end.setEstado(txtEstado.Text);
+        }
+
+        private void txtBairro_TextChanged(object sender, EventArgs e)
+        {
+            end.setNomeBairro(txtBairro.Text);
+        }
+
+        private void txtRua_TextChanged(object sender, EventArgs e)
+        {
+            end.setNomeRua(txtRua.Text);
+        }
+
+        private void txtNumCasa_TextChanged(object sender, EventArgs e)
+        {
+            end.setNumeroCasa(txtNumCasa.Text);
+        }
     }
 }

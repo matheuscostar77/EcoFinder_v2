@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EcoFinder
 {
@@ -17,11 +18,11 @@ namespace EcoFinder
         private string cidade;
         private string estado;
         private string nomeRua;
-        private int numeroCasa;
+        private string numeroCasa;
         private double latitude;
         private double longitude;
 
-        private string stringConexao = "datasource=127.0.0.1;username=root;password=mysqlpassword;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
 
         Pessoa pessoa;
 
@@ -56,11 +57,11 @@ namespace EcoFinder
         {
             this.nomeRua = nomeRua;
         }
-        public int getNumeroCasa()
+        public string getNumeroCasa()
         {
             return numeroCasa;
         }
-        public void setNumeroCasa(int numeroCasa)
+        public void setNumeroCasa(string numeroCasa)
         {
             this.numeroCasa = numeroCasa;
         }
@@ -96,11 +97,15 @@ namespace EcoFinder
             {
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
+                    int idpessoa;
+
                     conn.Open();
                     cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
                     cmd.Parameters.AddWithValue("@email",pessoa.getEmail());
-
-                    int idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+                    
+                    
+                    idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+                    
                     cmd.Parameters.Clear();
 
                     cmd.CommandText = @"INSERT INTO tb_endereco(id_pessoa_endereco,cep,estado,
@@ -113,6 +118,7 @@ namespace EcoFinder
                     cmd.Parameters.AddWithValue("@cidade", cidade);
                     cmd.Parameters.AddWithValue("@bairro", nomeBairro);
                     cmd.Parameters.AddWithValue("@rua", nomeRua);
+                    cmd.Parameters.AddWithValue("@numerocasa", numeroCasa);
                     cmd.Parameters.AddWithValue("@longitude", longitude);
                     cmd.Parameters.AddWithValue("@latitude", latitude);
 
