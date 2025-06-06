@@ -14,6 +14,7 @@ namespace EcoFinder
     {
         FrmLogin loginTela;
         Pessoa pessoa;
+
         public frmColetor(FrmLogin loginTela, Pessoa pessoa)
         {
             InitializeComponent();
@@ -36,6 +37,11 @@ namespace EcoFinder
             
         }
 
-        
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            btnReservar.FlatStyle = FlatStyle.Flat;
+            btnReservar.FlatAppearance.BorderSize = 0;
+
+        }
     }
 }
