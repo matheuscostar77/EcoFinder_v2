@@ -49,6 +49,7 @@
             // 
             // cmbMateriall
             // 
+            this.cmbMateriall.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMateriall.FormattingEnabled = true;
             this.cmbMateriall.Items.AddRange(new object[] {
             "METAL",
@@ -71,11 +72,13 @@
             // 
             // cmbEnderecoCham
             // 
+            this.cmbEnderecoCham.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEnderecoCham.FormattingEnabled = true;
             this.cmbEnderecoCham.Location = new System.Drawing.Point(577, 218);
             this.cmbEnderecoCham.Name = "cmbEnderecoCham";
             this.cmbEnderecoCham.Size = new System.Drawing.Size(175, 28);
             this.cmbEnderecoCham.TabIndex = 3;
+            this.cmbEnderecoCham.SelectedIndexChanged += new System.EventHandler(this.cmbEnderecoCham_SelectedIndexChanged);
             // 
             // lblEnderecoCham
             // 
