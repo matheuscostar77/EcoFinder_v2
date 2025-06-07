@@ -24,6 +24,11 @@ namespace EcoFinder
             this.endereco = endereco;
         }
 
+        private void FrmUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void FrmUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             
@@ -31,20 +36,19 @@ namespace EcoFinder
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            this.Hide();
             var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco);
             cadastrarEndereco.Show();
         }
 
         private void btnRealizarChamado_Click(object sender, EventArgs e)
         {
+            this.Hide();
             var realizarChamado = new frmRealizarChamado(this, pessoa,endereco);
             realizarChamado.Show();
         }
 
-        private void FrmUsuario_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnSair_Click(object sender, EventArgs e)
         {

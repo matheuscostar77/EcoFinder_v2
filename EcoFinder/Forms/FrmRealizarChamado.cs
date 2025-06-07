@@ -23,29 +23,38 @@ namespace EcoFinder
             this.endereco = endereco;
         }
 
-        private void frmRealizarChamado_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
+        
 
             
 
-        private void cmbEnderecoCham_Click(object sender, EventArgs e)
+        
+
+        private void frmRealizarChamado_Load(object sender, EventArgs e)
         {
             try
             {
                 string end = endereco.mostrarEnderecos(pessoa.getEmail());
-                cmbEnderecoCham.Items.Clear();
                 if (!string.IsNullOrEmpty(end))
                 {
-                    cmbEnderecoCham.Items.Add(end);
-                    cmbEnderecoCham.SelectedIndex = 0;
+                    lblEnderecoFormat.Text = end;
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            usuarioTela.Show();
+        }
+
+        private void btnRealizarChamado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

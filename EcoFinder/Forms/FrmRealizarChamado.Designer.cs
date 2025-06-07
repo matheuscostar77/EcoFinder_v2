@@ -32,9 +32,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbMateriall = new System.Windows.Forms.ComboBox();
             this.cmbMaterial = new System.Windows.Forms.Label();
-            this.cmbEnderecoCham = new System.Windows.Forms.ComboBox();
             this.lblEnderecoCham = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRealizarChamado = new System.Windows.Forms.Button();
+            this.lblEnderecoFormat = new System.Windows.Forms.Label();
+            this.btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             "VIDRO",
             "PAPEL",
             "PLÁSTICO"});
-            this.cmbMateriall.Location = new System.Drawing.Point(577, 288);
+            this.cmbMateriall.Location = new System.Drawing.Point(459, 236);
             this.cmbMateriall.Name = "cmbMateriall";
             this.cmbMateriall.Size = new System.Drawing.Size(175, 28);
             this.cmbMateriall.TabIndex = 1;
@@ -64,55 +65,66 @@
             // cmbMaterial
             // 
             this.cmbMaterial.AutoSize = true;
-            this.cmbMaterial.Location = new System.Drawing.Point(573, 265);
+            this.cmbMaterial.Location = new System.Drawing.Point(455, 213);
             this.cmbMaterial.Name = "cmbMaterial";
             this.cmbMaterial.Size = new System.Drawing.Size(65, 20);
             this.cmbMaterial.TabIndex = 2;
             this.cmbMaterial.Text = "Material";
             // 
-            // cmbEnderecoCham
-            // 
-            this.cmbEnderecoCham.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEnderecoCham.FormattingEnabled = true;
-            this.cmbEnderecoCham.Location = new System.Drawing.Point(577, 218);
-            this.cmbEnderecoCham.Name = "cmbEnderecoCham";
-            this.cmbEnderecoCham.Size = new System.Drawing.Size(175, 28);
-            this.cmbEnderecoCham.TabIndex = 3;
-            this.cmbEnderecoCham.Click += new System.EventHandler(this.cmbEnderecoCham_Click);
-            // 
             // lblEnderecoCham
             // 
             this.lblEnderecoCham.AutoSize = true;
-            this.lblEnderecoCham.Location = new System.Drawing.Point(577, 192);
+            this.lblEnderecoCham.Location = new System.Drawing.Point(301, 9);
             this.lblEnderecoCham.Name = "lblEnderecoCham";
             this.lblEnderecoCham.Size = new System.Drawing.Size(78, 20);
             this.lblEnderecoCham.TabIndex = 4;
             this.lblEnderecoCham.Text = "Endereço";
             // 
-            // button1
+            // btnRealizarChamado
             // 
-            this.button1.Location = new System.Drawing.Point(548, 343);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(243, 49);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Realizar chamado";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRealizarChamado.Location = new System.Drawing.Point(430, 291);
+            this.btnRealizarChamado.Name = "btnRealizarChamado";
+            this.btnRealizarChamado.Size = new System.Drawing.Size(243, 49);
+            this.btnRealizarChamado.TabIndex = 5;
+            this.btnRealizarChamado.Text = "Realizar chamado";
+            this.btnRealizarChamado.UseVisualStyleBackColor = true;
+            this.btnRealizarChamado.Click += new System.EventHandler(this.btnRealizarChamado_Click);
+            // 
+            // lblEnderecoFormat
+            // 
+            this.lblEnderecoFormat.AutoSize = true;
+            this.lblEnderecoFormat.Location = new System.Drawing.Point(301, 38);
+            this.lblEnderecoFormat.Name = "lblEnderecoFormat";
+            this.lblEnderecoFormat.Size = new System.Drawing.Size(51, 20);
+            this.lblEnderecoFormat.TabIndex = 6;
+            this.lblEnderecoFormat.Text = "label1";
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Location = new System.Drawing.Point(665, 543);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(112, 40);
+            this.btnVoltar.TabIndex = 7;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // frmRealizarChamado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 595);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.lblEnderecoFormat);
+            this.Controls.Add(this.btnRealizarChamado);
             this.Controls.Add(this.lblEnderecoCham);
-            this.Controls.Add(this.cmbEnderecoCham);
             this.Controls.Add(this.cmbMaterial);
             this.Controls.Add(this.cmbMateriall);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmRealizarChamado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRealizarChamado_FormClosed);
+            this.Load += new System.EventHandler(this.frmRealizarChamado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -124,8 +136,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmbMateriall;
         private System.Windows.Forms.Label cmbMaterial;
-        private System.Windows.Forms.ComboBox cmbEnderecoCham;
         private System.Windows.Forms.Label lblEnderecoCham;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRealizarChamado;
+        private System.Windows.Forms.Label lblEnderecoFormat;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }

@@ -29,46 +29,13 @@ namespace EcoFinder
             this.pessoa = pessoa;
             this.endereco = endereco;
         }
-
-        private async void btnPesquisarCEP_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtCEP.Text))
-            {
-                try
-                {
-                    using (var brasilAPI = new BrasilAPI())
-                    {
-                        var end = await brasilAPI.CEP_V2(txtCEP.Text);
-
-                        txtCidade.Text = end.City;
-                        txtEstado.Text = end.UF.ToString();
-                        txtBairro.Text = end.Neighborhood;
-                        txtRua.Text = end.Street;
-
-                        double latitude = Convert.ToDouble(end.Location.Coordinates.Latitude);
-                        double longitude = Convert.ToDouble(end.Location.Coordinates.Longitude);
-
-                        endereco.passarCoordenadas(latitude, longitude);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro ao buscar o CEP: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Informe um CEP válido!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private void btnCadEndereco_Click(object sender, EventArgs e)
         {
             try
             {
                 endereco.cadastrarEndereco();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -109,5 +76,43 @@ namespace EcoFinder
             this.Close();
             usuarioTela.Show();
         }
+        private async void btnPesquisarCEP_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtCEP.Text))
+            {
+                try
+                {
+                    using (var brasilAPI = new BrasilAPI())
+                    {
+                        var end = await brasilAPI.CEP_V2(txtCEP.Text);
+
+                        txtCidade.Text = end.City;
+                        txtEstado.Text = end.UF.ToString();
+                        txtBairro.Text = end.Neighborhood;
+                        txtRua.Text = end.Street;
+
+                        double latitude = Convert.ToDouble(end.Location.Coordinates.Latitude);
+                        double longitude = Convert.ToDouble(end.Location.Coordinates.Longitude);
+
+                        endereco.passarCoordenadas(latitude, longitude);
+
+                        MessageBox.Show("Endereço cadastrado");
+
+                        this.Close();
+                        usuarioTela.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um CEP válido!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        
     }
 }
