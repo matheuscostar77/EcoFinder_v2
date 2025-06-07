@@ -17,9 +17,11 @@ namespace EcoFinder
         static void Main()
         {
             Pessoa pessoa = new Pessoa();
+            Endereco endereco = new Endereco(pessoa);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin(pessoa));
+            Application.Run(new FrmLogin(pessoa, endereco));
         }
     }
 }

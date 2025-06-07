@@ -12,9 +12,15 @@ namespace EcoFinder
 {
     public partial class frmRealizarChamado : Form
     {
-        public frmRealizarChamado()
+        Pessoa pessoa;
+        FrmUsuario usuarioTela;
+        Endereco endereco;
+        public frmRealizarChamado(FrmUsuario usuarioTela,Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
+            this.pessoa = pessoa;
+            this.usuarioTela = usuarioTela;
+            this.endereco = endereco;
         }
 
         private void frmRealizarChamado_FormClosed(object sender, FormClosedEventArgs e)
@@ -22,9 +28,24 @@ namespace EcoFinder
             Application.Exit();
         }
 
-        private void cmbEnderecoCham_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            
 
+        private void cmbEnderecoCham_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string end = endereco.mostrarEnderecos(pessoa.getEmail());
+                cmbEnderecoCham.Items.Clear();
+                if (!string.IsNullOrEmpty(end))
+                {
+                    cmbEnderecoCham.Items.Add(end);
+                    cmbEnderecoCham.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

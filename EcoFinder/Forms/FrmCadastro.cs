@@ -16,13 +16,15 @@ namespace EcoFinder
 
         
         FrmLogin loginTela;
+        Endereco endereco;
         Pessoa pessoa;
-        public FrmCadastro(FrmLogin loginTela,Pessoa pessoa)
+
+        public FrmCadastro(FrmLogin loginTela,Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.loginTela = loginTela;
             this.pessoa = pessoa;
-
+            this.endereco = endereco;
             
         }
 
@@ -94,13 +96,13 @@ namespace EcoFinder
                 if (cadastroSucesso && tipo == "Coletor" && 
                     (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var coletor = new frmColetor(loginTela, pessoa);
+                    var coletor = new frmColetor(loginTela, pessoa, endereco);
                     coletor.Show();
                 }
                 else if (cadastroSucesso && tipo == "Usuário Comum"
                     && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var usuario = new FrmUsuario(loginTela, pessoa);
+                    var usuario = new FrmUsuario(loginTela, pessoa, endereco);
                     usuario.Show();
                 }
             }

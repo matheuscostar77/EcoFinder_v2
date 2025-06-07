@@ -78,7 +78,7 @@
             this.cmbEnderecoCham.Name = "cmbEnderecoCham";
             this.cmbEnderecoCham.Size = new System.Drawing.Size(175, 28);
             this.cmbEnderecoCham.TabIndex = 3;
-            this.cmbEnderecoCham.SelectedIndexChanged += new System.EventHandler(this.cmbEnderecoCham_SelectedIndexChanged);
+            this.cmbEnderecoCham.Click += new System.EventHandler(this.cmbEnderecoCham_Click);
             // 
             // lblEnderecoCham
             // 

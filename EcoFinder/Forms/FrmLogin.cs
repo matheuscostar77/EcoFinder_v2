@@ -13,10 +13,12 @@ namespace EcoFinder
     public partial class FrmLogin : Form
     {
         private Pessoa pessoa;
-        public FrmLogin(Pessoa pessoa)
+        private Endereco endereco;
+        public FrmLogin(Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.pessoa = pessoa;
+            this.endereco = endereco;
         }
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
@@ -26,17 +28,17 @@ namespace EcoFinder
 
         private void lblCriarConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var cadastro = new FrmCadastro(this, pessoa);
+            var cadastro = new FrmCadastro(this, pessoa, endereco);
             cadastro.Show();
             this.Hide();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var usuario = new FrmUsuario(this, pessoa);
+            var usuario = new FrmUsuario(this, pessoa, endereco);
             usuario.Show();
             this.Hide();
-            var coletor = new frmColetor(this, pessoa);
+            var coletor = new frmColetor(this, pessoa, endereco);
             coletor.Show();
             this.Hide();
         }
@@ -49,13 +51,13 @@ namespace EcoFinder
 
                 if (int.Parse(contavalida) == 1)
                 {
-                    var coletor = new frmColetor(this,pessoa);
+                    var coletor = new frmColetor(this,pessoa, endereco);
                     coletor.Show();
                     this.Hide();
                 }
                 else if (int.Parse(contavalida) == 2)
                 {
-                    var usuario = new FrmUsuario(this,pessoa);
+                    var usuario = new FrmUsuario(this,pessoa, endereco);
                     usuario.Show();
                     this.Hide();
                 }

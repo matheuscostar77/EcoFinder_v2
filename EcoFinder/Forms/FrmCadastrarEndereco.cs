@@ -15,20 +15,19 @@ namespace EcoFinder
     public partial class frmCadEndereco : Form
     {
 
-        FrmLogin loginTela;
+        
         FrmUsuario usuarioTela;
         
         
         Pessoa pessoa;
-        Endereco end;
+        Endereco endereco;
 
-        public frmCadEndereco(FrmLogin loginTela,FrmUsuario usuarioTela, Pessoa pessoa)
+        public frmCadEndereco(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.loginTela = loginTela;
             this.usuarioTela = usuarioTela;
             this.pessoa = pessoa;
-            this.end = new Endereco(pessoa);
+            this.endereco = endereco;
         }
 
         private async void btnPesquisarCEP_Click(object sender, EventArgs e)
@@ -39,17 +38,17 @@ namespace EcoFinder
                 {
                     using (var brasilAPI = new BrasilAPI())
                     {
-                        var endereco = await brasilAPI.CEP_V2(txtCEP.Text);
+                        var end = await brasilAPI.CEP_V2(txtCEP.Text);
 
-                        txtCidade.Text = endereco.City;
-                        txtEstado.Text = endereco.UF.ToString();
-                        txtBairro.Text = endereco.Neighborhood;
-                        txtRua.Text = endereco.Street;
+                        txtCidade.Text = end.City;
+                        txtEstado.Text = end.UF.ToString();
+                        txtBairro.Text = end.Neighborhood;
+                        txtRua.Text = end.Street;
 
-                        double latitude = Convert.ToDouble(endereco.Location.Coordinates.Latitude);
-                        double longitude = Convert.ToDouble(endereco.Location.Coordinates.Longitude);
+                        double latitude = Convert.ToDouble(end.Location.Coordinates.Latitude);
+                        double longitude = Convert.ToDouble(end.Location.Coordinates.Longitude);
 
-                        end.passarCoordenadas(latitude, longitude);
+                        endereco.passarCoordenadas(latitude, longitude);
                     }
                 }
                 catch (Exception ex)
@@ -67,7 +66,7 @@ namespace EcoFinder
         {
             try
             {
-                end.cadastrarEndereco();
+                endereco.cadastrarEndereco();
             }
             catch(Exception ex)
             {
@@ -77,32 +76,32 @@ namespace EcoFinder
 
         private void txtCEP_TextChanged(object sender, EventArgs e)
         {
-            end.setCep(txtCEP.Text);
+            endereco.setCep(txtCEP.Text);
         }
 
         private void txtCidade_TextChanged(object sender, EventArgs e)
         {
-            end.setCidade(txtCidade.Text);
+            endereco.setCidade(txtCidade.Text);
         }
 
         private void txtEstado_TextChanged(object sender, EventArgs e)
         {
-            end.setEstado(txtEstado.Text);
+            endereco.setEstado(txtEstado.Text);
         }
 
         private void txtBairro_TextChanged(object sender, EventArgs e)
         {
-            end.setNomeBairro(txtBairro.Text);
+            endereco.setNomeBairro(txtBairro.Text);
         }
 
         private void txtRua_TextChanged(object sender, EventArgs e)
         {
-            end.setNomeRua(txtRua.Text);
+            endereco.setNomeRua(txtRua.Text);
         }
 
         private void txtNumCasa_TextChanged(object sender, EventArgs e)
         {
-            end.setNumeroCasa(txtNumCasa.Text);
+            endereco.setNumeroCasa(txtNumCasa.Text);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

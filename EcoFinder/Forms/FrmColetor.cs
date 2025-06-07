@@ -14,13 +14,15 @@ namespace EcoFinder
     {
         FrmLogin loginTela;
         Pessoa pessoa;
+        Endereco endereco;
 
-        public frmColetor(FrmLogin loginTela, Pessoa pessoa)
+        public frmColetor(FrmLogin loginTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
 
             this.loginTela = loginTela;
             this.pessoa = pessoa;
+            this.endereco = endereco;
         }
 
         private void frmColetor_FormClosed(object sender, FormClosedEventArgs e)

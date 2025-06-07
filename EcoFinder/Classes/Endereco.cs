@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    internal class Endereco
+    public class Endereco
     {
         
         private string cep;
@@ -127,5 +127,33 @@ namespace EcoFinder
             }
             return true;
         }
+
+        public string mostrarEnderecos(string email)
+        {
+            string endereco = "";
+
+            using (MySqlConnection conn = new MySqlConnection(stringConexao))
+            {
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+
+                    cmd.CommandText = "SELECT endereco_format FROM vw_verendereco WHERE email = @email";
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            endereco = reader["endereco_format"].ToString();
+                            return endereco;
+                        }
+                    }
+                }
+            }
+
+            return endereco;
+        }
+
     }
 }
