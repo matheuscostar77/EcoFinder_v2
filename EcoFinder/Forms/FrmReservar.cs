@@ -12,9 +12,25 @@ namespace EcoFinder
 {
     public partial class FrmReservar : Form
     {
-        public FrmReservar()
+        private Pessoa pessoa;
+        private Endereco endereco;
+        frmColetor telacoeltor;
+        public FrmReservar(frmColetor telacoletor , Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
+            this.telacoeltor = telacoletor;
+            this.pessoa = pessoa;
+            this.endereco = endereco;
+        }
+
+        private void FrmReservar_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxIDS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

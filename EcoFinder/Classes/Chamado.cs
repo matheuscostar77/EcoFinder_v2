@@ -11,6 +11,7 @@ namespace EcoFinder
     internal class Chamado
     {
         private string id_chamado = "";
+        private string nomeSolicitate="";
         private string tipoMaterial = "";
         private int quantUnitaria = 0;
         private double quantKilograma = 0;

@@ -15,15 +15,14 @@ namespace EcoFinder
         FrmLogin loginTela;
         Pessoa pessoa;
         Endereco endereco;
-
-        public frmColetor(FrmLogin loginTela, Pessoa pessoa, Endereco endereco)
+         public frmColetor(FrmLogin loginTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
 
             this.loginTela = loginTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
-        }
+         }
 
         private void frmColetor_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -41,8 +40,10 @@ namespace EcoFinder
 
         private void btnReservar_Click(object sender, EventArgs e)
         {
-            btnReservar.FlatStyle = FlatStyle.Flat;
-            btnReservar.FlatAppearance.BorderSize = 0;
+
+            var reservar = new FrmReservar(this, pessoa, endereco);
+            reservar.Show();
+            this.Hide();
 
         }
     }
