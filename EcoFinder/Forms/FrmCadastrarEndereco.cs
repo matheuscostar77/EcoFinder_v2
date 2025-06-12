@@ -33,7 +33,11 @@ namespace EcoFinder
         {
             try
             {
+                
                 endereco.cadastrarEndereco();
+                MessageBox.Show("Endereço cadastrado");
+                this.Close();
+                usuarioTela.Show();
             }
             catch (Exception ex)
             {
@@ -96,10 +100,9 @@ namespace EcoFinder
 
                         endereco.passarCoordenadas(latitude, longitude);
 
-                        MessageBox.Show("Endereço cadastrado");
+                        
 
-                        this.Close();
-                        usuarioTela.Show();
+                        
                     }
                 }
                 catch (Exception ex)

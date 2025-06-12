@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,29 +9,17 @@ namespace EcoFinder
 {
     internal class Usuario : Pessoa
     {
-        Pessoa p;
+        Pessoa pessoa;
         Endereco endereco;
 
-        public Usuario(Pessoa p)
+        public Usuario(Pessoa pessoa, Endereco endereco)
         {
-            this.endereco = new Endereco(p);
-            this.p = p;
+            this.endereco = endereco;
+            this.pessoa = pessoa;
         }
 
 
-        public void cadastrarEndereco()
-        {
-            
-        }
+        
 
-        public void fazerChamado()
-        {
-
-        }
-
-        public void mudarEndereco()
-        {
-
-        }
     }
 }

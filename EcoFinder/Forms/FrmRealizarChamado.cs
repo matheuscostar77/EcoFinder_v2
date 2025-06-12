@@ -15,19 +15,17 @@ namespace EcoFinder
         Pessoa pessoa;
         FrmUsuario usuarioTela;
         Endereco endereco;
+        Chamado chamado;
+
         public frmRealizarChamado(FrmUsuario usuarioTela,Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.pessoa = pessoa;
             this.usuarioTela = usuarioTela;
             this.endereco = endereco;
+            chamado = new Chamado(pessoa, endereco);
         }
 
-        
-
-            
-
-        
 
         private void frmRealizarChamado_Load(object sender, EventArgs e)
         {
@@ -52,9 +50,37 @@ namespace EcoFinder
             usuarioTela.Show();
         }
 
+
+        private void cmbMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             chamado.setMaterial(cmbMaterial.SelectedItem.ToString());
+        }
+
+        private void nmdKG_ValueChanged(object sender, EventArgs e)
+        {
+            chamado.setQuantKilograma(Convert.ToDouble(nmdKG.Value));
+        }
+
+        private void cmbTamanho_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chamado.setTamanho(cmbTamanho.SelectedItem.ToString());
+        }
+
         private void btnRealizarChamado_Click(object sender, EventArgs e)
         {
+            try
+            {
+                chamado.realizarChamado(pessoa.getEmail(), chamado.getQuilograma(), chamado.getTamanho());
+                MessageBox.Show("Chamado feito!");
 
+                usuarioTela.Show();
+                this.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

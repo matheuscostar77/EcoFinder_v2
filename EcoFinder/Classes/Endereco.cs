@@ -22,7 +22,7 @@ namespace EcoFinder
         private double latitude;
         private double longitude;
 
-        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+        
 
         Pessoa pessoa;
 
@@ -93,7 +93,7 @@ namespace EcoFinder
         public bool cadastrarEndereco()
         {
 
-            using(MySqlConnection conn = new MySqlConnection(stringConexao))
+            using(MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
@@ -132,7 +132,7 @@ namespace EcoFinder
         {
             string endereco = "";
 
-            using (MySqlConnection conn = new MySqlConnection(stringConexao))
+            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {

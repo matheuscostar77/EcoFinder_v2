@@ -17,7 +17,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        private string stringConexao = "datasource=localhost;username=root;password=mysqlpassword;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
 
 
         public Pessoa()
@@ -64,6 +64,10 @@ namespace EcoFinder
             return tipoConta;
         }
 
+        public string getStringConexao()
+        {
+            return stringConexao;
+        }
         public bool conferirSenhaIgual(string senha1, string senha2)
         {
             if (senha1 == senha2)

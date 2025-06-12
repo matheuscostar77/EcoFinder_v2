@@ -1,4 +1,5 @@
 ﻿
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,51 +9,68 @@ using System.Threading.Tasks;
 
 namespace EcoFinder
 {
-    internal class Chamado
+    public class Chamado
     {
-        private string id_chamado = "";
-        private string nomeSolicitate="";
-        private string tipoMaterial = "";
-        private int quantUnitaria = 0;
-        private double quantKilograma = 0;
+        
+        private string material;
+        private double quilograma = 0;
+        private string tamanho;
+
+        private Pessoa pessoa;
         private Endereco endereco;
 
-        public Chamado()
+        public Chamado(Pessoa pessoa, Endereco endereco)
         {
-            Pessoa pessoa = new Pessoa();
-            endereco = new Endereco(pessoa);
-            tipoMaterial = "";
-            quantUnitaria = 0;
-            quantKilograma = 0;
+            this.pessoa = pessoa;
+            this.endereco = endereco;   
 
         }
-        public string getTipoMaterial()
+        public string getMaterial()
         {
-            return tipoMaterial;
+            return material;
         }
-        public void setTipoMaterial(string tipoMaterial)
+        public void setMaterial(string material)
         {
-            this.tipoMaterial = tipoMaterial;
-        }
-
-        public int getQuantUnitaria()
-        {
-            return quantUnitaria;
-        }
-        public void setQuantUnitaria(int quantUnitaria)
-        {
-            this.quantUnitaria = quantUnitaria;
+            this.material = material;
         }
 
-        public double getQuantKilograma()
+        public double getQuilograma()
         {
-            return quantKilograma;
-        }
-        public void setQuantKilograma(double quantKilograma)
-        {
-            this.quantKilograma = quantKilograma;
+            return quilograma;
         }
 
-        
+        public void setQuantKilograma(double quilograma)
+        {
+            this.quilograma = quilograma;
+        }
+
+        public string getTamanho()
+        {
+            return tamanho;
+        }
+        public void setTamanho(string tamanho)
+        {
+            this.tamanho = tamanho;
+        }
+
+        public void realizarChamado(string email, double quilograma, string tamanho)
+        {
+            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+            {
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+
+                    cmd.CommandText = "CALL proc_realizar_chamado(@email,@tipo,@quilograma,@tamanho)";
+                    cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+                    cmd.Parameters.AddWithValue("@tipo", material);
+                    cmd.Parameters.AddWithValue("@quilograma", quilograma);
+                    cmd.Parameters.AddWithValue("@tamanho", tamanho);
+
+                    cmd.ExecuteReader();
+                }
+            }
+        }
+
     }
 }
