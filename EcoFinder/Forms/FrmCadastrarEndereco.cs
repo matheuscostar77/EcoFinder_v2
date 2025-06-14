@@ -1,4 +1,5 @@
-﻿using SDKBrasilAPI;
+﻿using MySql.Data.MySqlClient;
+using SDKBrasilAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace EcoFinder
 
         
         FrmUsuario usuarioTela;
-        
+        frmColetor coletorTela;
         
         Pessoa pessoa;
         Endereco endereco;
@@ -28,16 +29,35 @@ namespace EcoFinder
             this.usuarioTela = usuarioTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
+            
         }
+
+        public frmCadEndereco(frmColetor coletorTela, Pessoa pessoa, Endereco endereco)
+        {
+            InitializeComponent();
+            this.coletorTela = coletorTela;
+            this.pessoa = pessoa;
+            this.endereco = endereco;
+
+        }
+
+
         private void btnCadEndereco_Click(object sender, EventArgs e)
         {
             try
             {
-                
                 endereco.cadastrarEndereco();
-                MessageBox.Show("Endereço cadastrado");
-                this.Close();
-                usuarioTela.Show();
+                MessageBox.Show("Endereço cadastrado!");
+                if(usuarioTela == null)
+                {
+                    coletorTela.Show();
+                    this.Close();
+                }
+                else
+                {
+                    usuarioTela.Show();
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

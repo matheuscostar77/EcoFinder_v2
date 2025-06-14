@@ -96,14 +96,17 @@ namespace EcoFinder
                 if (cadastroSucesso && tipo == "Coletor" && 
                     (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var coletor = new frmColetor(loginTela, pessoa, endereco);
-                    coletor.Show();
+                    var coletorTela = new frmColetor(loginTela, pessoa, endereco);
+                    var cadastroEndTela = new frmCadEndereco(coletorTela, pessoa, endereco);
+                    cadastroEndTela.Show();
+                    
                 }
                 else if (cadastroSucesso && tipo == "Usuário Comum"
                     && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var usuario = new FrmUsuario(loginTela, pessoa, endereco);
-                    usuario.Show();
+                    var usuarioTela = new FrmUsuario(loginTela, pessoa, endereco);
+                    usuarioTela.Show();
+                    
                 }
             }
             else

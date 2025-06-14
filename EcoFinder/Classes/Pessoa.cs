@@ -140,7 +140,7 @@ namespace EcoFinder
                     conn.Open();
                     
 
-                    cmd.CommandText = $"SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);";
+                    cmd.CommandText = $"SELECT ecofinder.f_login_sistema(@email, @senha);";
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
 
@@ -163,7 +163,6 @@ namespace EcoFinder
                     }
                     catch
                     {
-                        tipoconta = "0";
                         MessageBox.Show("Email ou senha incorretos!");
                     }
 
@@ -175,6 +174,8 @@ namespace EcoFinder
 
         }// fim metodo login
 
+        
+        }
 
     }
-}
+
