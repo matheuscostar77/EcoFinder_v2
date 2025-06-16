@@ -17,6 +17,7 @@ namespace EcoFinder.Forms
         Endereco endereco;
         frmColetor coletorTela;
         Chamado chamado;
+        private int quantChamados;
         public FrmVerChamados(frmColetor coletorTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace EcoFinder.Forms
         {
             if(chamado.totalChamados() == 1)
             {
+                
                 btnChamado2.Visible = false;
                 btnChamado3.Visible = false;
             }
@@ -44,7 +46,27 @@ namespace EcoFinder.Forms
                 this.Close();
                 coletorTela.Show();
             }
-                
+            
+            quantChamados = chamado.totalChamados();
+            
+            using(MySqlConnection conn = new MySqlConnection())
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("SELECT latitude,longitude FROM vw_lat_log_col WHERE email = @email",conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+
+                    using(MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        endereco.setLatitude(reader.GetDouble(0));
+                        endereco.setLongitude(reader.GetDouble(1));
+                    }
+                }
+            }
+
+            chamado.calcularDistancia(endereco.getLatitude(), endereco.getLongitude());
+            
         }
     }
 }

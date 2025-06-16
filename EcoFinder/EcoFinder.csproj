@@ -41,6 +41,9 @@
     <Reference Include="BrasilAPI, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BrasilAPI.2.1.0\lib\netstandard2.0\BrasilAPI.dll</HintPath>
     </Reference>
+    <Reference Include="GeoCoordinate.NetCore, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeoCoordinate.NetCore.1.0.0.1\lib\netstandard1.6\GeoCoordinate.NetCore.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.31.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.31.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -257,6 +260,7 @@
     <Compile Include="Classes\Chamado.cs" />
     <Compile Include="Classes\Coletor.cs" />
     <Compile Include="Classes\Endereco.cs" />
+    <Compile Include="Classes\EnderecoDistancia.cs" />
     <Compile Include="Forms\FrmReservar.cs">
       <SubType>Form</SubType>
     </Compile>

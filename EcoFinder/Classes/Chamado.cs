@@ -1,5 +1,8 @@
 ﻿
+using EcoFinder.Classes;
+using GeoCoordinatePortable;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,9 +19,11 @@ namespace EcoFinder
         private string material;
         private double quilograma = 0;
         private string tamanho;
+        
 
         private Pessoa pessoa;
         private Endereco endereco;
+        List<EnderecoDistancia> distancias = new List<EnderecoDistancia>();
 
         public Chamado(Pessoa pessoa, Endereco endereco)
         {
@@ -82,10 +87,8 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand())
-                    {
-                        cmd.CommandText = "SELECT cont(*) from vw_quant_chamados";
-
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT cont(*) from vw_quant_chamados",conn))
+                    { 
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -107,33 +110,78 @@ namespace EcoFinder
 
         }
 
-        public void calcularDistancia(string email)
+        public void calcularDistancia(double latCol, double longCol)
         {
             using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
                 try
                 {
+                    double lat2, long2;
+                    GeoCoordinate coordColetor = null;
+                  
+                    coordColetor = new GeoCoordinate(latCol, longCol);
+
                     conn.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM vw_lat_log_user", conn))
                     {
-                        cmd.CommandText = "SELECT latitude,longitude FROM vw_lat_log WHERE email = @email";
-                        cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
-
-                        using(MySqlDataReader reader = cmd.ExecuteReader())
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            while (reader.Read())
                             {
-                                double latitude = reader.GetInt32(0);
-                                double longitude = reader.GetInt32(1);
+                                int idEndereco = reader.GetInt32(0);
+                                lat2 = reader.GetDouble(1);
+                                long2 = reader.GetDouble(2);
+
+                                var coord = new GeoCoordinate(lat2, long2);
+                                double dist = coordColetor.GetDistanceTo(coord);
+
+                                EnderecoDistancia endDist = new EnderecoDistancia();
+                                endDist.setIdEndereco(idEndereco);
+                                endDist.setDistancia(dist);
+
+                                distancias.Add(endDist);
                             }
+                            distancias = distancias.OrderBy(d => d.getDistancia()).ToList();
                         }
                     }
-
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    
+                }
+            }
+        }
+
+
+
+        public string mostrarEnderecos(int i) // fazer um for no programa principal
+        {
+            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+            {
+
+                try
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT tipo FROM vw_mostrar_material_chamado WHERE id_endereco = id_endereco;",conn))
+                    {
+                        
+                        
+                        cmd.Parameters.AddWithValue("@id_endereco", distancias[i].getIdEndereco());
+                        
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            material = reader.ToString();
+                        }
+                    }
+                    return material;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return "";
                 }
             }
         }
