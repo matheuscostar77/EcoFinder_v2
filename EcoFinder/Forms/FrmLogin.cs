@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoFinder.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,6 +69,13 @@ namespace EcoFinder
         private void tbxEmail_TextChanged(object sender, EventArgs e)
         {
             pessoa.setEmail(tbxEmail.Text);
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            var coletor = new frmColetor(this, pessoa, endereco);
+            var teste = new FrmVerChamados(coletor ,pessoa,endereco);
+            teste.Show();
         }
     }
 }

@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EcoFinder
 {
     public class Chamado
     {
-        
+
         private string material;
         private double quilograma = 0;
         private string tamanho;
@@ -22,7 +23,7 @@ namespace EcoFinder
         public Chamado(Pessoa pessoa, Endereco endereco)
         {
             this.pessoa = pessoa;
-            this.endereco = endereco;   
+            this.endereco = endereco;
 
         }
         public string getMaterial()
@@ -71,6 +72,72 @@ namespace EcoFinder
                 }
             }
         }
+
+        public int totalChamados()
+        {
+            int numeroDeChamados = 0;
+            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.CommandText = "SELECT cont(*) from vw_quant_chamados";
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                numeroDeChamados = reader.GetInt32(0);
+                                return numeroDeChamados;
+                            }
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+                return numeroDeChamados;
+            }
+
+        }
+
+        public void calcularDistancia(string email)
+        {
+            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.CommandText = "SELECT latitude,longitude FROM vw_lat_log WHERE email = @email";
+                        cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+
+                        using(MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                double latitude = reader.GetInt32(0);
+                                double longitude = reader.GetInt32(1);
+                            }
+                        }
+                    }
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+                    
 
     }
 }

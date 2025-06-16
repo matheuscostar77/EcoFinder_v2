@@ -28,10 +28,7 @@ namespace EcoFinder
             
         }
 
-        private void FrmCadastro_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
+        
 
         private void Cadastro_Load(object sender, EventArgs e)
         {
@@ -98,15 +95,19 @@ namespace EcoFinder
                 {
                     var coletorTela = new frmColetor(loginTela, pessoa, endereco);
                     var cadastroEndTela = new frmCadEndereco(coletorTela, pessoa, endereco);
+                    this.Close();
                     cadastroEndTela.Show();
                     
+
                 }
                 else if (cadastroSucesso && tipo == "Usuário Comum"
                     && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
                     var usuarioTela = new FrmUsuario(loginTela, pessoa, endereco);
+                    this.Close();
                     usuarioTela.Show();
                     
+
                 }
             }
             else
