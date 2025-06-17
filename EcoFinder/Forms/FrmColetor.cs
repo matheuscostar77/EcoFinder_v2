@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoFinder.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,9 +42,9 @@ namespace EcoFinder
         private void btnReservar_Click(object sender, EventArgs e)
         {
 
-            var reservar = new FrmReservar(this, pessoa, endereco);
-            reservar.Show();
+            var chamadosTela = new FrmVerChamados(this, pessoa, endereco);
             this.Hide();
+            chamadosTela.Show();
 
         }
     }

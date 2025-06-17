@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoFinder.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace EcoFinder
         FrmUsuario usuarioTela;
         Endereco endereco;
         Chamado chamado;
+        List<EnderecoDistancia> distancias;
 
         public frmRealizarChamado(FrmUsuario usuarioTela,Pessoa pessoa, Endereco endereco)
         {
@@ -23,7 +25,8 @@ namespace EcoFinder
             this.pessoa = pessoa;
             this.usuarioTela = usuarioTela;
             this.endereco = endereco;
-            chamado = new Chamado(pessoa, endereco);
+            distancias = new List<EnderecoDistancia>();
+            chamado = new Chamado(pessoa, endereco,distancias);
         }
 
 
@@ -70,7 +73,7 @@ namespace EcoFinder
         {
             try
             {
-                chamado.realizarChamado(pessoa.getEmail(), chamado.getQuilograma(), chamado.getTamanho());
+                chamado.realizarChamado(pessoa.getEmail(),chamado.getMaterial(), chamado.getQuilograma(), chamado.getQtdUnidade(),chamado.getTamanho()  );
                 MessageBox.Show("Chamado feito!");
 
                 usuarioTela.Show();
@@ -81,6 +84,11 @@ namespace EcoFinder
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void unidades_ValueChanged(object sender, EventArgs e)
+        {
+            chamado.setQtdUnidade(Convert.ToInt32(nmdKG.Value));
         }
     }
 }

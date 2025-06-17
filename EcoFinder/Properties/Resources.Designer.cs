@@ -63,6 +63,16 @@ namespace EcoFinder.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_recycle_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-recycle-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_recycle_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-recycle-96", resourceCulture);

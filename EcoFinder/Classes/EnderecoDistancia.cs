@@ -23,7 +23,9 @@ namespace EcoFinder.Classes
 
         public void setDistancia(double distancia)
         {
+            
             this.distancia = distancia;
+            
         }
 
         public double getDistancia()

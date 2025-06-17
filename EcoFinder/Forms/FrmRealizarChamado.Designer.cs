@@ -40,16 +40,20 @@
             this.lblKG = new System.Windows.Forms.Label();
             this.lblTamanho = new System.Windows.Forms.Label();
             this.cmbTamanho = new System.Windows.Forms.ComboBox();
+            this.qtd_Unitaria = new System.Windows.Forms.Label();
+            this.unidades = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmdKG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidades)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(299, 596);
+            this.pictureBox1.Size = new System.Drawing.Size(199, 387);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -62,35 +66,39 @@
             "VIDRO",
             "PAPEL",
             "PLÁSTICO"});
-            this.cmbMaterial.Location = new System.Drawing.Point(450, 183);
+            this.cmbMaterial.Location = new System.Drawing.Point(300, 92);
+            this.cmbMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbMaterial.Name = "cmbMaterial";
-            this.cmbMaterial.Size = new System.Drawing.Size(175, 28);
+            this.cmbMaterial.Size = new System.Drawing.Size(118, 21);
             this.cmbMaterial.TabIndex = 1;
             this.cmbMaterial.SelectedIndexChanged += new System.EventHandler(this.cmbMaterial_SelectedIndexChanged);
             // 
             // lblMaterial
             // 
             this.lblMaterial.AutoSize = true;
-            this.lblMaterial.Location = new System.Drawing.Point(446, 160);
+            this.lblMaterial.Location = new System.Drawing.Point(297, 77);
+            this.lblMaterial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMaterial.Name = "lblMaterial";
-            this.lblMaterial.Size = new System.Drawing.Size(65, 20);
+            this.lblMaterial.Size = new System.Drawing.Size(44, 13);
             this.lblMaterial.TabIndex = 2;
             this.lblMaterial.Text = "Material";
             // 
             // lblEnderecoCham
             // 
             this.lblEnderecoCham.AutoSize = true;
-            this.lblEnderecoCham.Location = new System.Drawing.Point(301, 9);
+            this.lblEnderecoCham.Location = new System.Drawing.Point(201, 6);
+            this.lblEnderecoCham.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnderecoCham.Name = "lblEnderecoCham";
-            this.lblEnderecoCham.Size = new System.Drawing.Size(78, 20);
+            this.lblEnderecoCham.Size = new System.Drawing.Size(53, 13);
             this.lblEnderecoCham.TabIndex = 4;
             this.lblEnderecoCham.Text = "Endereço";
             // 
             // btnRealizarChamado
             // 
-            this.btnRealizarChamado.Location = new System.Drawing.Point(434, 406);
+            this.btnRealizarChamado.Location = new System.Drawing.Point(289, 264);
+            this.btnRealizarChamado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRealizarChamado.Name = "btnRealizarChamado";
-            this.btnRealizarChamado.Size = new System.Drawing.Size(243, 49);
+            this.btnRealizarChamado.Size = new System.Drawing.Size(162, 32);
             this.btnRealizarChamado.TabIndex = 5;
             this.btnRealizarChamado.Text = "Realizar chamado";
             this.btnRealizarChamado.UseVisualStyleBackColor = true;
@@ -99,17 +107,19 @@
             // lblEnderecoFormat
             // 
             this.lblEnderecoFormat.AutoSize = true;
-            this.lblEnderecoFormat.Location = new System.Drawing.Point(301, 38);
+            this.lblEnderecoFormat.Location = new System.Drawing.Point(201, 25);
+            this.lblEnderecoFormat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnderecoFormat.Name = "lblEnderecoFormat";
-            this.lblEnderecoFormat.Size = new System.Drawing.Size(51, 20);
+            this.lblEnderecoFormat.Size = new System.Drawing.Size(35, 13);
             this.lblEnderecoFormat.TabIndex = 6;
             this.lblEnderecoFormat.Text = "label1";
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(665, 543);
+            this.btnVoltar.Location = new System.Drawing.Point(443, 353);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(112, 40);
+            this.btnVoltar.Size = new System.Drawing.Size(75, 26);
             this.btnVoltar.TabIndex = 7;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -118,27 +128,30 @@
             // nmdKG
             // 
             this.nmdKG.DecimalPlaces = 1;
-            this.nmdKG.Location = new System.Drawing.Point(450, 254);
+            this.nmdKG.Location = new System.Drawing.Point(300, 138);
+            this.nmdKG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nmdKG.Name = "nmdKG";
-            this.nmdKG.Size = new System.Drawing.Size(175, 26);
+            this.nmdKG.Size = new System.Drawing.Size(117, 20);
             this.nmdKG.TabIndex = 8;
             this.nmdKG.ValueChanged += new System.EventHandler(this.nmdKG_ValueChanged);
             // 
             // lblKG
             // 
             this.lblKG.AutoSize = true;
-            this.lblKG.Location = new System.Drawing.Point(446, 231);
+            this.lblKG.Location = new System.Drawing.Point(297, 123);
+            this.lblKG.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKG.Name = "lblKG";
-            this.lblKG.Size = new System.Drawing.Size(78, 20);
+            this.lblKG.Size = new System.Drawing.Size(53, 13);
             this.lblKG.TabIndex = 10;
             this.lblKG.Text = "Peso (Kg)";
             // 
             // lblTamanho
             // 
             this.lblTamanho.AutoSize = true;
-            this.lblTamanho.Location = new System.Drawing.Point(446, 310);
+            this.lblTamanho.Location = new System.Drawing.Point(297, 214);
+            this.lblTamanho.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTamanho.Name = "lblTamanho";
-            this.lblTamanho.Size = new System.Drawing.Size(76, 20);
+            this.lblTamanho.Size = new System.Drawing.Size(52, 13);
             this.lblTamanho.TabIndex = 11;
             this.lblTamanho.Text = "Tamanho";
             // 
@@ -147,20 +160,42 @@
             this.cmbTamanho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTamanho.FormattingEnabled = true;
             this.cmbTamanho.Items.AddRange(new object[] {
-            "PEQUENO",
-            "MÉDIO",
-            "GRANDE"});
-            this.cmbTamanho.Location = new System.Drawing.Point(450, 333);
+            "Pequeno",
+            "Médio",
+            "Grande"});
+            this.cmbTamanho.Location = new System.Drawing.Point(300, 229);
+            this.cmbTamanho.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbTamanho.Name = "cmbTamanho";
-            this.cmbTamanho.Size = new System.Drawing.Size(121, 28);
+            this.cmbTamanho.Size = new System.Drawing.Size(82, 21);
             this.cmbTamanho.TabIndex = 12;
             this.cmbTamanho.SelectedIndexChanged += new System.EventHandler(this.cmbTamanho_SelectedIndexChanged);
             // 
+            // qtd_Unitaria
+            // 
+            this.qtd_Unitaria.AutoSize = true;
+            this.qtd_Unitaria.Location = new System.Drawing.Point(298, 171);
+            this.qtd_Unitaria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.qtd_Unitaria.Name = "qtd_Unitaria";
+            this.qtd_Unitaria.Size = new System.Drawing.Size(101, 13);
+            this.qtd_Unitaria.TabIndex = 13;
+            this.qtd_Unitaria.Text = "Quantidade Unitária";
+            // 
+            // unidades
+            // 
+            this.unidades.Location = new System.Drawing.Point(300, 188);
+            this.unidades.Margin = new System.Windows.Forms.Padding(2);
+            this.unidades.Name = "unidades";
+            this.unidades.Size = new System.Drawing.Size(117, 20);
+            this.unidades.TabIndex = 14;
+            this.unidades.ValueChanged += new System.EventHandler(this.unidades_ValueChanged);
+            // 
             // frmRealizarChamado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 595);
+            this.ClientSize = new System.Drawing.Size(551, 387);
+            this.Controls.Add(this.unidades);
+            this.Controls.Add(this.qtd_Unitaria);
             this.Controls.Add(this.cmbTamanho);
             this.Controls.Add(this.lblTamanho);
             this.Controls.Add(this.lblKG);
@@ -172,12 +207,14 @@
             this.Controls.Add(this.lblMaterial);
             this.Controls.Add(this.cmbMaterial);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmRealizarChamado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";
             this.Load += new System.EventHandler(this.frmRealizarChamado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmdKG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +233,7 @@
         private System.Windows.Forms.Label lblKG;
         private System.Windows.Forms.Label lblTamanho;
         private System.Windows.Forms.ComboBox cmbTamanho;
+        private System.Windows.Forms.Label qtd_Unitaria;
+        private System.Windows.Forms.NumericUpDown unidades;
     }
 }

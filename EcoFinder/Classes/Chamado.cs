@@ -19,16 +19,18 @@ namespace EcoFinder
         private string material;
         private double quilograma = 0;
         private string tamanho;
+        private int qtdUnidade = 0;
         
 
         private Pessoa pessoa;
         private Endereco endereco;
-        List<EnderecoDistancia> distancias = new List<EnderecoDistancia>();
+        List<EnderecoDistancia> distancias;
 
-        public Chamado(Pessoa pessoa, Endereco endereco)
+        public Chamado(Pessoa pessoa, Endereco endereco,List<EnderecoDistancia> distancias)
         {
             this.pessoa = pessoa;
             this.endereco = endereco;
+            this.distancias = distancias;
 
         }
         public string getMaterial()
@@ -58,8 +60,15 @@ namespace EcoFinder
         {
             this.tamanho = tamanho;
         }
-
-        public void realizarChamado(string email, double quilograma, string tamanho)
+        public int getQtdUnidade()
+        {
+            return qtdUnidade;
+        }
+        public void setQtdUnidade(int qtdUnidade)
+        {
+            this.qtdUnidade = qtdUnidade;
+        }
+        public void realizarChamado(string email,string material, double quilograma, int qtdUnidade, string tamanho )
         {
             using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
@@ -67,10 +76,11 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    cmd.CommandText = "CALL proc_realizar_chamado(@email,@tipo,@quilograma,@tamanho)";
+                    cmd.CommandText = " CALL proc_realizar_chamado(@email,@tipo,@quilograma,@qtdUnidade,@tamanho)";
                     cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
                     cmd.Parameters.AddWithValue("@tipo", material);
                     cmd.Parameters.AddWithValue("@quilograma", quilograma);
+                    cmd.Parameters.AddWithValue("@qtdUnidade", qtdUnidade);
                     cmd.Parameters.AddWithValue("@tamanho", tamanho);
 
                     cmd.ExecuteReader();
@@ -87,7 +97,7 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT cont(*) from vw_quant_chamados",conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT count(id_dispo) from vw_quant_chamados",conn))
                     { 
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -142,9 +152,10 @@ namespace EcoFinder
 
                                 distancias.Add(endDist);
                             }
-                            distancias = distancias.OrderBy(d => d.getDistancia()).ToList();
+                            distancias.Sort((d1, d2) => d1.getDistancia().CompareTo(d2.getDistancia()));
                         }
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -156,7 +167,7 @@ namespace EcoFinder
 
 
 
-        public string mostrarEnderecos(int i) // fazer um for no programa principal
+        public string mostrarMaterialChamado(int i) // fazer um for no programa principal
         {
             using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
@@ -165,7 +176,7 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT tipo FROM vw_mostrar_material_chamado WHERE id_endereco = id_endereco;",conn))
+                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT tipo FROM vw_mostrar_material_chamado WHERE id_endereco = @id_endereco;",conn))
                     {
                         
                         
@@ -173,7 +184,10 @@ namespace EcoFinder
                         
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            material = reader.ToString();
+                            while (reader.Read())
+                            {
+                                material = reader.GetString(0);
+                            }
                         }
                     }
                     return material;
@@ -185,7 +199,10 @@ namespace EcoFinder
                 }
             }
         }
-                    
 
+        internal void setQtdUnidade(object value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

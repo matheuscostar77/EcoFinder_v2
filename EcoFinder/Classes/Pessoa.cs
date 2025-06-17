@@ -17,12 +17,21 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=mysqlpassword;database=ecofinder";
 
 
         public Pessoa()
         {
 
+        }
+        public string getSenha()
+        {
+            return senha;
+        }
+
+        public void setSenha(string senha)
+        {
+            this.senha = senha;
         }
         public string getName()
         {
@@ -83,46 +92,48 @@ namespace EcoFinder
 
         public bool CadastrarPessoa()
         {
-            
-            
-            using (MySqlConnection conn = new MySqlConnection(stringConexao))
+            try
             {
 
-                using(MySqlCommand cmd = conn.CreateCommand())
+                using (MySqlConnection conn = new MySqlConnection(stringConexao))
                 {
-                    conn.Open();
 
-                    cmd.CommandText = "INSERT INTO tb_pessoa(nome,email,senha,genero) " +
-                                        "VALUES (@name,@email,@senha,genero);";
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@senha", senha);
-                    cmd.Parameters.AddWithValue("@genero", sex);
+                    using (MySqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
 
-                    if (tipoConta == "Coletor") 
-                    {
-                        cmd.CommandText += @"INSERT INTO tb_coletor(id_coletor) " +
-                                            "VALUES (LAST_INSERT_ID());";
-                    }
-                    else if(tipoConta == "Usuário Comum")
-                    {
-                        cmd.CommandText += @"INSERT INTO tb_usuariocomum(id_usuarioComum) " +
-                                            "VALUES (LAST_INSERT_ID());";
-                    }
-                    try
-                    {
+                        cmd.CommandText = "INSERT INTO tb_pessoa(nome,email,senha,genero) " +
+                                            "VALUES (@name,@email,@senha,@genero);";
+                        cmd.Parameters.AddWithValue("@name", getName());
+                        cmd.Parameters.AddWithValue("@email", getEmail());
+                        cmd.Parameters.AddWithValue("@senha", getSenha());
+                        cmd.Parameters.AddWithValue("@genero", getSex());
+
                         cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+
+                        if (tipoConta == "Coletor")
+                        {
+                            cmd.CommandText = "INSERT INTO tb_coletor(id_coletor) VALUES (LAST_INSERT_ID());";
+                            cmd.ExecuteNonQuery();  
+                        }
+                        else if (tipoConta == "Usuário Comum")
+                        {
+                            cmd.CommandText = "INSERT INTO tb_usuariocomum(id_usuarioComum) VALUES (LAST_INSERT_ID());";
+                            cmd.ExecuteNonQuery();  
+                        }
+
                         MessageBox.Show("Cadastrado");
                         return true;
+
                     }
-                    catch 
-                    {
-                        MessageBox.Show("Email já cadastrado");
-                        return false;
-                    }
+
                 }
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao cadastrar: " + ex.Message);
+                return false;
             }
         }
 
@@ -140,7 +151,7 @@ namespace EcoFinder
                     conn.Open();
                     
 
-                    cmd.CommandText = $"SELECT ecofinder.f_login_sistema(@email, @senha);";
+                    cmd.CommandText = $"SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);";
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
 

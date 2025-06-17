@@ -49,7 +49,7 @@ namespace EcoFinder
         {
             if (pessoa.conferirSenhaIgual(txtSenha.Text, txtConfirmarSenha.Text))
             {
-
+                pessoa.setSenha(txtConfirmarSenha.Text);
             }
             else
             {

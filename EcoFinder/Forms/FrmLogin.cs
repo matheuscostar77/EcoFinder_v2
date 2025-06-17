@@ -74,8 +74,6 @@ namespace EcoFinder
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             var coletor = new frmColetor(this, pessoa, endereco);
-            var teste = new FrmVerChamados(coletor ,pessoa,endereco);
-            teste.Show();
         }
     }
 }
