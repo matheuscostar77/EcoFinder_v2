@@ -147,9 +147,9 @@
             this.cmbTamanho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTamanho.FormattingEnabled = true;
             this.cmbTamanho.Items.AddRange(new object[] {
-            "PEQUENO",
-            "MÉDIO",
-            "GRANDE"});
+            "Pequeno",
+            "Médio",
+            "Grande"});
             this.cmbTamanho.Location = new System.Drawing.Point(450, 333);
             this.cmbTamanho.Name = "cmbTamanho";
             this.cmbTamanho.Size = new System.Drawing.Size(121, 28);
