@@ -116,7 +116,7 @@ namespace EcoFinder
             {
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {
-                    int idpessoa;
+                    int idpessoa; 
 
                     conn.Open();
 
