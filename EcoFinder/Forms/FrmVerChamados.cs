@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,74 +36,76 @@ namespace EcoFinder.Forms
 
         private void FrmVerChamados_Load(object sender, EventArgs e)
         {
+            int total = chamado.totalChamados();
+
+            if (total == 0)
+            {
+                MessageBox.Show("Não há chamados disponíveis no momento, tente novamente mais tarde!");
+                this.Close();
+                coletorTela.Show();
+                return;
+            }
+
+            // Oculta os botões conforme o número de chamados disponíveis
+            if (total == 1)
+            {
+                btnChamado2.Visible = false;
+                lblDistancia2.Visible = false;
+                btnChamado3.Visible = false;
+                lblDistancia3.Visible = false;
+            }
+            else if (total == 2)
+            {
+                btnChamado3.Visible = false;
+                lblDistancia3.Visible = false;
+            }
+
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                for (int i = 0; i < total && i < 3; i++)
                 {
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT latitude,longitude FROM vw_lat_log_col WHERE email = @email", conn))
+                    using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
                     {
-                        cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
-
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        conn.Open();
+                        using (MySqlCommand cmd = new MySqlCommand("pc_ver_chamados", conn))
                         {
-                            if (reader.Read())
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@pc_email", pessoa.getEmail());
+                            cmd.Parameters.AddWithValue("@pc_linha", i);
+
+                            using (MySqlDataReader reader = cmd.ExecuteReader())
                             {
-                                endereco.setLatitude(reader.GetDouble(0));
-                                endereco.setLongitude(reader.GetDouble(1));
+                                if (reader.Read())
+                                {
+                                    string tipo = reader["tipo"] as string ?? "N/D";
+                                    string distancia = reader["Distancia"] as string ?? "N/D";
+
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            btnChamado1.Text = tipo;
+                                            lblDistancia1.Text = distancia;
+                                            break;
+                                        case 1:
+                                            btnChamado2.Text = tipo;
+                                            lblDistancia2.Text = distancia;
+                                            break;
+                                        case 2:
+                                            btnChamado3.Text = tipo;
+                                            lblDistancia3.Text = distancia;
+                                            break;
+                                    }
+                                }
                             }
                         }
                     }
                 }
-
-                quantChamados = chamado.totalChamados();
-                chamado.calcularDistancia(endereco.getLatitude(), endereco.getLongitude());
-
-                if (quantChamados == 1)
-                {
-                    btnChamado2.Visible = false;
-                    btnChamado3.Visible = false;
-
-                    btnChamado1.Text = chamado.mostrarMaterialChamado(0);
-                    lblDistancia1.Text = distancias[0].getDistancia().ToString("F0");
-                }
-                else if (quantChamados == 2)
-                {
-                    btnChamado1.Text = chamado.mostrarMaterialChamado(0);
-                    btnChamado2.Text = chamado.mostrarMaterialChamado(1);
-
-                    lblDistancia1.Text = distancias[0].getDistancia().ToString("F0");
-                    lblDistancia2.Text = distancias[1].getDistancia().ToString("F0");
-
-                    btnChamado3.Visible = false;
-                }
-                else if (quantChamados == 0)
-                {
-                    MessageBox.Show("Não há chamados disponíveis no momento!");
-                    this.Close();
-                    coletorTela.Show();
-                }
-                else
-                {
-
-                    btnChamado1.Text = chamado.mostrarMaterialChamado(0);
-                    btnChamado2.Text = chamado.mostrarMaterialChamado(1);
-                    btnChamado3.Text = chamado.mostrarMaterialChamado(2);
-
-                    lblDistancia1.Text = distancias[0].getDistancia().ToString("F0");
-                    lblDistancia2.Text = distancias[1].getDistancia().ToString("F0");
-                    lblDistancia3.Text = distancias[2].getDistancia().ToString("F0");
-                }
-
-                lblDistancia1.Text += "m";
-                lblDistancia2.Text += "m";
-                lblDistancia3.Text += "m";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro ao carregar chamados: " + ex.Message);
             }
         }
+
     }
 }

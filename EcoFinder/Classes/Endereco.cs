@@ -111,52 +111,61 @@ namespace EcoFinder
 
         public bool cadastrarEndereco()
         {
-
-            using(MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
-            {
-                using (MySqlCommand cmd = conn.CreateCommand())
+            try {
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
-                    int idpessoa; 
-
-                    conn.Open();
-
-                    cmd.CommandText = "SELECT F_CHECK_ENDERECO_REPETIDO(@cep,@numerocasa)";
-                    cmd.Parameters.AddWithValue("@cep", getCep());
-                    cmd.Parameters.AddWithValue("@numerocasa", getNumeroCasa());
-
-
-                    if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
+                    using (MySqlCommand cmd = conn.CreateCommand())
                     {
-                        return false;
-                    }
-                    else
-                    {
-                        cmd.Parameters.Clear();
-                        cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
-                        cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+                        int idpessoa;
 
-                        idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+                        conn.Open();
 
-                        cmd.Parameters.Clear();
+                        cmd.CommandText = "SELECT F_CHECK_ENDERECO_REPETIDO(@cep,@numerocasa)";
+                        cmd.Parameters.AddWithValue("@cep", getCep());
+                        cmd.Parameters.AddWithValue("@numerocasa", getNumeroCasa());
 
-                        cmd.CommandText = @"INSERT INTO tb_endereco(id_pessoa_endereco,cep,estado,
+
+                        if (Convert.ToInt32(cmd.ExecuteScalar()) != 0)
+                        {
+                            
+                            return false;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
+                            cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+
+                            idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            cmd.Parameters.Clear();
+
+                            cmd.CommandText = @"INSERT INTO tb_endereco(id_pessoa_endereco,cep,estado,
                                         cidade,bairro,rua,numerocasa,latitude,longitude) " +
-                                                "VALUES (@id_pessoa_endereco,@cep,@estado," +
-                                                "@cidade,@bairro,@rua,@numerocasa,@latitude,@longitude);";
-                        cmd.Parameters.AddWithValue("@id_pessoa_endereco", idpessoa);
-                        cmd.Parameters.AddWithValue("@cep", cep);
-                        cmd.Parameters.AddWithValue("@estado", estado);
-                        cmd.Parameters.AddWithValue("@cidade", cidade);
-                        cmd.Parameters.AddWithValue("@bairro", nomeBairro);
-                        cmd.Parameters.AddWithValue("@rua", nomeRua);
-                        cmd.Parameters.AddWithValue("@numerocasa", numeroCasa);
-                        cmd.Parameters.AddWithValue("@longitude", longitude);
-                        cmd.Parameters.AddWithValue("@latitude", latitude);
-                        cmd.ExecuteNonQuery();
+                                                    "VALUES (@id_pessoa_endereco,@cep,@estado," +
+                                                    "@cidade,@bairro,@rua,@numerocasa,@latitude,@longitude);";
+                            cmd.Parameters.AddWithValue("@id_pessoa_endereco", idpessoa);
+                            cmd.Parameters.AddWithValue("@cep", cep);
+                            cmd.Parameters.AddWithValue("@estado", estado);
+                            cmd.Parameters.AddWithValue("@cidade", cidade);
+                            cmd.Parameters.AddWithValue("@bairro", nomeBairro);
+                            cmd.Parameters.AddWithValue("@rua", nomeRua);
+                            cmd.Parameters.AddWithValue("@numerocasa", numeroCasa);
+                            cmd.Parameters.AddWithValue("@longitude", longitude);
+                            cmd.Parameters.AddWithValue("@latitude", latitude);
+                            cmd.ExecuteNonQuery();
+                            
+                            return true;
+                        }
                     }
                 }
             }
-            return true;
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            
         }
 
         public string mostrarEnderecos(string email)

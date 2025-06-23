@@ -46,17 +46,26 @@ namespace EcoFinder
         {
             try
             {
-                endereco.cadastrarEndereco();
-                MessageBox.Show("Endereço cadastrado!");
-                if(usuarioTela == null)
+
+                if (endereco.cadastrarEndereco())
                 {
-                    coletorTela.Show();
-                    this.Close();
+
+                    MessageBox.Show("Endereço cadastrado!");
+
+                    if (usuarioTela == null)
+                    {
+                        coletorTela.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        usuarioTela.Show();
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    usuarioTela.Show();
-                    this.Close();
+                    MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
                 }
             }
             catch (Exception ex)
