@@ -62,44 +62,13 @@ namespace EcoFinder.Forms
 
             try
             {
-                for (int i = 0; i < total && i < 3; i++)
-                {
-                    using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
-                    {
-                        conn.Open();
-                        using (MySqlCommand cmd = new MySqlCommand("pc_ver_chamados", conn))
-                        {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@pc_email", pessoa.getEmail());
-                            cmd.Parameters.AddWithValue("@pc_linha", i);
+                btnChamado1.Text = chamado.mostrarChamado(0, "btn", "N");
+                lblDistancia1.Text = chamado.mostrarChamado(0, "lbl", "N");
+                btnChamado2.Text = chamado.mostrarChamado(1, "btn", "N"); 
+                lblDistancia2.Text = chamado.mostrarChamado(1, "lbl", "N");
+                btnChamado3.Text = chamado.mostrarChamado(2, "btn", "N");
+                lblDistancia3.Text = chamado.mostrarChamado(2, "lbl", "N");
 
-                            using (MySqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    string tipo = reader["tipo"] as string ?? "N/D";
-                                    string distancia = reader["Distancia"] as string ?? "N/D";
-
-                                    switch (i)
-                                    {
-                                        case 0:
-                                            btnChamado1.Text = tipo;
-                                            lblDistancia1.Text = distancia;
-                                            break;
-                                        case 1:
-                                            btnChamado2.Text = tipo;
-                                            lblDistancia2.Text = distancia;
-                                            break;
-                                        case 2:
-                                            btnChamado3.Text = tipo;
-                                            lblDistancia3.Text = distancia;
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
             catch (Exception ex)
             {
@@ -107,5 +76,10 @@ namespace EcoFinder.Forms
             }
         }
 
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            coletorTela.Show();
+        }
     }
 }

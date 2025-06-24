@@ -35,12 +35,14 @@
             this.btnChamado3 = new System.Windows.Forms.Button();
             this.btnChamado2 = new System.Windows.Forms.Button();
             this.btnChamado1 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblDistancia3
             // 
             this.lblDistancia3.AutoSize = true;
-            this.lblDistancia3.Location = new System.Drawing.Point(649, 469);
+            this.lblDistancia3.Location = new System.Drawing.Point(903, 417);
             this.lblDistancia3.Name = "lblDistancia3";
             this.lblDistancia3.Size = new System.Drawing.Size(49, 20);
             this.lblDistancia3.TabIndex = 9;
@@ -49,7 +51,7 @@
             // lblDistancia2
             // 
             this.lblDistancia2.AutoSize = true;
-            this.lblDistancia2.Location = new System.Drawing.Point(649, 307);
+            this.lblDistancia2.Location = new System.Drawing.Point(903, 285);
             this.lblDistancia2.Name = "lblDistancia2";
             this.lblDistancia2.Size = new System.Drawing.Size(49, 20);
             this.lblDistancia2.TabIndex = 2;
@@ -58,7 +60,7 @@
             // lblDistancia1
             // 
             this.lblDistancia1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDistancia1.Location = new System.Drawing.Point(649, 145);
+            this.lblDistancia1.Location = new System.Drawing.Point(903, 158);
             this.lblDistancia1.Name = "lblDistancia1";
             this.lblDistancia1.Size = new System.Drawing.Size(70, 18);
             this.lblDistancia1.TabIndex = 11;
@@ -68,7 +70,7 @@
             // 
             this.btnChamado3.Image = ((System.Drawing.Image)(resources.GetObject("btnChamado3.Image")));
             this.btnChamado3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamado3.Location = new System.Drawing.Point(246, 403);
+            this.btnChamado3.Location = new System.Drawing.Point(500, 351);
             this.btnChamado3.Name = "btnChamado3";
             this.btnChamado3.Padding = new System.Windows.Forms.Padding(0, 0, 210, 0);
             this.btnChamado3.Size = new System.Drawing.Size(477, 97);
@@ -81,7 +83,7 @@
             this.btnChamado2.BackColor = System.Drawing.Color.Transparent;
             this.btnChamado2.Image = ((System.Drawing.Image)(resources.GetObject("btnChamado2.Image")));
             this.btnChamado2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamado2.Location = new System.Drawing.Point(246, 242);
+            this.btnChamado2.Location = new System.Drawing.Point(500, 220);
             this.btnChamado2.Name = "btnChamado2";
             this.btnChamado2.Padding = new System.Windows.Forms.Padding(0, 0, 210, 0);
             this.btnChamado2.Size = new System.Drawing.Size(477, 97);
@@ -93,7 +95,7 @@
             // 
             this.btnChamado1.Image = ((System.Drawing.Image)(resources.GetObject("btnChamado1.Image")));
             this.btnChamado1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamado1.Location = new System.Drawing.Point(246, 76);
+            this.btnChamado1.Location = new System.Drawing.Point(500, 89);
             this.btnChamado1.Name = "btnChamado1";
             this.btnChamado1.Padding = new System.Windows.Forms.Padding(0, 0, 210, 0);
             this.btnChamado1.Size = new System.Drawing.Size(477, 97);
@@ -101,12 +103,40 @@
             this.btnChamado1.Text = "Material";
             this.btnChamado1.UseVisualStyleBackColor = true;
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Location = new System.Drawing.Point(886, 529);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(87, 31);
+            this.btnVoltar.TabIndex = 12;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Distância",
+            "Metal",
+            "Papel",
+            "Plástico",
+            "Vidro",
+            "Eletrônico"});
+            this.comboBox1.Location = new System.Drawing.Point(837, 36);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.TabIndex = 13;
+            // 
             // FrmVerChamados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1014, 595);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lblDistancia1);
             this.Controls.Add(this.lblDistancia2);
             this.Controls.Add(this.lblDistancia3);
@@ -130,5 +160,7 @@
         private System.Windows.Forms.Label lblDistancia3;
         private System.Windows.Forms.Label lblDistancia2;
         private System.Windows.Forms.Label lblDistancia1;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

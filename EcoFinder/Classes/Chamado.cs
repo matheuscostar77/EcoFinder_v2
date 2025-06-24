@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -167,35 +168,42 @@ namespace EcoFinder
 
 
 
-        public string mostrarMaterialChamado(int i) // fazer um for no programa principal
+        public string mostrarChamado(int linha, string tipoBotao, string tipomaterial)
         {
+            string tipo;
+            string distancia;
+
             using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
-
-                try
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand("pc_ver_chamados", conn))
                 {
-                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@pc_email", pessoa.getEmail());
+                    cmd.Parameters.AddWithValue("@pc_linha", linha);
+                    cmd.Parameters.AddWithValue("@pc_material", tipomaterial);
 
-                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT tipo FROM vw_mostrar_material_chamado WHERE id_endereco = @id_endereco;",conn))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        
-                        
-                        cmd.Parameters.AddWithValue("@id_endereco", distancias[i].getIdEndereco());
-                        
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        if (reader.Read())
                         {
-                            while (reader.Read())
+                            tipo = reader["tipo"] as string ?? "N/D";
+                            distancia = reader["Distancia"] as string ?? "N/D";
+
+
+                            if(tipoBotao == "lbl")
                             {
-                                material = reader.GetString(0);
+                                return distancia;
                             }
+                            else if (tipoBotao == "btn")
+                            {
+                                return tipo;
+                            }
+
+
                         }
+                        return "";
                     }
-                    return material;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return "";
                 }
             }
         }
@@ -204,5 +212,7 @@ namespace EcoFinder
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
