@@ -21,7 +21,7 @@ namespace EcoFinder
         private double quilograma = 0;
         private string tamanho;
         private int qtdUnidade = 0;
-        
+        public List<int> idChamado = new List<int>();
 
         private Pessoa pessoa;
         private Endereco endereco;
@@ -32,7 +32,7 @@ namespace EcoFinder
             this.pessoa = pessoa;
             this.endereco = endereco;
             this.distancias = distancias;
-
+            
         }
         public string getMaterial()
         {
@@ -189,7 +189,7 @@ namespace EcoFinder
                         {
                             tipo = reader["tipo"] as string ?? "N/D";
                             distancia = reader["Distancia"] as string ?? "N/D";
-
+                            idChamado.Add(Convert.ToInt32(reader["id_chamado"] as string ?? "N/D"));
 
                             if(tipoBotao == "lbl")
                             {

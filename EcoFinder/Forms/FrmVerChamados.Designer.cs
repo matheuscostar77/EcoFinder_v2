@@ -42,6 +42,7 @@
             // lblDistancia3
             // 
             this.lblDistancia3.AutoSize = true;
+            this.lblDistancia3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblDistancia3.Location = new System.Drawing.Point(903, 417);
             this.lblDistancia3.Name = "lblDistancia3";
             this.lblDistancia3.Size = new System.Drawing.Size(49, 20);
@@ -51,6 +52,7 @@
             // lblDistancia2
             // 
             this.lblDistancia2.AutoSize = true;
+            this.lblDistancia2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblDistancia2.Location = new System.Drawing.Point(903, 285);
             this.lblDistancia2.Name = "lblDistancia2";
             this.lblDistancia2.Size = new System.Drawing.Size(49, 20);
@@ -77,6 +79,7 @@
             this.btnChamado3.TabIndex = 2;
             this.btnChamado3.Text = "Material";
             this.btnChamado3.UseVisualStyleBackColor = true;
+            this.btnChamado3.Click += new System.EventHandler(this.btnChamado3_Click);
             // 
             // btnChamado2
             // 
@@ -90,6 +93,7 @@
             this.btnChamado2.TabIndex = 1;
             this.btnChamado2.Text = "Material";
             this.btnChamado2.UseVisualStyleBackColor = false;
+            this.btnChamado2.Click += new System.EventHandler(this.btnChamado2_Click);
             // 
             // btnChamado1
             // 
@@ -102,6 +106,7 @@
             this.btnChamado1.TabIndex = 0;
             this.btnChamado1.Text = "Material";
             this.btnChamado1.UseVisualStyleBackColor = true;
+            this.btnChamado1.Click += new System.EventHandler(this.btnChamado1_Click);
             // 
             // btnVoltar
             // 

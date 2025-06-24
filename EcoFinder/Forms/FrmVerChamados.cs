@@ -37,6 +37,7 @@ namespace EcoFinder.Forms
         private void FrmVerChamados_Load(object sender, EventArgs e)
         {
             int total = chamado.totalChamados();
+            
 
             if (total == 0)
             {
@@ -80,6 +81,21 @@ namespace EcoFinder.Forms
         {
             this.Close();
             coletorTela.Show();
+        }
+
+        private void btnChamado1_Click(object sender, EventArgs e)
+        {
+            var reservarTela = new FrmReservar(coletorTela, pessoa, endereco, chamado, 0);
+        }
+
+        private void btnChamado2_Click(object sender, EventArgs e)
+        {
+            var reservarTela = new FrmReservar(coletorTela, pessoa, endereco, chamado, 1);
+        }
+
+        private void btnChamado3_Click(object sender, EventArgs e)
+        {
+            var reservarTela = new FrmReservar(coletorTela, pessoa, endereco, chamado, 2);
         }
     }
 }

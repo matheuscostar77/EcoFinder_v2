@@ -14,13 +14,17 @@ namespace EcoFinder
     {
         private Pessoa pessoa;
         private Endereco endereco;
-        frmColetor telacoeltor;
-        public FrmReservar(frmColetor telacoletor , Pessoa pessoa, Endereco endereco)
+        frmColetor coletorTela;
+        private Chamado chamado;
+        int numLinha;
+        public FrmReservar(frmColetor coletorTela , Pessoa pessoa, Endereco endereco,Chamado chamado, int numLinha)
         {
             InitializeComponent();
-            this.telacoeltor = telacoletor;
+            this.coletorTela = coletorTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
+            this.chamado = chamado;
+            this.numLinha = numLinha;
         }
 
         private void FrmReservar_Load(object sender, EventArgs e)
