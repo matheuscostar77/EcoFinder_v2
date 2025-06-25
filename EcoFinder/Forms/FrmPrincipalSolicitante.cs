@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EcoFinder
+namespace EcoFinder 
 {
     public partial class FrmPrincipalSolicitante : Form
     {
@@ -18,6 +18,7 @@ namespace EcoFinder
         FrmPerfil perfil;
         frmRealizarChamado fazerChamado;
         FrmUsuario usuario;
+        FrmAvisos avisos;
          public FrmPrincipalSolicitante(FrmLogin loginTela,Endereco endereco, Pessoa pessoa)
         {
             InitializeComponent();
@@ -29,16 +30,20 @@ namespace EcoFinder
          private void mdiProp()
         {
             this.SetBevel(false);
-            Controls.OfType<MdiClient>().FirstOrDefault().BackColor =  Color.Gray;
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor =  Color.White;
         }
 
         bool sidebarExpand = true;
         private void sidebarTransition_Tick(object sender, EventArgs e)
         {
+            int sidebarMin = 47;
+            int sidebarMax = 215;
+            int step = 10;
+
             if (sidebarExpand)
             {
-                sidebar.Width -= 10;
-                if (sidebar.Width <= 47)
+                sidebar.Width -= step;
+                if (sidebar.Width <= sidebarMin)
                 {
                     sidebarExpand = false;
                     sidebarTransition.Stop();
@@ -46,13 +51,20 @@ namespace EcoFinder
             }
             else
             {
-                sidebar.Width += 10;
-                if (sidebar.Width >= 215)
+                sidebar.Width += step;
+                if (sidebar.Width >= sidebarMax)
                 {
                     sidebarExpand = true;
                     sidebarTransition.Stop();
                 }
             }
+
+             
+            panel3.Width = sidebar.Width;
+            panel4.Width = sidebar.Width;
+            panel5.Width = sidebar.Width;
+            panel6.Width = sidebar.Width;
+
         }
         private void btnHam_Click(object sender, EventArgs e)
         {
@@ -61,14 +73,13 @@ namespace EcoFinder
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            
+
             if (perfil == null || perfil.IsDisposed)
             {
                 perfil = new FrmPerfil();
                 perfil.FormClosed += Perfil_FormClosed;
                 perfil.MdiParent = this;
-                perfil.StartPosition = FormStartPosition.Manual;
-                perfil.Location = new Point(0, 0);  
+                perfil.Dock = DockStyle.Fill;
                 perfil.Show();
             }
             else
@@ -104,7 +115,7 @@ namespace EcoFinder
                     fazerChamado.FormClosed += FazerChamado_FormClosed;
                     fazerChamado.MdiParent = this;
                     fazerChamado.StartPosition = FormStartPosition.Manual;
-                    fazerChamado.Location = new Point(0, 0);
+                     fazerChamado.Dock = DockStyle.Fill;
                     fazerChamado.Show();
                 }
                 else
@@ -126,6 +137,35 @@ namespace EcoFinder
         private void FrmPrincipalSolicitante_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAvisos_Click(object sender, EventArgs e)
+        {
+            if (avisos == null || avisos.IsDisposed)
+            {
+                avisos = new FrmAvisos();
+                avisos.FormClosed += Avisos_FormClosed; ;
+                avisos.MdiParent = this;
+                avisos.Dock = DockStyle.Fill;
+                avisos.Show();
+            }
+            else
+            {
+                avisos.WindowState = FormWindowState.Normal;
+                avisos.BringToFront();
+                avisos.Activate();
+            }
+        }
+
+        private void Avisos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            avisos = null;
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            loginTela.Show();
         }
     }
 

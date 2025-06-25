@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    public partial class FrmPerfil : Form
+    public partial class FrmAvisos : Form
     {
-        public FrmPerfil()
+        public FrmAvisos()
         {
             InitializeComponent();
         }
 
-        private void FrmPerfil_Load(object sender, EventArgs e)
+        private void FrmAvisoscs_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
         }

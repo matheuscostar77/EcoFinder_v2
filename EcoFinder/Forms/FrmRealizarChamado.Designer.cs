@@ -28,34 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRealizarChamado));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbMaterial = new System.Windows.Forms.ComboBox();
             this.lblMaterial = new System.Windows.Forms.Label();
             this.lblEnderecoCham = new System.Windows.Forms.Label();
             this.btnRealizarChamado = new System.Windows.Forms.Button();
             this.lblEnderecoFormat = new System.Windows.Forms.Label();
-            this.btnVoltar = new System.Windows.Forms.Button();
             this.nmdKG = new System.Windows.Forms.NumericUpDown();
             this.lblKG = new System.Windows.Forms.Label();
             this.lblTamanho = new System.Windows.Forms.Label();
             this.cmbTamanho = new System.Windows.Forms.ComboBox();
             this.qtd_Unitaria = new System.Windows.Forms.Label();
             this.unidades = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmdKG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unidades)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(199, 387);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // cmbMaterial
             // 
@@ -113,17 +99,6 @@
             this.lblEnderecoFormat.Size = new System.Drawing.Size(35, 13);
             this.lblEnderecoFormat.TabIndex = 6;
             this.lblEnderecoFormat.Text = "label1";
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Location = new System.Drawing.Point(443, 353);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(75, 26);
-            this.btnVoltar.TabIndex = 7;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // nmdKG
             // 
@@ -193,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.unidades);
             this.Controls.Add(this.qtd_Unitaria);
@@ -201,20 +176,17 @@
             this.Controls.Add(this.lblTamanho);
             this.Controls.Add(this.lblKG);
             this.Controls.Add(this.nmdKG);
-            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lblEnderecoFormat);
             this.Controls.Add(this.btnRealizarChamado);
             this.Controls.Add(this.lblEnderecoCham);
             this.Controls.Add(this.lblMaterial);
             this.Controls.Add(this.cmbMaterial);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRealizarChamado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";
             this.Load += new System.EventHandler(this.frmRealizarChamado_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmdKG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unidades)).EndInit();
             this.ResumeLayout(false);
@@ -223,14 +195,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmbMaterial;
         private System.Windows.Forms.Label lblMaterial;
         private System.Windows.Forms.Label lblEnderecoCham;
         private System.Windows.Forms.Button btnRealizarChamado;
         private System.Windows.Forms.Label lblEnderecoFormat;
-        private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.NumericUpDown nmdKG;
         private System.Windows.Forms.Label lblKG;
         private System.Windows.Forms.Label lblTamanho;

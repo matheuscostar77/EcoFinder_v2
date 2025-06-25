@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace EcoFinder
 {
-    public partial class FrmPerfil : Form
+    public partial class FrmPrincipalColetor : Form
     {
-        public FrmPerfil()
+        public FrmPrincipalColetor()
         {
             InitializeComponent();
-        }
-
-        private void FrmPerfil_Load(object sender, EventArgs e)
-        {
-            this.ControlBox = false;
         }
     }
 }

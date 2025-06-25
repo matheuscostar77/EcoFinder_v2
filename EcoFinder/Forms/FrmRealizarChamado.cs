@@ -32,6 +32,7 @@ namespace EcoFinder
 
         private void frmRealizarChamado_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             try
             {
                 string end = endereco.mostrarEnderecos(pessoa.getEmail());

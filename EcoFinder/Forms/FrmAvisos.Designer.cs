@@ -1,6 +1,6 @@
 ﻿namespace EcoFinder
 {
-    partial class FrmPerfil
+    partial class FrmAvisos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(356, 185);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Perfillll";
-            // 
-            // FrmPerfil
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmPerfil";
-            this.Text = "FrmPerfil";
-            this.Load += new System.EventHandler(this.FrmPerfil_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            this.Text = "FrmAvisos";
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
     }
 }
