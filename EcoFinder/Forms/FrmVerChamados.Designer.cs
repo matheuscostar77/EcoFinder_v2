@@ -36,7 +36,7 @@
             this.btnChamado2 = new System.Windows.Forms.Button();
             this.btnChamado1 = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbClassificar = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblDistancia3
@@ -118,21 +118,22 @@
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // comboBox1
+            // cmbClassificar
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbClassificar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClassificar.FormattingEnabled = true;
+            this.cmbClassificar.Items.AddRange(new object[] {
             "Distância",
             "Metal",
             "Papel",
             "Plástico",
             "Vidro",
             "Eletrônico"});
-            this.comboBox1.Location = new System.Drawing.Point(837, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 13;
+            this.cmbClassificar.Location = new System.Drawing.Point(837, 36);
+            this.cmbClassificar.Name = "cmbClassificar";
+            this.cmbClassificar.Size = new System.Drawing.Size(121, 28);
+            this.cmbClassificar.TabIndex = 13;
+            this.cmbClassificar.SelectedIndexChanged += new System.EventHandler(this.cmbClassificar_SelectedIndexChanged);
             // 
             // FrmVerChamados
             // 
@@ -140,7 +141,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1014, 595);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbClassificar);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lblDistancia1);
             this.Controls.Add(this.lblDistancia2);
@@ -166,6 +167,6 @@
         private System.Windows.Forms.Label lblDistancia2;
         private System.Windows.Forms.Label lblDistancia1;
         private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbClassificar;
     }
 }

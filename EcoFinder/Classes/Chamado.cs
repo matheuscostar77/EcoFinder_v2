@@ -189,7 +189,8 @@ namespace EcoFinder
                         {
                             tipo = reader["tipo"] as string ?? "N/D";
                             distancia = reader["Distancia"] as string ?? "N/D";
-                            idChamado.Add(Convert.ToInt32(reader["id_chamado"] as string ?? "N/D"));
+                            idChamado.Add(reader.GetInt32("id_chamado"));
+                            
 
                             if(tipoBotao == "lbl")
                             {
@@ -213,6 +214,9 @@ namespace EcoFinder
             throw new NotImplementedException();
         }
 
+        public void mostrarChamadoReserva(int idChamado)
+        {
 
+        }
     }
 }
