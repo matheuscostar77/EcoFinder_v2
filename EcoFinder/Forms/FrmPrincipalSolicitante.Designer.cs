@@ -36,20 +36,23 @@
             this.btnCriarChamado = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAvisos = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnSair = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
             this.btnPerfil = new System.Windows.Forms.Button();
             this.btnHam = new System.Windows.Forms.PictureBox();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -58,12 +61,15 @@
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Controls.Add(this.panel3);
+            this.sidebar.Controls.Add(this.panel7);
+            this.sidebar.Controls.Add(this.panel8);
+            this.sidebar.Controls.Add(this.panel2);
             this.sidebar.Controls.Add(this.panel5);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.sidebar.Location = new System.Drawing.Point(0, 46);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(215, 465);
+            this.sidebar.Size = new System.Drawing.Size(180, 465);
             this.sidebar.TabIndex = 3;
             // 
             // panel6
@@ -89,9 +95,11 @@
             this.btnCriarChamado.BackColor = System.Drawing.Color.ForestGreen;
             this.btnCriarChamado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCriarChamado.ForeColor = System.Drawing.Color.White;
-            this.btnCriarChamado.Location = new System.Drawing.Point(-29, -12);
+            this.btnCriarChamado.Image = ((System.Drawing.Image)(resources.GetObject("btnCriarChamado.Image")));
+            this.btnCriarChamado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCriarChamado.Location = new System.Drawing.Point(-4, -10);
             this.btnCriarChamado.Name = "btnCriarChamado";
-            this.btnCriarChamado.Size = new System.Drawing.Size(244, 89);
+            this.btnCriarChamado.Size = new System.Drawing.Size(201, 89);
             this.btnCriarChamado.TabIndex = 2;
             this.btnCriarChamado.Text = "Criar Chamados";
             this.btnCriarChamado.UseVisualStyleBackColor = false;
@@ -111,35 +119,15 @@
             this.btnAvisos.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAvisos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAvisos.ForeColor = System.Drawing.Color.White;
-            this.btnAvisos.Location = new System.Drawing.Point(-29, -12);
+            this.btnAvisos.Image = ((System.Drawing.Image)(resources.GetObject("btnAvisos.Image")));
+            this.btnAvisos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvisos.Location = new System.Drawing.Point(-4, -10);
             this.btnAvisos.Name = "btnAvisos";
-            this.btnAvisos.Size = new System.Drawing.Size(244, 89);
+            this.btnAvisos.Size = new System.Drawing.Size(201, 89);
             this.btnAvisos.TabIndex = 2;
             this.btnAvisos.Text = "Avisos";
             this.btnAvisos.UseVisualStyleBackColor = false;
             this.btnAvisos.Click += new System.EventHandler(this.btnAvisos_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.ForestGreen;
-            this.panel5.Controls.Add(this.btnSair);
-            this.panel5.Location = new System.Drawing.Point(3, 201);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(189, 60);
-            this.panel5.TabIndex = 6;
-            // 
-            // btnSair
-            // 
-            this.btnSair.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Location = new System.Drawing.Point(-29, -12);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(244, 89);
-            this.btnSair.TabIndex = 2;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // panel1
             // 
@@ -176,7 +164,7 @@
             this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPerfil.Location = new System.Drawing.Point(-7, -13);
             this.btnPerfil.Name = "btnPerfil";
-            this.btnPerfil.Size = new System.Drawing.Size(219, 89);
+            this.btnPerfil.Size = new System.Drawing.Size(204, 89);
             this.btnPerfil.TabIndex = 2;
             this.btnPerfil.Text = "Perfil";
             this.btnPerfil.UseVisualStyleBackColor = false;
@@ -192,6 +180,54 @@
             this.btnHam.TabIndex = 1;
             this.btnHam.TabStop = false;
             this.btnHam.Click += new System.EventHandler(this.btnHam_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.Color.White;
+            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(-4, -22);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(203, 104);
+            this.btnSair.TabIndex = 2;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel5.Controls.Add(this.btnSair);
+            this.panel5.Location = new System.Drawing.Point(3, 399);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(189, 60);
+            this.panel5.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel2.Location = new System.Drawing.Point(3, 333);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(189, 60);
+            this.panel2.TabIndex = 7;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel7.Location = new System.Drawing.Point(3, 201);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(189, 60);
+            this.panel7.TabIndex = 8;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel8.Location = new System.Drawing.Point(3, 267);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(189, 60);
+            this.panel8.TabIndex = 8;
             // 
             // FrmPrincipalSolicitante
             // 
@@ -209,10 +245,10 @@
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,8 +256,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel sidebar;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnAvisos;
         private System.Windows.Forms.Panel panel4;
@@ -232,5 +266,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox btnHam;
         private System.Windows.Forms.Timer sidebarTransition;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
     }
 }

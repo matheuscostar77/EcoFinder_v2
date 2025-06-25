@@ -189,6 +189,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmPrincipalColetor";
             this.Text = "FrmPrincipalColetor";
+            this.Load += new System.EventHandler(this.FrmPrincipalColetor_Load);
             this.sidebar.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

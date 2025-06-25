@@ -16,5 +16,10 @@ namespace EcoFinder
         {
             InitializeComponent();
         }
+
+        private void FrmPrincipalColetor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

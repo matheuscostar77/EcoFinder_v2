@@ -36,14 +36,10 @@ namespace EcoFinder
         bool sidebarExpand = true;
         private void sidebarTransition_Tick(object sender, EventArgs e)
         {
-            int sidebarMin = 47;
-            int sidebarMax = 215;
-            int step = 10;
-
             if (sidebarExpand)
             {
-                sidebar.Width -= step;
-                if (sidebar.Width <= sidebarMin)
+                sidebar.Width -= 10;
+                if (sidebar.Width <= 47)
                 {
                     sidebarExpand = false;
                     sidebarTransition.Stop();
@@ -51,19 +47,23 @@ namespace EcoFinder
             }
             else
             {
-                sidebar.Width += step;
-                if (sidebar.Width >= sidebarMax)
+                sidebar.Width += 10;
+                if (sidebar.Width >= 180)
                 {
                     sidebarExpand = true;
                     sidebarTransition.Stop();
+
+                    panel6.Width = sidebar.Width;
+                    panel4.Width = sidebar.Width;
+                    panel5.Width = sidebar.Width;
+                    panel3.Width = sidebar.Width;
+
                 }
             }
-
-             
-            panel3.Width = sidebar.Width;
+            panel6.Width = sidebar.Width;
             panel4.Width = sidebar.Width;
             panel5.Width = sidebar.Width;
-            panel6.Width = sidebar.Width;
+            panel3.Width = sidebar.Width;
 
         }
         private void btnHam_Click(object sender, EventArgs e)
