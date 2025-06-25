@@ -36,7 +36,7 @@ namespace EcoFinder
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var usuario = new FrmUsuario(this, pessoa, endereco);
+            var usuario = new FrmPrincipalSolicitante(this, endereco, pessoa);
             usuario.Show();
             this.Hide();
             var coletor = new frmColetor(this, pessoa, endereco);
@@ -58,7 +58,7 @@ namespace EcoFinder
                 }
                 else if (int.Parse(contavalida) == 2)
                 {
-                    var usuario = new FrmUsuario(this,pessoa, endereco);
+                    var usuario = new FrmPrincipalSolicitante(this, endereco, pessoa);
                     usuario.Show();
                     this.Hide();
                 }

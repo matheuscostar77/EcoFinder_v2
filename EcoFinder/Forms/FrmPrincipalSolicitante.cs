@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace EcoFinder
+{
+    public partial class FrmPrincipalSolicitante : Form
+    {
+        Endereco endereco;
+        Pessoa pessoa;
+        FrmLogin loginTela;
+        FrmPerfil perfil;
+        frmRealizarChamado fazerChamado;
+        FrmUsuario usuario;
+         public FrmPrincipalSolicitante(FrmLogin loginTela,Endereco endereco, Pessoa pessoa)
+        {
+            InitializeComponent();
+            this.loginTela = loginTela;
+            this.endereco = endereco;
+            this.pessoa = pessoa;
+            mdiProp();
+         }
+         private void mdiProp()
+        {
+            this.SetBevel(false);
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor =  Color.Gray;
+        }
+
+        bool sidebarExpand = true;
+        private void sidebarTransition_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width <= 47)
+                {
+                    sidebarExpand = false;
+                    sidebarTransition.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width >= 215)
+                {
+                    sidebarExpand = true;
+                    sidebarTransition.Stop();
+                }
+            }
+        }
+        private void btnHam_Click(object sender, EventArgs e)
+        {
+            sidebarTransition.Start();
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            
+            if (perfil == null || perfil.IsDisposed)
+            {
+                perfil = new FrmPerfil();
+                perfil.FormClosed += Perfil_FormClosed;
+                perfil.MdiParent = this;
+                perfil.StartPosition = FormStartPosition.Manual;
+                perfil.Location = new Point(0, 0);  
+                perfil.Show();
+            }
+            else
+            {
+                perfil.WindowState = FormWindowState.Normal;
+                perfil.BringToFront();
+                perfil.Activate();
+            }
+
+        }
+
+        private void Perfil_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           perfil = null;
+        }
+
+        private void btnCriarChamado_Click(object sender, EventArgs e)
+        {
+
+            if (fazerChamado == null)
+            {
+                fazerChamado = new frmRealizarChamado(usuario, pessoa, endereco);
+                fazerChamado.FormClosed += FazerChamado_FormClosed; 
+                fazerChamado.MdiParent = this;
+                fazerChamado.Show();
+
+            }
+            else
+            {
+                if (fazerChamado == null || fazerChamado.IsDisposed)
+                {
+                    fazerChamado = new frmRealizarChamado(usuario, pessoa, endereco);
+                    fazerChamado.FormClosed += FazerChamado_FormClosed;
+                    fazerChamado.MdiParent = this;
+                    fazerChamado.StartPosition = FormStartPosition.Manual;
+                    fazerChamado.Location = new Point(0, 0);
+                    fazerChamado.Show();
+                }
+                else
+                {
+                    fazerChamado.WindowState = FormWindowState.Normal;
+                    fazerChamado.BringToFront();
+                    fazerChamado.Activate();
+                }
+
+            }
+
+        }
+
+        private void FazerChamado_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fazerChamado = null;
+        }
+
+        private void FrmPrincipalSolicitante_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+}

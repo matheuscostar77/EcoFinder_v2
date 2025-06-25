@@ -51,7 +51,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(199, 387);
             this.pictureBox1.TabIndex = 0;
@@ -67,7 +67,7 @@
             "PAPEL",
             "PLÁSTICO"});
             this.cmbMaterial.Location = new System.Drawing.Point(300, 92);
-            this.cmbMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMaterial.Name = "cmbMaterial";
             this.cmbMaterial.Size = new System.Drawing.Size(118, 21);
             this.cmbMaterial.TabIndex = 1;
@@ -96,7 +96,7 @@
             // btnRealizarChamado
             // 
             this.btnRealizarChamado.Location = new System.Drawing.Point(289, 264);
-            this.btnRealizarChamado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRealizarChamado.Margin = new System.Windows.Forms.Padding(2);
             this.btnRealizarChamado.Name = "btnRealizarChamado";
             this.btnRealizarChamado.Size = new System.Drawing.Size(162, 32);
             this.btnRealizarChamado.TabIndex = 5;
@@ -117,7 +117,7 @@
             // btnVoltar
             // 
             this.btnVoltar.Location = new System.Drawing.Point(443, 353);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 26);
             this.btnVoltar.TabIndex = 7;
@@ -129,7 +129,7 @@
             // 
             this.nmdKG.DecimalPlaces = 1;
             this.nmdKG.Location = new System.Drawing.Point(300, 138);
-            this.nmdKG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nmdKG.Margin = new System.Windows.Forms.Padding(2);
             this.nmdKG.Name = "nmdKG";
             this.nmdKG.Size = new System.Drawing.Size(117, 20);
             this.nmdKG.TabIndex = 8;
@@ -164,7 +164,7 @@
             "Médio",
             "Grande"});
             this.cmbTamanho.Location = new System.Drawing.Point(300, 229);
-            this.cmbTamanho.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTamanho.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTamanho.Name = "cmbTamanho";
             this.cmbTamanho.Size = new System.Drawing.Size(82, 21);
             this.cmbTamanho.TabIndex = 12;
@@ -193,7 +193,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 387);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.unidades);
             this.Controls.Add(this.qtd_Unitaria);
             this.Controls.Add(this.cmbTamanho);
@@ -207,7 +208,8 @@
             this.Controls.Add(this.lblMaterial);
             this.Controls.Add(this.cmbMaterial);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRealizarChamado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";

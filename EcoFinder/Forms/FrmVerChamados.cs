@@ -15,7 +15,7 @@ namespace EcoFinder.Forms
 {
     public partial class FrmVerChamados : Form
     {
-        private int quantChamados;
+       // private int quantChamados;
 
         Pessoa pessoa;
         Endereco endereco;

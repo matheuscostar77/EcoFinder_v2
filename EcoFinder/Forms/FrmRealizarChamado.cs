@@ -14,17 +14,17 @@ namespace EcoFinder
     public partial class frmRealizarChamado : Form
     {
         Pessoa pessoa;
-        FrmUsuario usuarioTela;
-        Endereco endereco;
+         FrmUsuario usuarioTela;
+         Endereco endereco;
         Chamado chamado;
         List<EnderecoDistancia> distancias;
 
-        public frmRealizarChamado(FrmUsuario usuarioTela,Pessoa pessoa, Endereco endereco)
+        public frmRealizarChamado(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.pessoa = pessoa;
             this.usuarioTela = usuarioTela;
-            this.endereco = endereco;
+             this.endereco = endereco;
             distancias = new List<EnderecoDistancia>();
             chamado = new Chamado(pessoa, endereco,distancias);
         }
@@ -49,8 +49,7 @@ namespace EcoFinder
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            usuarioTela.Show();
+             
         }
 
 
