@@ -16,28 +16,29 @@ namespace EcoFinder
     public partial class frmCadEndereco : Form
     {
 
-        
+        private int alterarOuCadastrar;
         FrmUsuario usuarioTela;
         frmColetor coletorTela;
         
         Pessoa pessoa;
         Endereco endereco;
 
-        public frmCadEndereco(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco)
+        public frmCadEndereco(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco,int alterarOuCadastrar)
         {
             InitializeComponent();
             this.usuarioTela = usuarioTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
-            
+            this.alterarOuCadastrar = alterarOuCadastrar;
         }
 
-        public frmCadEndereco(frmColetor coletorTela, Pessoa pessoa, Endereco endereco)
+        public frmCadEndereco(frmColetor coletorTela, Pessoa pessoa, Endereco endereco,int alterarOuCadastrar)
         {
             InitializeComponent();
             this.coletorTela = coletorTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
+            this.alterarOuCadastrar = alterarOuCadastrar;
 
         }
 
@@ -46,26 +47,51 @@ namespace EcoFinder
         {
             try
             {
-
-                if (endereco.cadastrarEndereco())
+                if (alterarOuCadastrar == 1)
                 {
-
-                    MessageBox.Show("Endereço cadastrado!");
-
-                    if (usuarioTela == null)
+                    if (endereco.cadastrarEndereco())
                     {
-                        coletorTela.Show();
-                        this.Close();
+
+                        MessageBox.Show("Endereço cadastrado!");
+
+                        if (usuarioTela == null)
+                        {
+                            coletorTela.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            usuarioTela.Show();
+                            this.Close();
+                        }
                     }
                     else
                     {
-                        usuarioTela.Show();
-                        this.Close();
+                        MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
                     }
                 }
-                else
+                else if (alterarOuCadastrar == 2)
                 {
-                    MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
+                    if (endereco.alterarEndereco())
+                    {
+
+                        MessageBox.Show("Endereço alterado!");
+
+                        if (usuarioTela == null)
+                        {
+                            coletorTela.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            usuarioTela.Show();
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
+                    }
                 }
             }
             catch (Exception ex)

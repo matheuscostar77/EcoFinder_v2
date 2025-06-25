@@ -194,6 +194,73 @@ namespace EcoFinder
 
             return endereco;
         }
+        public bool alterarEndereco()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                {
+                    using (MySqlCommand cmd = conn.CreateCommand())
+                    {
+                        int idpessoa;
+
+                        conn.Open();
+
+                        cmd.CommandText = "SELECT F_CHECK_ENDERECO_REPETIDO(@cep,@numerocasa)";
+                        cmd.Parameters.AddWithValue("@cep", getCep());
+                        cmd.Parameters.AddWithValue("@numerocasa", getNumeroCasa());
+
+
+                        if (Convert.ToInt32(cmd.ExecuteScalar()) != 0)
+                        {
+
+                            return false;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
+                            cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+
+                            idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+                            
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = @"
+                                                UPDATE tb_endereco
+                                                SET cep = @cep,
+                                                    estado = @estado,
+                                                    cidade = @cidade,
+                                                    bairro = @bairro,
+                                                    rua = @rua,
+                                                    numerocasa = @numerocasa,
+                                                    latitude = @latitude,
+                                                    longitude = @longitude
+                                                WHERE id_pessoa_endereco = @id_pessoa_endereco;";
+
+                            cmd.Parameters.AddWithValue("@id_pessoa_endereco", idpessoa);
+                            cmd.Parameters.AddWithValue("@cep", cep);
+                            cmd.Parameters.AddWithValue("@estado", estado);
+                            cmd.Parameters.AddWithValue("@cidade", cidade);
+                            cmd.Parameters.AddWithValue("@bairro", nomeBairro);
+                            cmd.Parameters.AddWithValue("@rua", nomeRua);
+                            cmd.Parameters.AddWithValue("@numerocasa", numeroCasa);
+                            cmd.Parameters.AddWithValue("@longitude", longitude);
+                            cmd.Parameters.AddWithValue("@latitude", latitude);
+                            cmd.ExecuteNonQuery();
+
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+
+        }
 
     }
 }
+

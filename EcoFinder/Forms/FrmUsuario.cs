@@ -37,7 +37,7 @@ namespace EcoFinder
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco);
+            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco,1);
             cadastrarEndereco.Show();
         }
 
@@ -57,6 +57,11 @@ namespace EcoFinder
             
         }
 
-        
+        private void btnAlterarEndereco_Click(object sender, EventArgs e)
+        {
+            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco, 2);
+            cadastrarEndereco.Show();
+            this.Hide();
+        }
     }
 }

@@ -65,6 +65,7 @@
             this.btnAlterarEndereco.TabIndex = 2;
             this.btnAlterarEndereco.Text = "Alterar endereço";
             this.btnAlterarEndereco.UseVisualStyleBackColor = true;
+            this.btnAlterarEndereco.Click += new System.EventHandler(this.btnAlterarEndereco_Click);
             // 
             // btnRealizarChamado
             // 

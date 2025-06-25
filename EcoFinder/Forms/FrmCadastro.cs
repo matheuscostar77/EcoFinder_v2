@@ -94,7 +94,7 @@ namespace EcoFinder
                     (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
                     var coletorTela = new frmColetor(loginTela, pessoa, endereco);
-                    var cadastroEndTela = new frmCadEndereco(coletorTela, pessoa, endereco);
+                    var cadastroEndTela = new frmCadEndereco(coletorTela, pessoa, endereco, 1);
                     this.Close();
                     cadastroEndTela.Show();
                     
