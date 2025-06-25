@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxIDS = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -48,34 +47,24 @@
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.lblPesoMaterial = new System.Windows.Forms.Label();
             this.lblTamanho = new System.Windows.Forms.Label();
+            this.btnReservar = new System.Windows.Forms.Button();
+            this.cmbPrevisao = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBoxIDS
-            // 
-            this.comboBoxIDS.FormattingEnabled = true;
-            this.comboBoxIDS.Location = new System.Drawing.Point(20, 26);
-            this.comboBoxIDS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxIDS.Name = "comboBoxIDS";
-            this.comboBoxIDS.Size = new System.Drawing.Size(194, 28);
-            this.comboBoxIDS.TabIndex = 0;
-            this.comboBoxIDS.SelectedIndexChanged += new System.EventHandler(this.comboBoxIDS_SelectedIndexChanged);
-            // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(170, 82);
+            this.splitContainer1.Location = new System.Drawing.Point(253, 56);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.comboBoxIDS);
-            // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbPrevisao);
             this.splitContainer1.Panel2.Controls.Add(this.lblTamanho);
             this.splitContainer1.Panel2.Controls.Add(this.lblPesoMaterial);
             this.splitContainer1.Panel2.Controls.Add(this.lblQuantidade);
@@ -269,17 +258,50 @@
             this.lblTamanho.TabIndex = 26;
             this.lblTamanho.Text = "label18";
             // 
+            // btnReservar
+            // 
+            this.btnReservar.Location = new System.Drawing.Point(844, 515);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(102, 31);
+            this.btnReservar.TabIndex = 2;
+            this.btnReservar.Text = "Reservar chamado";
+            this.btnReservar.UseVisualStyleBackColor = true;
+            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
+            // 
+            // cmbPrevisao
+            // 
+            this.cmbPrevisao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrevisao.FormattingEnabled = true;
+            this.cmbPrevisao.Items.AddRange(new object[] {
+            "Manhã",
+            "Tarde",
+            "Noite"});
+            this.cmbPrevisao.Location = new System.Drawing.Point(210, 385);
+            this.cmbPrevisao.Name = "cmbPrevisao";
+            this.cmbPrevisao.Size = new System.Drawing.Size(121, 28);
+            this.cmbPrevisao.TabIndex = 27;
+            this.cmbPrevisao.SelectedIndexChanged += new System.EventHandler(this.cmbPrevisao_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 388);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(179, 20);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Vou coletar na parte da:";
+            // 
             // FrmReservar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 595);
+            this.Controls.Add(this.btnReservar);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmReservar";
             this.Text = "FormReservar";
             this.Load += new System.EventHandler(this.FrmReservar_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -289,8 +311,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxIDS;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
@@ -310,5 +330,8 @@
         private System.Windows.Forms.Label lblPesoMaterial;
         private System.Windows.Forms.Label lblQuantidade;
         private System.Windows.Forms.Label lblTipoMaterial;
+        private System.Windows.Forms.Button btnReservar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbPrevisao;
     }
 }

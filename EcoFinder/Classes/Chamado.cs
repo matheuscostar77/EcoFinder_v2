@@ -22,17 +22,18 @@ namespace EcoFinder
         private string tamanho;
         private int qtdUnidade = 0;
         public List<int> idChamado = new List<int>();
+        private string previsaoColeta;
 
         private Pessoa pessoa;
         private Endereco endereco;
         List<EnderecoDistancia> distancias;
 
-        public Chamado(Pessoa pessoa, Endereco endereco,List<EnderecoDistancia> distancias)
+        public Chamado(Pessoa pessoa, Endereco endereco, List<EnderecoDistancia> distancias)
         {
             this.pessoa = pessoa;
             this.endereco = endereco;
             this.distancias = distancias;
-            
+
         }
         public string getMaterial()
         {
@@ -69,7 +70,17 @@ namespace EcoFinder
         {
             this.qtdUnidade = qtdUnidade;
         }
-        public void realizarChamado(string email,string material, double quilograma, int qtdUnidade, string tamanho )
+
+        public string getPrevisaoColeta()
+        {
+            return previsaoColeta;
+        }
+
+        public void setPrevisaoColeta(string previsaoColeta)
+        {
+            this.previsaoColeta = previsaoColeta;
+        }
+        public void realizarChamado(string email, string material, double quilograma, int qtdUnidade, string tamanho)
         {
             using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
             {
@@ -98,8 +109,8 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT count(id_dispo) from vw_quant_chamados",conn))
-                    { 
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT count(id_dispo) from vw_quant_chamados", conn))
+                    {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -129,7 +140,7 @@ namespace EcoFinder
                 {
                     double lat2, long2;
                     GeoCoordinate coordColetor = null;
-                  
+
                     coordColetor = new GeoCoordinate(latCol, longCol);
 
                     conn.Open();
@@ -161,7 +172,7 @@ namespace EcoFinder
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    
+
                 }
             }
         }
@@ -190,9 +201,9 @@ namespace EcoFinder
                             tipo = reader["tipo"] as string ?? "N/D";
                             distancia = reader["Distancia"] as string ?? "N/D";
                             idChamado.Add(reader.GetInt32("id_chamado"));
-                            
 
-                            if(tipoBotao == "lbl")
+
+                            if (tipoBotao == "lbl")
                             {
                                 return distancia;
                             }
@@ -214,9 +225,51 @@ namespace EcoFinder
             throw new NotImplementedException();
         }
 
-        public void mostrarChamadoReserva(int idChamado)
+        public void reservarChamado(int idChamado, string previsaoColeta)
         {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("proc_realizar_reserva", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
 
+                        cmd.Parameters.AddWithValue("@p_email", pessoa.getEmail());
+                        cmd.Parameters.AddWithValue("@p_id_chamado", idChamado);
+                        cmd.Parameters.AddWithValue("@p_previsao_coleta", previsaoColeta);
+
+                        var resultadoParam = new MySqlParameter("@RESULTADO", MySqlDbType.Bit);
+                        resultadoParam.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(resultadoParam);
+
+                        // Executa a procedure
+                        cmd.ExecuteNonQuery();
+
+                        // Captura o valor retornado
+                        bool resultado = false;
+                        if (resultadoParam.Value != DBNull.Value)
+                        {
+                            resultado = Convert.ToBoolean(resultadoParam.Value);
+                        }
+
+                        // Usa o resultado como quiser
+                        if (resultado)
+                        {
+                            MessageBox.Show("Reserva realizada com sucesso.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi possível realizar a reserva.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar reservar: " + ex.Message);
+            }
         }
     }
 }

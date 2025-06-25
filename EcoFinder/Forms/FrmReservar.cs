@@ -63,9 +63,18 @@ namespace EcoFinder
             }
         }
 
-        private void comboBoxIDS_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbPrevisao_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            chamado.setPrevisaoColeta(cmbPrevisao.SelectedItem.ToString());
         }
+
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            chamado.reservarChamado(chamado.idChamado[numLinha], chamado.getPrevisaoColeta());
+            coletorTela.Show();
+            this.Close();
+        }
+
+        
     }
 }

@@ -37,6 +37,7 @@
             this.btnChamado1 = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.cmbClassificar = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDistancia3
@@ -135,12 +136,22 @@
             this.cmbClassificar.TabIndex = 13;
             this.cmbClassificar.SelectedIndexChanged += new System.EventHandler(this.cmbClassificar_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(719, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 20);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Classificar por:";
+            // 
             // FrmVerChamados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1014, 595);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbClassificar);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lblDistancia1);
@@ -168,5 +179,6 @@
         private System.Windows.Forms.Label lblDistancia1;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.ComboBox cmbClassificar;
+        private System.Windows.Forms.Label label1;
     }
 }
