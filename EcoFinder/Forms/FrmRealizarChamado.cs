@@ -18,7 +18,7 @@ namespace EcoFinder
         Endereco endereco;
         FrmPrincipalSolicitante p_solicitante;
         Chamado chamado;
-        List<EnderecoDistancia> distancias;
+        
 
         public frmRealizarChamado(FrmPrincipalSolicitante p_solicitante, Pessoa pessoa, Endereco endereco)
         {
@@ -26,8 +26,7 @@ namespace EcoFinder
             this.pessoa = pessoa;
             this.p_solicitante = p_solicitante;
              this.endereco = endereco;
-            distancias = new List<EnderecoDistancia>();
-            chamado = new Chamado(pessoa, endereco,distancias);
+            chamado = new Chamado(pessoa, endereco);
         }
 
 

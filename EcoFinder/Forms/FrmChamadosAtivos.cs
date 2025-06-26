@@ -16,18 +16,18 @@ namespace EcoFinder.Forms
     {
         Pessoa pessoa;
         Endereco endereco;
-        List<EnderecoDistancia> teste = new List<EnderecoDistancia>();
+
         public FrmChamadosAtivos(Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.pessoa = pessoa;   
+            this.pessoa = pessoa;
             this.endereco = endereco;
         }
 
         private void FrmChamadosAtivos_Load(object sender, EventArgs e)
         {
 
-            Chamado chamado = new Chamado(pessoa, endereco, teste);
+            Chamado chamado = new Chamado(pessoa, endereco);
             lblEndereco1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 1);
             lblMaterial1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 2);
             lblEndereco2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 1);

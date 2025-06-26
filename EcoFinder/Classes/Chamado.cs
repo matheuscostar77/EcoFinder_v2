@@ -27,14 +27,12 @@ namespace EcoFinder
 
         private Pessoa pessoa;
         private Endereco endereco;
-        List<EnderecoDistancia> distancias;
+        
 
-        public Chamado(Pessoa pessoa, Endereco endereco, List<EnderecoDistancia> distancias)
+        public Chamado(Pessoa pessoa, Endereco endereco)
         {
             this.pessoa = pessoa;
             this.endereco = endereco;
-            this.distancias = distancias;
-
         }
         public string getMaterial()
         {

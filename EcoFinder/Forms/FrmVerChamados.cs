@@ -30,8 +30,7 @@ namespace EcoFinder.Forms
             this.pessoa = pessoa;
             this.endereco = endereco;
             this.coletorTela = coletorTela;
-            distancias = new List<EnderecoDistancia>();
-            chamado = new Chamado(pessoa,endereco,distancias);
+            chamado = new Chamado(pessoa,endereco);
         }
 
         private void FrmVerChamados_Load(object sender, EventArgs e)
