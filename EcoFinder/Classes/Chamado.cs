@@ -4,6 +4,7 @@ using GeoCoordinatePortable;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -132,53 +133,6 @@ namespace EcoFinder
 
         }
 
-        public void calcularDistancia(double latCol, double longCol)
-        {
-            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
-            {
-                try
-                {
-                    double lat2, long2;
-                    GeoCoordinate coordColetor = null;
-
-                    coordColetor = new GeoCoordinate(latCol, longCol);
-
-                    conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM vw_lat_log_user", conn))
-                    {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                int idEndereco = reader.GetInt32(0);
-                                lat2 = reader.GetDouble(1);
-                                long2 = reader.GetDouble(2);
-
-                                var coord = new GeoCoordinate(lat2, long2);
-                                double dist = coordColetor.GetDistanceTo(coord);
-
-                                EnderecoDistancia endDist = new EnderecoDistancia();
-                                endDist.setIdEndereco(idEndereco);
-                                endDist.setDistancia(dist);
-
-                                distancias.Add(endDist);
-                            }
-                            distancias.Sort((d1, d2) => d1.getDistancia().CompareTo(d2.getDistancia()));
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-
-                }
-            }
-        }
-
-
-
         public string mostrarChamado(int linha, string tipoBotao, string tipomaterial)
         {
             string tipo;
@@ -271,5 +225,77 @@ namespace EcoFinder
                 MessageBox.Show("Erro ao tentar reservar: " + ex.Message);
             }
         }
+
+        public string chamadosAtivos(string email, int numGroup, int endOuMaterial)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                {
+                    conn.Open();
+
+                    // Primeiro obtém o ID da pessoa
+                    int idpessoa;
+                    using (MySqlCommand cmdId = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
+                    {
+                        cmdId.Parameters.AddWithValue("@email", email);
+                        var result = cmdId.ExecuteScalar();
+                        idpessoa = result != null ? Convert.ToInt32(result) : 0;
+                    }
+
+                    if (idpessoa == 0)
+                    {
+                        return "Usuário não encontrado";
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT endereco_format, tipo 
+                           FROM vw_ver_chamado_reserva 
+                           WHERE id_pessoa = @id_pessoa",
+                           conn))
+                    {
+
+                        cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
+
+                        switch (numGroup)
+                        {
+                            case 1:
+                                cmd.CommandText += " LIMIT 0,1";
+                                break;
+                            case 2:
+                                cmd.CommandText += " LIMIT 1,1";
+                                break;
+                            default:
+                                return "Número de grupo inválido";
+                        }
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return endOuMaterial == 1
+                                    ? reader["endereco_format"].ToString()
+                                    : reader["tipo"].ToString();
+                            }
+                            return "Nenhum chamado encontrado";
+                        }
+                    }
+                }
+            }
+            catch (MySqlException mysqlEx)
+            {
+                MessageBox.Show($"Erro MySQL: {mysqlEx.Number} - {mysqlEx.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro geral: {ex.Message}");
+                return null;
+            }
+        }
     }
 }
+
+
+
+
+
