@@ -74,7 +74,8 @@ namespace EcoFinder
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-
+            var notificaoTela = new FrmChamadosAtivos(pessoa, endereco);
+            notificaoTela.Show();
             if (perfil == null || perfil.IsDisposed)
             {
                 perfil = new FrmPerfil();

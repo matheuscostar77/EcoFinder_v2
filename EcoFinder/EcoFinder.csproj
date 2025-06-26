@@ -263,6 +263,12 @@
     <Compile Include="Classes\Coletor.cs" />
     <Compile Include="Classes\Endereco.cs" />
     <Compile Include="Classes\EnderecoDistancia.cs" />
+    <Compile Include="Forms\FrmChamadosAtivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmChamadosAtivos.Designer.cs">
+      <DependentUpon>FrmChamadosAtivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmNotificacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmCadastro.resx">
       <DependentUpon>FrmCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmChamadosAtivos.resx">
+      <DependentUpon>FrmChamadosAtivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmColetor.resx">
       <DependentUpon>FrmColetor.cs</DependentUpon>
