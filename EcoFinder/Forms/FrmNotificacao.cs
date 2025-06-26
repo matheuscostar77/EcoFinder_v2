@@ -15,9 +15,9 @@ namespace EcoFinder.Forms
     {
         Pessoa pessoa;
         Endereco endereco;
-        frmColetor coletorTela;
-        FrmUsuario usuarioTela;
-        public FrmNotificacao(frmColetor coletorTela, Pessoa pessoa, Endereco endereco)
+        FrmPrincipalColetor p_coletor;
+        FrmPrincipalSolicitante p_solicitante;
+        public FrmNotificacao(FrmPrincipalColetor p_coletor, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
 
@@ -26,16 +26,16 @@ namespace EcoFinder.Forms
             lstNotificacao.GridLines = true;
 
             
-            this.coletorTela = coletorTela;
+            this.p_coletor = p_coletor;
             this.pessoa = pessoa;
             this.endereco = endereco;
         }
 
-        public FrmNotificacao(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco)
+        public FrmNotificacao(FrmPrincipalSolicitante p_solicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
 
-            this.usuarioTela = usuarioTela;
+            this.p_solicitante = p_solicitante;
             this.pessoa = pessoa;
             this.endereco = endereco;
         }
@@ -46,7 +46,7 @@ namespace EcoFinder.Forms
             {
                 int idpessoa;
                 conn.Open();
-                if (coletorTela != null)
+                if (p_coletor != null)
                 {
                     using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
                     {
@@ -76,7 +76,7 @@ namespace EcoFinder.Forms
                         }
                     }
                 }
-                else if (usuarioTela != null)
+                else if (p_solicitante != null)
                 {
                     using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
                     {

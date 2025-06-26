@@ -14,16 +14,17 @@ namespace EcoFinder
     public partial class frmRealizarChamado : Form
     {
         Pessoa pessoa;
-         FrmUsuario usuarioTela;
-         Endereco endereco;
+        FrmUsuario usuarioTela;
+        Endereco endereco;
+        FrmPrincipalSolicitante p_solicitante;
         Chamado chamado;
         List<EnderecoDistancia> distancias;
 
-        public frmRealizarChamado(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco)
+        public frmRealizarChamado(FrmPrincipalSolicitante p_solicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.pessoa = pessoa;
-            this.usuarioTela = usuarioTela;
+            this.p_solicitante = p_solicitante;
              this.endereco = endereco;
             distancias = new List<EnderecoDistancia>();
             chamado = new Chamado(pessoa, endereco,distancias);

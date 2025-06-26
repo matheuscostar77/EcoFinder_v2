@@ -15,11 +15,12 @@ namespace EcoFinder
         FrmLogin loginTela;
         Pessoa pessoa;
         Endereco endereco;
-        public FrmUsuario(FrmLogin loginTela, Pessoa pessoa, Endereco endereco)
+        FrmPrincipalSolicitante p_solicitante;
+        public FrmUsuario(FrmPrincipalSolicitante p_solicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
 
-            this.loginTela = loginTela;
+            this.p_solicitante = p_solicitante;
             this.pessoa = pessoa;
             this.endereco = endereco;
         }
@@ -32,36 +33,6 @@ namespace EcoFinder
         private void FrmUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             
-        }
-
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco,1);
-            cadastrarEndereco.Show();
-        }
-
-        private void btnRealizarChamado_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var realizarChamado = new frmRealizarChamado(this, pessoa,endereco);
-            realizarChamado.Show();
-        }
-
-        
-
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            loginTela.Show();
-            
-        }
-
-        private void btnAlterarEndereco_Click(object sender, EventArgs e)
-        {
-            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco, 2);
-            cadastrarEndereco.Show();
-            this.Hide();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EcoFinder.Forms;
 
 namespace EcoFinder 
 {
@@ -17,8 +18,8 @@ namespace EcoFinder
         FrmLogin loginTela;
         FrmPerfil perfil;
         frmRealizarChamado fazerChamado;
-        FrmUsuario usuario;
-        FrmAvisos avisos;
+        FrmUsuario home;
+        FrmNotificacao avisos;
          public FrmPrincipalSolicitante(FrmLogin loginTela,Endereco endereco, Pessoa pessoa)
         {
             InitializeComponent();
@@ -101,7 +102,7 @@ namespace EcoFinder
 
             if (fazerChamado == null)
             {
-                fazerChamado = new frmRealizarChamado(usuario, pessoa, endereco);
+                fazerChamado = new frmRealizarChamado(this, pessoa, endereco);
                 fazerChamado.FormClosed += FazerChamado_FormClosed; 
                 fazerChamado.MdiParent = this;
                 fazerChamado.Show();
@@ -111,7 +112,7 @@ namespace EcoFinder
             {
                 if (fazerChamado == null || fazerChamado.IsDisposed)
                 {
-                    fazerChamado = new frmRealizarChamado(usuario, pessoa, endereco);
+                    fazerChamado = new frmRealizarChamado(this, pessoa, endereco);
                     fazerChamado.FormClosed += FazerChamado_FormClosed;
                     fazerChamado.MdiParent = this;
                     fazerChamado.StartPosition = FormStartPosition.Manual;
@@ -143,7 +144,7 @@ namespace EcoFinder
         {
             if (avisos == null || avisos.IsDisposed)
             {
-                avisos = new FrmAvisos();
+                avisos = new FrmNotificacao(this,pessoa,endereco);
                 avisos.FormClosed += Avisos_FormClosed; ;
                 avisos.MdiParent = this;
                 avisos.Dock = DockStyle.Fill;
@@ -166,6 +167,29 @@ namespace EcoFinder
         {
             this.Close();
             loginTela.Show();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            if (home == null || home.IsDisposed)
+            {
+                home = new FrmUsuario(this, pessoa,endereco);
+                home.FormClosed += Home_FormClosed; ;
+                home.MdiParent = this;
+                home.Dock = DockStyle.Fill;
+                home.Show();
+            }
+            else
+            {
+                home.WindowState = FormWindowState.Normal;
+                home.BringToFront();
+                home.Activate();
+            }
+        }
+
+        private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            home = null; ;
         }
     }
 

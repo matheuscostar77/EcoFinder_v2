@@ -16,6 +16,8 @@ namespace EcoFinder
 
         
         FrmLogin loginTela;
+        FrmPerfil perfilSolicitante;
+        FrmPerfilColetor perfilColetor;
         Endereco endereco;
         Pessoa pessoa;
 
@@ -93,8 +95,7 @@ namespace EcoFinder
                 if (cadastroSucesso && tipo == "Coletor" && 
                     (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var coletorTela = new frmColetor(loginTela, pessoa, endereco);
-                    var cadastroEndTela = new frmCadEndereco(coletorTela, pessoa, endereco, 1);
+                    var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 1);
                     this.Close();
                     cadastroEndTela.Show();
                     
@@ -103,10 +104,9 @@ namespace EcoFinder
                 else if (cadastroSucesso && tipo == "Usuário Comum"
                     && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
-                    var usuarioTela = new FrmUsuario(loginTela, pessoa, endereco);
+                    var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 2);
                     this.Close();
-                    usuarioTela.Show();
-                    
+                    cadastroEndTela.Show();
 
                 }
             }

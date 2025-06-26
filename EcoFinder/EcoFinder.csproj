@@ -338,6 +338,12 @@
     <Compile Include="FrmPerfil.Designer.cs">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPerfilColetor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerfilColetor.Designer.cs">
+      <DependentUpon>FrmPerfilColetor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipalColetor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPerfil.resx">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerfilColetor.resx">
+      <DependentUpon>FrmPerfilColetor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipalColetor.resx">
       <DependentUpon>FrmPrincipalColetor.cs</DependentUpon>

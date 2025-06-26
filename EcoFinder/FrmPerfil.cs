@@ -12,6 +12,8 @@ namespace EcoFinder
 {
     public partial class FrmPerfil : Form
     {
+        Pessoa pessoa;
+        Endereco endereco;
         public FrmPerfil()
         {
             InitializeComponent();
@@ -20,6 +22,13 @@ namespace EcoFinder
         private void FrmPerfil_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+        }
+
+        private void btnalterarEndereco_Click(object sender, EventArgs e)
+        {
+            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco);
+            cadastrarEndereco.Show();
+            this.Hide();
         }
     }
 }

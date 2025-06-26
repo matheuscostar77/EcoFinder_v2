@@ -52,102 +52,114 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(299, 596);
+            this.pictureBox1.Size = new System.Drawing.Size(199, 387);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // lblCEP
             // 
             this.lblCEP.AutoSize = true;
-            this.lblCEP.Location = new System.Drawing.Point(520, 66);
+            this.lblCEP.Location = new System.Drawing.Point(347, 43);
+            this.lblCEP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCEP.Name = "lblCEP";
-            this.lblCEP.Size = new System.Drawing.Size(41, 20);
+            this.lblCEP.Size = new System.Drawing.Size(28, 13);
             this.lblCEP.TabIndex = 1;
             this.lblCEP.Text = "CEP";
             // 
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(524, 200);
+            this.lblBairro.Location = new System.Drawing.Point(349, 130);
+            this.lblBairro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBairro.Name = "lblBairro";
-            this.lblBairro.Size = new System.Drawing.Size(51, 20);
+            this.lblBairro.Size = new System.Drawing.Size(34, 13);
             this.lblBairro.TabIndex = 2;
             this.lblBairro.Text = "Bairro";
             // 
             // lblRua
             // 
             this.lblRua.AutoSize = true;
-            this.lblRua.Location = new System.Drawing.Point(524, 270);
+            this.lblRua.Location = new System.Drawing.Point(349, 176);
+            this.lblRua.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRua.Name = "lblRua";
-            this.lblRua.Size = new System.Drawing.Size(39, 20);
+            this.lblRua.Size = new System.Drawing.Size(27, 13);
             this.lblRua.TabIndex = 3;
             this.lblRua.Text = "Rua";
             // 
             // txtCEP
             // 
-            this.txtCEP.Location = new System.Drawing.Point(524, 89);
+            this.txtCEP.Location = new System.Drawing.Point(349, 58);
+            this.txtCEP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCEP.Name = "txtCEP";
-            this.txtCEP.Size = new System.Drawing.Size(127, 26);
+            this.txtCEP.Size = new System.Drawing.Size(86, 20);
             this.txtCEP.TabIndex = 4;
             this.txtCEP.TextChanged += new System.EventHandler(this.txtCEP_TextChanged);
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(524, 223);
+            this.txtBairro.Location = new System.Drawing.Point(349, 145);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(235, 26);
+            this.txtBairro.Size = new System.Drawing.Size(158, 20);
             this.txtBairro.TabIndex = 5;
             this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             // 
             // txtRua
             // 
-            this.txtRua.Location = new System.Drawing.Point(528, 293);
+            this.txtRua.Location = new System.Drawing.Point(352, 190);
+            this.txtRua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRua.Name = "txtRua";
-            this.txtRua.Size = new System.Drawing.Size(167, 26);
+            this.txtRua.Size = new System.Drawing.Size(113, 20);
             this.txtRua.TabIndex = 6;
             this.txtRua.TextChanged += new System.EventHandler(this.txtRua_TextChanged);
             // 
             // txtNumCasa
             // 
-            this.txtNumCasa.Location = new System.Drawing.Point(701, 293);
+            this.txtNumCasa.Location = new System.Drawing.Point(467, 190);
+            this.txtNumCasa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumCasa.Name = "txtNumCasa";
-            this.txtNumCasa.Size = new System.Drawing.Size(55, 26);
+            this.txtNumCasa.Size = new System.Drawing.Size(38, 20);
             this.txtNumCasa.TabIndex = 7;
             this.txtNumCasa.TextChanged += new System.EventHandler(this.txtNumCasa_TextChanged);
             // 
             // lblNumeroCasa
             // 
             this.lblNumeroCasa.AutoSize = true;
-            this.lblNumeroCasa.Location = new System.Drawing.Point(697, 270);
+            this.lblNumeroCasa.Location = new System.Drawing.Point(465, 176);
+            this.lblNumeroCasa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumeroCasa.Name = "lblNumeroCasa";
-            this.lblNumeroCasa.Size = new System.Drawing.Size(65, 20);
+            this.lblNumeroCasa.Size = new System.Drawing.Size(44, 13);
             this.lblNumeroCasa.TabIndex = 8;
             this.lblNumeroCasa.Text = "Número";
             // 
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(520, 134);
+            this.lblCidade.Location = new System.Drawing.Point(347, 87);
+            this.lblCidade.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCidade.Name = "lblCidade";
-            this.lblCidade.Size = new System.Drawing.Size(59, 20);
+            this.lblCidade.Size = new System.Drawing.Size(40, 13);
             this.lblCidade.TabIndex = 9;
             this.lblCidade.Text = "Cidade";
             // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(524, 159);
+            this.txtCidade.Location = new System.Drawing.Point(349, 103);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(147, 26);
+            this.txtCidade.Size = new System.Drawing.Size(99, 20);
             this.txtCidade.TabIndex = 10;
             this.txtCidade.TextChanged += new System.EventHandler(this.txtCidade_TextChanged);
             // 
             // btnCadEndereco
             // 
-            this.btnCadEndereco.Location = new System.Drawing.Point(524, 373);
+            this.btnCadEndereco.Location = new System.Drawing.Point(349, 242);
+            this.btnCadEndereco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCadEndereco.Name = "btnCadEndereco";
-            this.btnCadEndereco.Size = new System.Drawing.Size(117, 49);
+            this.btnCadEndereco.Size = new System.Drawing.Size(78, 32);
             this.btnCadEndereco.TabIndex = 11;
             this.btnCadEndereco.Text = "Cadastrar endereço";
             this.btnCadEndereco.UseVisualStyleBackColor = true;
@@ -155,9 +167,10 @@
             // 
             // btnPesquisarCEP
             // 
-            this.btnPesquisarCEP.Location = new System.Drawing.Point(657, 85);
+            this.btnPesquisarCEP.Location = new System.Drawing.Point(438, 55);
+            this.btnPesquisarCEP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPesquisarCEP.Name = "btnPesquisarCEP";
-            this.btnPesquisarCEP.Size = new System.Drawing.Size(121, 34);
+            this.btnPesquisarCEP.Size = new System.Drawing.Size(81, 22);
             this.btnPesquisarCEP.TabIndex = 12;
             this.btnPesquisarCEP.Text = "Pesquisar";
             this.btnPesquisarCEP.UseVisualStyleBackColor = true;
@@ -165,9 +178,10 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(671, 373);
+            this.btnLimpar.Location = new System.Drawing.Point(447, 242);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(91, 49);
+            this.btnLimpar.Size = new System.Drawing.Size(61, 32);
             this.btnLimpar.TabIndex = 13;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -175,35 +189,38 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(677, 134);
+            this.lblEstado.Location = new System.Drawing.Point(451, 87);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(60, 20);
+            this.lblEstado.Size = new System.Drawing.Size(40, 13);
             this.lblEstado.TabIndex = 14;
             this.lblEstado.Text = "Estado";
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(681, 159);
+            this.txtEstado.Location = new System.Drawing.Point(454, 103);
+            this.txtEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(81, 26);
+            this.txtEstado.Size = new System.Drawing.Size(55, 20);
             this.txtEstado.TabIndex = 15;
             this.txtEstado.TextChanged += new System.EventHandler(this.txtEstado_TextChanged);
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(681, 553);
+            this.btnVoltar.Location = new System.Drawing.Point(454, 359);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(133, 30);
+            this.btnVoltar.Size = new System.Drawing.Size(89, 20);
             this.btnVoltar.TabIndex = 16;
-            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.Text = "Continuar";
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // frmCadEndereco
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 595);
+            this.ClientSize = new System.Drawing.Size(551, 387);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
@@ -221,6 +238,7 @@
             this.Controls.Add(this.lblBairro);
             this.Controls.Add(this.lblCEP);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmCadEndereco";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";

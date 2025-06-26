@@ -17,51 +17,70 @@ namespace EcoFinder
     {
 
         private int alterarOuCadastrar;
-        FrmUsuario usuarioTela;
-        frmColetor coletorTela;
-        
+        private int tipoConta;
+
+        FrmLogin loginTela;
+
+        FrmUsuario usuarioTela; // apagar
+        frmColetor coletorTela; // apagar
+
+        FrmPerfil perfilSolicitante;
+        FrmPrincipalSolicitante p_solicitante;
+
+        FrmPrincipalColetor p_coletor;
+        FrmPerfilColetor perfilcoletor;
+         
         Pessoa pessoa;
         Endereco endereco;
 
-        public frmCadEndereco(FrmUsuario usuarioTela, Pessoa pessoa, Endereco endereco,int alterarOuCadastrar)
+        public frmCadEndereco(FrmPerfil perfilSolicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.usuarioTela = usuarioTela;
+            this.perfilSolicitante = perfilSolicitante;
             this.pessoa = pessoa;
             this.endereco = endereco;
-            this.alterarOuCadastrar = alterarOuCadastrar;
-        }
+         }
 
-        public frmCadEndereco(frmColetor coletorTela, Pessoa pessoa, Endereco endereco,int alterarOuCadastrar)
+        public frmCadEndereco(FrmLogin loginTela,Pessoa pessoa, Endereco endereco, int tipoConta)
         {
             InitializeComponent();
-            this.coletorTela = coletorTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
-            this.alterarOuCadastrar = alterarOuCadastrar;
-
+            this.tipoConta = tipoConta;
         }
+
+        public frmCadEndereco(FrmPerfilColetor perfilcoletor, Pessoa pessoa, Endereco endereco )
+        {
+            InitializeComponent();
+            this.perfilcoletor = perfilcoletor;
+            this.pessoa = pessoa;
+            this.endereco = endereco;
+ 
+        }
+       
 
 
         private void btnCadEndereco_Click(object sender, EventArgs e)
         {
             try
             {
-                if (alterarOuCadastrar == 1)
+                if (perfilSolicitante == null || perfilcoletor == null)
                 {
                     if (endereco.cadastrarEndereco())
                     {
 
                         MessageBox.Show("Endereço cadastrado!");
 
-                        if (usuarioTela == null)
+                        if (perfilSolicitante == null)
                         {
-                            coletorTela.Show();
+                            p_coletor = new FrmPrincipalColetor(loginTela, pessoa, endereco);
+                            p_coletor.Show();// por home
                             this.Close();
                         }
                         else
                         {
-                            usuarioTela.Show();
+                            p_solicitante = new FrmPrincipalSolicitante(loginTela, endereco, pessoa);
+                            p_solicitante.Show(); // home tbm
                             this.Close();
                         }
                     }
@@ -70,21 +89,21 @@ namespace EcoFinder
                         MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
                     }
                 }
-                else if (alterarOuCadastrar == 2)
+                else if (perfilSolicitante == null || perfilcoletor == null)
                 {
                     if (endereco.alterarEndereco())
                     {
 
                         MessageBox.Show("Endereço alterado!");
 
-                        if (usuarioTela == null)
+                        if (perfilSolicitante == null)
                         {
-                            coletorTela.Show();
+                            p_coletor.Show();
                             this.Close();
                         }
                         else
                         {
-                            usuarioTela.Show();
+                            p_solicitante.Show();
                             this.Close();
                         }
                     }
@@ -133,7 +152,7 @@ namespace EcoFinder
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            usuarioTela.Show();
+            perfilSolicitante.Show();
         }
         private async void btnPesquisarCEP_Click(object sender, EventArgs e)
         {

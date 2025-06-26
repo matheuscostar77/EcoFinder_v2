@@ -52,7 +52,7 @@ namespace EcoFinder
 
                 if (int.Parse(contavalida) == 1)
                 {
-                    var coletor = new frmColetor(this,pessoa, endereco);
+                    var coletor = new FrmPrincipalColetor(this,pessoa, endereco);
                     coletor.Show();
                     this.Hide();
                 }
@@ -73,7 +73,7 @@ namespace EcoFinder
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            var coletor = new frmColetor(this, pessoa, endereco);
+            var coletor = new FrmPrincipalColetor(this, pessoa, endereco);
         }
     }
 }
