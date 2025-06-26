@@ -47,5 +47,11 @@ namespace EcoFinder
             chamadosTela.Show();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var notificacaoTela = new FrmNotificacao(this, pessoa, endereco);
+            notificacaoTela.Show();
+        }
     }
 }

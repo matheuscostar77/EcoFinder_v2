@@ -33,16 +33,16 @@
             this.btnReservar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblFraseTitulo
             // 
             this.lblFraseTitulo.AutoSize = true;
             this.lblFraseTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblFraseTitulo.Location = new System.Drawing.Point(115, 65);
-            this.lblFraseTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFraseTitulo.Location = new System.Drawing.Point(172, 100);
             this.lblFraseTitulo.Name = "lblFraseTitulo";
-            this.lblFraseTitulo.Size = new System.Drawing.Size(154, 13);
+            this.lblFraseTitulo.Size = new System.Drawing.Size(229, 20);
             this.lblFraseTitulo.TabIndex = 1;
             this.lblFraseTitulo.Text = "Olá coletor, oque deseja fazer?";
             // 
@@ -51,10 +51,9 @@
             this.btnReservar.FlatAppearance.BorderSize = 0;
             this.btnReservar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReservar.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnReservar.Location = new System.Drawing.Point(497, 200);
-            this.btnReservar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReservar.Location = new System.Drawing.Point(746, 308);
             this.btnReservar.Name = "btnReservar";
-            this.btnReservar.Size = new System.Drawing.Size(167, 70);
+            this.btnReservar.Size = new System.Drawing.Size(250, 108);
             this.btnReservar.TabIndex = 3;
             this.btnReservar.Text = "Reservar um chamado";
             this.btnReservar.UseVisualStyleBackColor = true;
@@ -62,10 +61,9 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(499, 315);
-            this.btnSair.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSair.Location = new System.Drawing.Point(748, 485);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(162, 32);
+            this.btnSair.Size = new System.Drawing.Size(243, 49);
             this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
@@ -75,27 +73,36 @@
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.button1.Location = new System.Drawing.Point(497, 113);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(746, 174);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 70);
+            this.button1.Size = new System.Drawing.Size(250, 108);
             this.button1.TabIndex = 5;
             this.button1.Text = "Relatorios";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(833, 114);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmColetor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(676, 387);
+            this.ClientSize = new System.Drawing.Size(1014, 595);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnReservar);
             this.Controls.Add(this.lblFraseTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmColetor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";
@@ -110,5 +117,6 @@
         private System.Windows.Forms.Button btnReservar;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

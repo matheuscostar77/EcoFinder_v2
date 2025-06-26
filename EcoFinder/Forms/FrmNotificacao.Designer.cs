@@ -28,12 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.lstNotificacao = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SuspendLayout();
+            // 
+            // lstNotificacao
+            // 
+            this.lstNotificacao.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lstNotificacao.HideSelection = false;
+            this.lstNotificacao.Location = new System.Drawing.Point(31, 46);
+            this.lstNotificacao.Name = "lstNotificacao";
+            this.lstNotificacao.Size = new System.Drawing.Size(749, 342);
+            this.lstNotificacao.TabIndex = 0;
+            this.lstNotificacao.UseCompatibleStateImageBehavior = false;
+            this.lstNotificacao.SelectedIndexChanged += new System.EventHandler(this.lstNotificacao_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Avisos!";
+            this.columnHeader1.Width = 700;
+            // 
+            // FrmNotificacao
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lstNotificacao);
+            this.Name = "FrmNotificacao";
             this.Text = "FrmNotificacao";
+            this.Load += new System.EventHandler(this.FrmNotificacao_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        public System.Windows.Forms.ListView lstNotificacao;
     }
 }

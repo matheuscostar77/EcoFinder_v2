@@ -356,6 +356,9 @@
     <EmbeddedResource Include="Forms\FrmColetor.resx">
       <DependentUpon>FrmColetor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNotificacao.resx">
+      <DependentUpon>FrmNotificacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmRealizarChamado.resx">
       <DependentUpon>FrmRealizarChamado.cs</DependentUpon>
     </EmbeddedResource>
