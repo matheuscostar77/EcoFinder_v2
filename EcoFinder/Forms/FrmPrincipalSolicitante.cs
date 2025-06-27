@@ -13,6 +13,7 @@ namespace EcoFinder
 {
     public partial class FrmPrincipalSolicitante : Form
     {
+        FrmChamadosAtivos chamadosDisponiveis;
         Endereco endereco;
         Pessoa pessoa;
         FrmLogin loginTela;
@@ -191,6 +192,34 @@ namespace EcoFinder
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
             home = null; ;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnChamadosDisponiveis_Click(object sender, EventArgs e)
+        {
+            if (chamadosDisponiveis == null || chamadosDisponiveis.IsDisposed)
+            {
+                chamadosDisponiveis = new FrmChamadosAtivos(this, pessoa, endereco);
+                chamadosDisponiveis.FormClosed += ChamadosDisponiveis_FormClosed;
+                chamadosDisponiveis.MdiParent = this;
+                chamadosDisponiveis.Dock = DockStyle.Fill;
+                chamadosDisponiveis.Show();
+            }
+            else
+            {
+                chamadosDisponiveis.WindowState = FormWindowState.Normal;
+                chamadosDisponiveis.BringToFront();
+                chamadosDisponiveis.Activate();
+            }
+        }
+
+        private void ChamadosDisponiveis_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            chamadosDisponiveis = null;
         }
     }
 

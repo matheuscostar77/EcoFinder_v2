@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using EcoFinder.Forms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,11 @@ namespace EcoFinder
     {
         private Pessoa pessoa;
         private Endereco endereco;
-        frmColetor coletorTela;
+        //frmColetor coletorTela;
+        FrmPrincipalColetor coletorTela;
         private Chamado chamado;
         int numLinha;
-        public FrmReservar(frmColetor coletorTela , Pessoa pessoa, Endereco endereco,Chamado chamado, int numLinha)
+        public FrmReservar(FrmPrincipalColetor coletorTela, Pessoa pessoa, Endereco endereco,Chamado chamado, int numLinha)
         {
             InitializeComponent();
             this.coletorTela = coletorTela;
@@ -71,7 +73,8 @@ namespace EcoFinder
         private void btnReservar_Click(object sender, EventArgs e)
         {
             chamado.reservarChamado(chamado.idChamado[numLinha], chamado.getPrevisaoColeta());
-            coletorTela.Show();
+            var retornarVerChamados = new FrmVerChamados();
+            retornarVerChamados.Show();
             this.Close();
         }
 

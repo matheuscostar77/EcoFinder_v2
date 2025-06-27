@@ -19,11 +19,13 @@ namespace EcoFinder.Forms
 
         Pessoa pessoa;
         Endereco endereco;
-        frmColetor coletorTela;
+        //frmColetor coletorTela;
+        FrmPrincipalColetor coletorTela;
         Chamado chamado;
         List<EnderecoDistancia> distancias;
-        
-        public FrmVerChamados(frmColetor coletorTela, Pessoa pessoa, Endereco endereco)
+
+        public FrmVerChamados() { }
+        public FrmVerChamados(FrmPrincipalColetor coletorTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
 
@@ -36,15 +38,17 @@ namespace EcoFinder.Forms
         private void FrmVerChamados_Load(object sender, EventArgs e)
         {
             int total = chamado.totalChamados();
-            
+
 
             if (total == 0)
             {
-                MessageBox.Show("Não há chamados disponíveis no momento, tente novamente mais tarde!");
-                this.Close();
-                coletorTela.Show();
+                BeginInvoke((MethodInvoker)delegate {
+                    MessageBox.Show("Não há chamados disponíveis no momento, tente novamente mais tarde!");
+                    coletorTela.Show();
+                });
                 return;
             }
+
 
             // Oculta os botões conforme o número de chamados disponíveis
             if (total == 1)
@@ -80,11 +84,7 @@ namespace EcoFinder.Forms
         {
 
         }
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            coletorTela.Show();
-        }
+       
 
         private void btnChamado1_Click(object sender, EventArgs e)
         {

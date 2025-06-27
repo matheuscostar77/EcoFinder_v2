@@ -15,10 +15,18 @@ namespace EcoFinder
         Pessoa pessoa;
         Endereco endereco;
         FrmPrincipalSolicitante telasolicitante;
+        FrmPrincipalColetor telacoletor;
         public FrmPerfil(FrmPrincipalSolicitante telasolicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.telasolicitante = telasolicitante;
+            this.pessoa = pessoa;
+            this.endereco = endereco;
+        }
+        public FrmPerfil(FrmPrincipalColetor telacoletor, Pessoa pessoa, Endereco endereco)
+        {
+            InitializeComponent();
+            this.telacoletor = telacoletor;
             this.pessoa = pessoa;
             this.endereco = endereco;
         }
