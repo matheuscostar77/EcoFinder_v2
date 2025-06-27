@@ -76,8 +76,8 @@ namespace EcoFinder
                 chamado.realizarChamado(pessoa.getEmail(),chamado.getMaterial(), chamado.getQuilograma(), chamado.getQtdUnidade(),chamado.getTamanho()  );
                 MessageBox.Show("Chamado feito!");
 
-                usuarioTela.Show();
-                this.Close();
+                
+                
 
             }
             catch (Exception ex)
