@@ -69,9 +69,10 @@
             this.gpbChamado1.Controls.Add(this.lblMaterial1);
             this.gpbChamado1.Controls.Add(this.btnCancelar1);
             this.gpbChamado1.Controls.Add(this.btnConfirmar1);
-            this.gpbChamado1.Location = new System.Drawing.Point(170, 35);
+            this.gpbChamado1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gpbChamado1.Location = new System.Drawing.Point(126, 35);
             this.gpbChamado1.Name = "gpbChamado1";
-            this.gpbChamado1.Size = new System.Drawing.Size(541, 178);
+            this.gpbChamado1.Size = new System.Drawing.Size(619, 178);
             this.gpbChamado1.TabIndex = 0;
             this.gpbChamado1.TabStop = false;
             // 
@@ -114,7 +115,7 @@
             // lblQtde1
             // 
             this.lblQtde1.AutoSize = true;
-            this.lblQtde1.Location = new System.Drawing.Point(444, 80);
+            this.lblQtde1.Location = new System.Drawing.Point(522, 87);
             this.lblQtde1.Name = "lblQtde1";
             this.lblQtde1.Size = new System.Drawing.Size(65, 20);
             this.lblQtde1.TabIndex = 6;
@@ -123,7 +124,7 @@
             // lblKG1
             // 
             this.lblKG1.AutoSize = true;
-            this.lblKG1.Location = new System.Drawing.Point(444, 60);
+            this.lblKG1.Location = new System.Drawing.Point(522, 67);
             this.lblKG1.Name = "lblKG1";
             this.lblKG1.Size = new System.Drawing.Size(35, 20);
             this.lblKG1.TabIndex = 5;
@@ -132,7 +133,7 @@
             // lblStatus1
             // 
             this.lblStatus1.AutoSize = true;
-            this.lblStatus1.Location = new System.Drawing.Point(444, 22);
+            this.lblStatus1.Location = new System.Drawing.Point(522, 17);
             this.lblStatus1.Name = "lblStatus1";
             this.lblStatus1.Size = new System.Drawing.Size(56, 20);
             this.lblStatus1.TabIndex = 4;
@@ -158,7 +159,7 @@
             // 
             // btnCancelar1
             // 
-            this.btnCancelar1.Location = new System.Drawing.Point(444, 130);
+            this.btnCancelar1.Location = new System.Drawing.Point(522, 125);
             this.btnCancelar1.Name = "btnCancelar1";
             this.btnCancelar1.Size = new System.Drawing.Size(91, 30);
             this.btnCancelar1.TabIndex = 1;
@@ -168,7 +169,7 @@
             // 
             // btnConfirmar1
             // 
-            this.btnConfirmar1.Location = new System.Drawing.Point(347, 130);
+            this.btnConfirmar1.Location = new System.Drawing.Point(425, 125);
             this.btnConfirmar1.Name = "btnConfirmar1";
             this.btnConfirmar1.Size = new System.Drawing.Size(91, 30);
             this.btnConfirmar1.TabIndex = 0;
@@ -189,16 +190,16 @@
             this.gpbChamado2.Controls.Add(this.btnConfirmar2);
             this.gpbChamado2.Controls.Add(this.lblEndereco2);
             this.gpbChamado2.Controls.Add(this.lblMaterial2);
-            this.gpbChamado2.Location = new System.Drawing.Point(170, 219);
+            this.gpbChamado2.Location = new System.Drawing.Point(126, 219);
             this.gpbChamado2.Name = "gpbChamado2";
-            this.gpbChamado2.Size = new System.Drawing.Size(541, 158);
+            this.gpbChamado2.Size = new System.Drawing.Size(619, 178);
             this.gpbChamado2.TabIndex = 1;
             this.gpbChamado2.TabStop = false;
             // 
             // lblQtde2
             // 
             this.lblQtde2.AutoSize = true;
-            this.lblQtde2.Location = new System.Drawing.Point(444, 74);
+            this.lblQtde2.Location = new System.Drawing.Point(522, 88);
             this.lblQtde2.Name = "lblQtde2";
             this.lblQtde2.Size = new System.Drawing.Size(65, 20);
             this.lblQtde2.TabIndex = 10;
@@ -207,7 +208,7 @@
             // lblKG2
             // 
             this.lblKG2.AutoSize = true;
-            this.lblKG2.Location = new System.Drawing.Point(444, 54);
+            this.lblKG2.Location = new System.Drawing.Point(522, 68);
             this.lblKG2.Name = "lblKG2";
             this.lblKG2.Size = new System.Drawing.Size(35, 20);
             this.lblKG2.TabIndex = 9;
@@ -216,7 +217,7 @@
             // lblExpiraData2
             // 
             this.lblExpiraData2.AutoSize = true;
-            this.lblExpiraData2.Location = new System.Drawing.Point(96, 132);
+            this.lblExpiraData2.Location = new System.Drawing.Point(96, 155);
             this.lblExpiraData2.Name = "lblExpiraData2";
             this.lblExpiraData2.Size = new System.Drawing.Size(71, 20);
             this.lblExpiraData2.TabIndex = 8;
@@ -225,7 +226,7 @@
             // lblFeitoData2
             // 
             this.lblFeitoData2.AutoSize = true;
-            this.lblFeitoData2.Location = new System.Drawing.Point(96, 112);
+            this.lblFeitoData2.Location = new System.Drawing.Point(96, 135);
             this.lblFeitoData2.Name = "lblFeitoData2";
             this.lblFeitoData2.Size = new System.Drawing.Size(71, 20);
             this.lblFeitoData2.TabIndex = 7;
@@ -234,7 +235,7 @@
             // lblExpira2
             // 
             this.lblExpira2.AutoSize = true;
-            this.lblExpira2.Location = new System.Drawing.Point(15, 132);
+            this.lblExpira2.Location = new System.Drawing.Point(15, 155);
             this.lblExpira2.Name = "lblExpira2";
             this.lblExpira2.Size = new System.Drawing.Size(83, 20);
             this.lblExpira2.TabIndex = 6;
@@ -243,7 +244,7 @@
             // lblFeito2
             // 
             this.lblFeito2.AutoSize = true;
-            this.lblFeito2.Location = new System.Drawing.Point(15, 112);
+            this.lblFeito2.Location = new System.Drawing.Point(15, 135);
             this.lblFeito2.Name = "lblFeito2";
             this.lblFeito2.Size = new System.Drawing.Size(75, 20);
             this.lblFeito2.TabIndex = 5;
@@ -252,7 +253,7 @@
             // lblStatus2
             // 
             this.lblStatus2.AutoSize = true;
-            this.lblStatus2.Location = new System.Drawing.Point(444, 17);
+            this.lblStatus2.Location = new System.Drawing.Point(522, 17);
             this.lblStatus2.Name = "lblStatus2";
             this.lblStatus2.Size = new System.Drawing.Size(56, 20);
             this.lblStatus2.TabIndex = 4;
@@ -260,7 +261,7 @@
             // 
             // btnCancelar2
             // 
-            this.btnCancelar2.Location = new System.Drawing.Point(444, 112);
+            this.btnCancelar2.Location = new System.Drawing.Point(522, 127);
             this.btnCancelar2.Name = "btnCancelar2";
             this.btnCancelar2.Size = new System.Drawing.Size(91, 30);
             this.btnCancelar2.TabIndex = 3;
@@ -270,7 +271,7 @@
             // 
             // btnConfirmar2
             // 
-            this.btnConfirmar2.Location = new System.Drawing.Point(347, 112);
+            this.btnConfirmar2.Location = new System.Drawing.Point(425, 127);
             this.btnConfirmar2.Name = "btnConfirmar2";
             this.btnConfirmar2.Size = new System.Drawing.Size(91, 30);
             this.btnConfirmar2.TabIndex = 2;
@@ -300,6 +301,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(888, 479);
             this.Controls.Add(this.gpbChamado2);
             this.Controls.Add(this.gpbChamado1);

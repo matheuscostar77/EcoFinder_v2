@@ -37,9 +37,9 @@
             this.lstNotificacao.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.lstNotificacao.HideSelection = false;
-            this.lstNotificacao.Location = new System.Drawing.Point(31, 46);
+            this.lstNotificacao.Location = new System.Drawing.Point(12, 38);
             this.lstNotificacao.Name = "lstNotificacao";
-            this.lstNotificacao.Size = new System.Drawing.Size(749, 342);
+            this.lstNotificacao.Size = new System.Drawing.Size(768, 400);
             this.lstNotificacao.TabIndex = 0;
             this.lstNotificacao.UseCompatibleStateImageBehavior = false;
             this.lstNotificacao.SelectedIndexChanged += new System.EventHandler(this.lstNotificacao_SelectedIndexChanged);
@@ -53,6 +53,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lstNotificacao);
             this.Name = "FrmNotificacao";
