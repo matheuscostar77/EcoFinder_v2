@@ -73,7 +73,7 @@ namespace EcoFinder.Forms
             lblEndereco2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 0);
             lblMaterial2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 1);
             lblStatus2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 2);
-            lblStatus2.ForeColor = Color.Yellow;
+            lblStatus2.ForeColor = Color.DarkSalmon;
             lblExpiraData2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 3);
             lblFeitoData2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 4);
             lblKG2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 5);
@@ -85,7 +85,8 @@ namespace EcoFinder.Forms
                 lblStatus1.ForeColor = Color.Green;
                 
             }
-            else if (lblStatus2.Text == "Disponivel")
+            
+            if (lblStatus2.Text == "Disponivel")
             {
                 btnConfirmar2.Visible = false;
                 lblStatus2.ForeColor = Color.Green;
@@ -97,7 +98,8 @@ namespace EcoFinder.Forms
                 btnCancelar1.Visible = false;
                 lblStatus1.ForeColor = Color.Red;
             }
-            else if (lblStatus2.Text == "Cancelado" || lblStatus2.Text == "Desistencia")
+            
+            if (lblStatus2.Text == "Cancelado" || lblStatus2.Text == "Desistencia")
             {
                 btnConfirmar2.Visible = false;
                 btnCancelar2.Visible = false;
