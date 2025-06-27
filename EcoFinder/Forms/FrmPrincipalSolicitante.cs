@@ -78,7 +78,7 @@ namespace EcoFinder
             notificaoTela.Show();
             if (perfil == null || perfil.IsDisposed)
             {
-                perfil = new FrmPerfil();
+                perfil = new FrmPerfil(this,pessoa,endereco);
                 perfil.FormClosed += Perfil_FormClosed;
                 perfil.MdiParent = this;
                 perfil.Dock = DockStyle.Fill;

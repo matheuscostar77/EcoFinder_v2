@@ -213,6 +213,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel1);
+            this.IsMdiContainer = true;
             this.Name = "FrmPrincipalColetor";
             this.Text = "FrmPrincipalColetor";
             this.Load += new System.EventHandler(this.FrmPrincipalColetor_Load);

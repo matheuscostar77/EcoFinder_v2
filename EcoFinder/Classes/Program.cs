@@ -22,6 +22,7 @@ namespace EcoFinder
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLogin(pessoa, endereco));
-         }
+            //Application.Run(new FrmUsuario());
+        }
     }
 }

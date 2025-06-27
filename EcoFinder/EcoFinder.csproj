@@ -332,6 +332,12 @@
     <Compile Include="Forms\FrmPrincipalSolicitante.Designer.cs">
       <DependentUpon>FrmPrincipalSolicitante.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAlterarPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlterarPerfil.Designer.cs">
+      <DependentUpon>FrmAlterarPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAvisos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPrincipalSolicitante.resx">
       <DependentUpon>FrmPrincipalSolicitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAlterarPerfil.resx">
+      <DependentUpon>FrmAlterarPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAvisos.resx">
       <DependentUpon>FrmAvisos.cs</DependentUpon>

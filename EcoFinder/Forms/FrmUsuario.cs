@@ -16,6 +16,8 @@ namespace EcoFinder
         Pessoa pessoa;
         Endereco endereco;
         FrmPrincipalSolicitante p_solicitante;
+
+        public void FrmPerfil() { }
         public FrmUsuario(FrmPrincipalSolicitante p_solicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
@@ -25,6 +27,8 @@ namespace EcoFinder
             this.endereco = endereco;
         }
 
+        public  FrmUsuario() { }
+
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
 
@@ -33,6 +37,11 @@ namespace EcoFinder
         private void FrmUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+             
         }
     }
 }

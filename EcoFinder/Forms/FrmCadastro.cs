@@ -19,7 +19,7 @@ namespace EcoFinder
         FrmPerfil perfilSolicitante;
         FrmPerfilColetor perfilColetor;
         Endereco endereco;
-        Pessoa pessoa;
+         Pessoa pessoa;
 
         public FrmCadastro(FrmLogin loginTela,Pessoa pessoa, Endereco endereco)
         {
@@ -29,9 +29,7 @@ namespace EcoFinder
             this.endereco = endereco;
             
         }
-
-        
-
+         
         private void Cadastro_Load(object sender, EventArgs e)
         {
 
@@ -95,6 +93,7 @@ namespace EcoFinder
                 if (cadastroSucesso && tipo == "Coletor" && 
                     (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
+                    
                     var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 1);
                     this.Close();
                     cadastroEndTela.Show();
@@ -104,6 +103,7 @@ namespace EcoFinder
                 else if (cadastroSucesso && tipo == "Usuário Comum"
                     && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
                 {
+                    
                     var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 2);
                     this.Close();
                     cadastroEndTela.Show();

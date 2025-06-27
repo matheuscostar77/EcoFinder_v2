@@ -57,8 +57,6 @@ namespace EcoFinder
             this.endereco = endereco;
  
         }
-       
-
 
         private void btnCadEndereco_Click(object sender, EventArgs e)
         {
@@ -71,13 +69,13 @@ namespace EcoFinder
 
                         MessageBox.Show("Endereço cadastrado!");
 
-                        if (perfilSolicitante == null)
+                        if (tipoConta == 1)
                         {
                             p_coletor = new FrmPrincipalColetor(loginTela, pessoa, endereco);
                             p_coletor.Show();// por home
                             this.Close();
                         }
-                        else
+                        else if(tipoConta == 2)
                         {
                             p_solicitante = new FrmPrincipalSolicitante(loginTela, endereco, pessoa);
                             p_solicitante.Show(); // home tbm
@@ -89,7 +87,7 @@ namespace EcoFinder
                         MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
                     }
                 }
-                else if (perfilSolicitante == null || perfilcoletor == null)
+                else if (perfilSolicitante != null || perfilcoletor != null)
                 {
                     if (endereco.alterarEndereco())
                     {

@@ -14,14 +14,29 @@ namespace EcoFinder
     {
         Pessoa pessoa;
         Endereco endereco;
-        public FrmPerfil()
+        FrmPrincipalSolicitante telasolicitante;
+        public FrmPerfil(FrmPrincipalSolicitante telasolicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
+            this.telasolicitante = telasolicitante;
+            this.pessoa = pessoa;
+            this.endereco = endereco;
         }
 
         private void FrmPerfil_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+
+            txbEmail.Text = pessoa.getEmail();
+            txbNome.Text = pessoa.getName();
+            txbGenero.Text = pessoa.getSex();
+            txbCep.Text = endereco.getCep();
+            txbCidade.Text = endereco.getCidade();
+            txbEstado.Text = endereco.getEstado();
+            txbRua.Text = endereco.getNomeRua();
+            txbnumerocasa.Text = endereco.getNumeroCasa();
+            txbBairro.Text = endereco.getNomeBairro();
+
         }
 
         private void btnalterarEndereco_Click(object sender, EventArgs e)
@@ -29,6 +44,12 @@ namespace EcoFinder
             var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco);
             cadastrarEndereco.Show();
             this.Hide();
+        }
+        
+        private void btnAlterarPerfil_Click(object sender, EventArgs e)
+        {
+            var cadastro = new FrmAlterarPerfil(this, pessoa, endereco);
+            cadastro.Show();
         }
     }
 }
