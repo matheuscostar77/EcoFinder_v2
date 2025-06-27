@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoFinder.Forms;
 
-namespace EcoFinder 
+namespace EcoFinder
 {
     public partial class FrmPrincipalSolicitante : Form
     {
@@ -20,18 +20,18 @@ namespace EcoFinder
         frmRealizarChamado fazerChamado;
         FrmUsuario home;
         FrmNotificacao avisos;
-         public FrmPrincipalSolicitante(FrmLogin loginTela,Endereco endereco, Pessoa pessoa)
+        public FrmPrincipalSolicitante(FrmLogin loginTela, Endereco endereco, Pessoa pessoa)
         {
             InitializeComponent();
             this.loginTela = loginTela;
             this.endereco = endereco;
             this.pessoa = pessoa;
             mdiProp();
-         }
-         private void mdiProp()
+        }
+        private void mdiProp()
         {
             this.SetBevel(false);
-            Controls.OfType<MdiClient>().FirstOrDefault().BackColor =  Color.White;
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
         }
 
         bool sidebarExpand = true;
@@ -74,7 +74,7 @@ namespace EcoFinder
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            var notificaoTela = new FrmChamadosAtivos(pessoa, endereco);
+            var notificaoTela = new FrmChamadosAtivos(this, pessoa, endereco);
             notificaoTela.Show();
             if (perfil == null || perfil.IsDisposed)
             {
@@ -95,7 +95,7 @@ namespace EcoFinder
 
         private void Perfil_FormClosed(object sender, FormClosedEventArgs e)
         {
-           perfil = null;
+            perfil = null;
         }
 
         private void btnCriarChamado_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace EcoFinder
             if (fazerChamado == null)
             {
                 fazerChamado = new frmRealizarChamado(this, pessoa, endereco);
-                fazerChamado.FormClosed += FazerChamado_FormClosed; 
+                fazerChamado.FormClosed += FazerChamado_FormClosed;
                 fazerChamado.MdiParent = this;
                 fazerChamado.Show();
 
@@ -117,7 +117,7 @@ namespace EcoFinder
                     fazerChamado.FormClosed += FazerChamado_FormClosed;
                     fazerChamado.MdiParent = this;
                     fazerChamado.StartPosition = FormStartPosition.Manual;
-                     fazerChamado.Dock = DockStyle.Fill;
+                    fazerChamado.Dock = DockStyle.Fill;
                     fazerChamado.Show();
                 }
                 else
@@ -145,7 +145,7 @@ namespace EcoFinder
         {
             if (avisos == null || avisos.IsDisposed)
             {
-                avisos = new FrmNotificacao(this,pessoa,endereco);
+                avisos = new FrmNotificacao(this, pessoa, endereco);
                 avisos.FormClosed += Avisos_FormClosed; ;
                 avisos.MdiParent = this;
                 avisos.Dock = DockStyle.Fill;
@@ -174,7 +174,7 @@ namespace EcoFinder
         {
             if (home == null || home.IsDisposed)
             {
-                home = new FrmUsuario(this, pessoa,endereco);
+                home = new FrmUsuario(this, pessoa, endereco);
                 home.FormClosed += Home_FormClosed; ;
                 home.MdiParent = this;
                 home.Dock = DockStyle.Fill;

@@ -232,7 +232,6 @@ namespace EcoFinder
                 {
                     conn.Open();
 
-                    // Primeiro obtém o ID da pessoa
                     int idpessoa;
                     using (MySqlCommand cmdId = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
                     {
@@ -246,9 +245,8 @@ namespace EcoFinder
                         return "Usuário não encontrado";
                     }
 
-                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT endereco_format, tipo 
-                           FROM vw_ver_chamado_reserva 
-                           WHERE id_pessoa = @id_pessoa",
+                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT * FROM vw_ver_chamado_reserva 
+                           WHERE id_pessoa = @id_pessoa ORDER BY (status = 'Disponivel')",
                            conn))
                     {
 
@@ -270,11 +268,26 @@ namespace EcoFinder
                         {
                             if (reader.Read())
                             {
-                                return endOuMaterial == 1
-                                    ? reader["endereco_format"].ToString()
-                                    : reader["tipo"].ToString();
+                                idChamado.Add(reader.GetInt32("id_chamado"));
+                                switch (endOuMaterial)
+                                {
+                                    case 0:
+                                        return reader["endereco_format"].ToString();
+                                    case 1:
+                                        return reader["tipo"].ToString();
+                                    case 2:
+                                        return reader["status"].ToString();
+                                    case 3:
+                                        return reader["data_expiracao"].ToString();
+                                    case 4:
+                                        return reader["data_chamado"].ToString();
+                                    case 5:
+                                        return reader["kilograma"].ToString() + "KG";
+                                    case 6:
+                                        return reader["qtde_unitaria"].ToString() + " uni.";
+                                }
                             }
-                            return "Nenhum chamado encontrado";
+                            return null;
                         }
                     }
                 }
@@ -288,6 +301,86 @@ namespace EcoFinder
             {
                 MessageBox.Show($"Erro geral: {ex.Message}");
                 return null;
+            }
+        }
+
+        public bool confirmarChamado(string tipoConta, int numColecao)
+        {
+            try
+            {
+                using(MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("p_confirmar_coleta",conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@p_id_chamado_reservado", idChamado[numColecao]);
+                        cmd.Parameters.AddWithValue("@p_tipo_usuario", tipoConta);
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            return true;
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public bool desistirChamado(int numColecao)
+        {
+            try
+            {
+                using(MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("PR_CANCELANDO_RESERVA",conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@P_ID_CHAMADO", idChamado[numColecao]);
+
+                        var resultadoParam = new MySqlParameter("@RESULT", MySqlDbType.Bit);
+                        resultadoParam.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(resultadoParam);
+
+                        cmd.ExecuteNonQuery();
+
+                        bool resultado = false;
+                        if (resultadoParam.Value != DBNull.Value)
+                        {
+                            resultado = Convert.ToBoolean(resultadoParam.Value);
+                        }
+
+                        if (resultado)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+                return false;
             }
         }
     }
