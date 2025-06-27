@@ -157,5 +157,20 @@ namespace EcoFinder.Forms
                 MessageBox.Show("Cancelado");
             }
         }
+
+        private void btnCancelar2_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+            "Certeza que deseja cancelar a reserva?\nVocê estará passivo de strikes caso cancele!",
+            "Cancelar reserva",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                chamado.desistirChamado(1);
+                MessageBox.Show("Cancelado");
+            }
+        }
     }
 }

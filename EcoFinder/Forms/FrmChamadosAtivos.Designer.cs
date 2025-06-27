@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.gpbChamado1 = new System.Windows.Forms.GroupBox();
+            this.lblFeitoData1 = new System.Windows.Forms.Label();
+            this.lblExpiraData1 = new System.Windows.Forms.Label();
+            this.lblExpira1 = new System.Windows.Forms.Label();
+            this.lblFeito1 = new System.Windows.Forms.Label();
+            this.lblQtde1 = new System.Windows.Forms.Label();
+            this.lblKG1 = new System.Windows.Forms.Label();
+            this.lblStatus1 = new System.Windows.Forms.Label();
             this.lblEndereco1 = new System.Windows.Forms.Label();
             this.lblMaterial1 = new System.Windows.Forms.Label();
             this.btnCancelar1 = new System.Windows.Forms.Button();
             this.btnConfirmar1 = new System.Windows.Forms.Button();
             this.gpbChamado2 = new System.Windows.Forms.GroupBox();
+            this.lblQtde2 = new System.Windows.Forms.Label();
+            this.lblKG2 = new System.Windows.Forms.Label();
+            this.lblExpiraData2 = new System.Windows.Forms.Label();
+            this.lblFeitoData2 = new System.Windows.Forms.Label();
+            this.lblExpira2 = new System.Windows.Forms.Label();
+            this.lblFeito2 = new System.Windows.Forms.Label();
+            this.lblStatus2 = new System.Windows.Forms.Label();
             this.btnCancelar2 = new System.Windows.Forms.Button();
             this.btnConfirmar2 = new System.Windows.Forms.Button();
             this.lblEndereco2 = new System.Windows.Forms.Label();
             this.lblMaterial2 = new System.Windows.Forms.Label();
-            this.lblStatus1 = new System.Windows.Forms.Label();
-            this.lblStatus2 = new System.Windows.Forms.Label();
-            this.lblFeito2 = new System.Windows.Forms.Label();
-            this.lblExpira2 = new System.Windows.Forms.Label();
-            this.lblFeitoData2 = new System.Windows.Forms.Label();
-            this.lblExpiraData2 = new System.Windows.Forms.Label();
-            this.lblKG2 = new System.Windows.Forms.Label();
-            this.lblQtde2 = new System.Windows.Forms.Label();
-            this.lblKG1 = new System.Windows.Forms.Label();
-            this.lblQtde1 = new System.Windows.Forms.Label();
-            this.lblFeito1 = new System.Windows.Forms.Label();
-            this.lblExpira1 = new System.Windows.Forms.Label();
-            this.lblExpiraData1 = new System.Windows.Forms.Label();
-            this.lblFeitoData1 = new System.Windows.Forms.Label();
             this.gpbChamado1.SuspendLayout();
             this.gpbChamado2.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +74,69 @@
             this.gpbChamado1.Size = new System.Drawing.Size(541, 178);
             this.gpbChamado1.TabIndex = 0;
             this.gpbChamado1.TabStop = false;
+            // 
+            // lblFeitoData1
+            // 
+            this.lblFeitoData1.AutoSize = true;
+            this.lblFeitoData1.Location = new System.Drawing.Point(96, 135);
+            this.lblFeitoData1.Name = "lblFeitoData1";
+            this.lblFeitoData1.Size = new System.Drawing.Size(71, 20);
+            this.lblFeitoData1.TabIndex = 10;
+            this.lblFeitoData1.Text = "00/00/00";
+            // 
+            // lblExpiraData1
+            // 
+            this.lblExpiraData1.AutoSize = true;
+            this.lblExpiraData1.Location = new System.Drawing.Point(96, 155);
+            this.lblExpiraData1.Name = "lblExpiraData1";
+            this.lblExpiraData1.Size = new System.Drawing.Size(71, 20);
+            this.lblExpiraData1.TabIndex = 9;
+            this.lblExpiraData1.Text = "00/00/00";
+            // 
+            // lblExpira1
+            // 
+            this.lblExpira1.AutoSize = true;
+            this.lblExpira1.Location = new System.Drawing.Point(15, 155);
+            this.lblExpira1.Name = "lblExpira1";
+            this.lblExpira1.Size = new System.Drawing.Size(83, 20);
+            this.lblExpira1.TabIndex = 8;
+            this.lblExpira1.Text = "Expira em:";
+            // 
+            // lblFeito1
+            // 
+            this.lblFeito1.AutoSize = true;
+            this.lblFeito1.Location = new System.Drawing.Point(15, 135);
+            this.lblFeito1.Name = "lblFeito1";
+            this.lblFeito1.Size = new System.Drawing.Size(75, 20);
+            this.lblFeito1.TabIndex = 7;
+            this.lblFeito1.Text = "Feito em:";
+            // 
+            // lblQtde1
+            // 
+            this.lblQtde1.AutoSize = true;
+            this.lblQtde1.Location = new System.Drawing.Point(444, 80);
+            this.lblQtde1.Name = "lblQtde1";
+            this.lblQtde1.Size = new System.Drawing.Size(65, 20);
+            this.lblQtde1.TabIndex = 6;
+            this.lblQtde1.Text = "100 uni.";
+            // 
+            // lblKG1
+            // 
+            this.lblKG1.AutoSize = true;
+            this.lblKG1.Location = new System.Drawing.Point(444, 60);
+            this.lblKG1.Name = "lblKG1";
+            this.lblKG1.Size = new System.Drawing.Size(35, 20);
+            this.lblKG1.TabIndex = 5;
+            this.lblKG1.Text = "0kg";
+            // 
+            // lblStatus1
+            // 
+            this.lblStatus1.AutoSize = true;
+            this.lblStatus1.Location = new System.Drawing.Point(444, 22);
+            this.lblStatus1.Name = "lblStatus1";
+            this.lblStatus1.Size = new System.Drawing.Size(56, 20);
+            this.lblStatus1.TabIndex = 4;
+            this.lblStatus1.Text = "Status";
             // 
             // lblEndereco1
             // 
@@ -132,6 +195,69 @@
             this.gpbChamado2.TabIndex = 1;
             this.gpbChamado2.TabStop = false;
             // 
+            // lblQtde2
+            // 
+            this.lblQtde2.AutoSize = true;
+            this.lblQtde2.Location = new System.Drawing.Point(444, 74);
+            this.lblQtde2.Name = "lblQtde2";
+            this.lblQtde2.Size = new System.Drawing.Size(65, 20);
+            this.lblQtde2.TabIndex = 10;
+            this.lblQtde2.Text = "100 uni.";
+            // 
+            // lblKG2
+            // 
+            this.lblKG2.AutoSize = true;
+            this.lblKG2.Location = new System.Drawing.Point(444, 54);
+            this.lblKG2.Name = "lblKG2";
+            this.lblKG2.Size = new System.Drawing.Size(35, 20);
+            this.lblKG2.TabIndex = 9;
+            this.lblKG2.Text = "0kg";
+            // 
+            // lblExpiraData2
+            // 
+            this.lblExpiraData2.AutoSize = true;
+            this.lblExpiraData2.Location = new System.Drawing.Point(96, 132);
+            this.lblExpiraData2.Name = "lblExpiraData2";
+            this.lblExpiraData2.Size = new System.Drawing.Size(71, 20);
+            this.lblExpiraData2.TabIndex = 8;
+            this.lblExpiraData2.Text = "00/00/00";
+            // 
+            // lblFeitoData2
+            // 
+            this.lblFeitoData2.AutoSize = true;
+            this.lblFeitoData2.Location = new System.Drawing.Point(96, 112);
+            this.lblFeitoData2.Name = "lblFeitoData2";
+            this.lblFeitoData2.Size = new System.Drawing.Size(71, 20);
+            this.lblFeitoData2.TabIndex = 7;
+            this.lblFeitoData2.Text = "00/00/00";
+            // 
+            // lblExpira2
+            // 
+            this.lblExpira2.AutoSize = true;
+            this.lblExpira2.Location = new System.Drawing.Point(15, 132);
+            this.lblExpira2.Name = "lblExpira2";
+            this.lblExpira2.Size = new System.Drawing.Size(83, 20);
+            this.lblExpira2.TabIndex = 6;
+            this.lblExpira2.Text = "Expira em:";
+            // 
+            // lblFeito2
+            // 
+            this.lblFeito2.AutoSize = true;
+            this.lblFeito2.Location = new System.Drawing.Point(15, 112);
+            this.lblFeito2.Name = "lblFeito2";
+            this.lblFeito2.Size = new System.Drawing.Size(75, 20);
+            this.lblFeito2.TabIndex = 5;
+            this.lblFeito2.Text = "Feito em:";
+            // 
+            // lblStatus2
+            // 
+            this.lblStatus2.AutoSize = true;
+            this.lblStatus2.Location = new System.Drawing.Point(444, 17);
+            this.lblStatus2.Name = "lblStatus2";
+            this.lblStatus2.Size = new System.Drawing.Size(56, 20);
+            this.lblStatus2.TabIndex = 4;
+            this.lblStatus2.Text = "Status";
+            // 
             // btnCancelar2
             // 
             this.btnCancelar2.Location = new System.Drawing.Point(444, 112);
@@ -140,6 +266,7 @@
             this.btnCancelar2.TabIndex = 3;
             this.btnCancelar2.Text = "Cancelar";
             this.btnCancelar2.UseVisualStyleBackColor = true;
+            this.btnCancelar2.Click += new System.EventHandler(this.btnCancelar2_Click);
             // 
             // btnConfirmar2
             // 
@@ -168,132 +295,6 @@
             this.lblMaterial2.Size = new System.Drawing.Size(65, 20);
             this.lblMaterial2.TabIndex = 0;
             this.lblMaterial2.Text = "Material";
-            // 
-            // lblStatus1
-            // 
-            this.lblStatus1.AutoSize = true;
-            this.lblStatus1.Location = new System.Drawing.Point(444, 22);
-            this.lblStatus1.Name = "lblStatus1";
-            this.lblStatus1.Size = new System.Drawing.Size(56, 20);
-            this.lblStatus1.TabIndex = 4;
-            this.lblStatus1.Text = "Status";
-            // 
-            // lblStatus2
-            // 
-            this.lblStatus2.AutoSize = true;
-            this.lblStatus2.Location = new System.Drawing.Point(444, 17);
-            this.lblStatus2.Name = "lblStatus2";
-            this.lblStatus2.Size = new System.Drawing.Size(56, 20);
-            this.lblStatus2.TabIndex = 4;
-            this.lblStatus2.Text = "Status";
-            // 
-            // lblFeito2
-            // 
-            this.lblFeito2.AutoSize = true;
-            this.lblFeito2.Location = new System.Drawing.Point(15, 112);
-            this.lblFeito2.Name = "lblFeito2";
-            this.lblFeito2.Size = new System.Drawing.Size(75, 20);
-            this.lblFeito2.TabIndex = 5;
-            this.lblFeito2.Text = "Feito em:";
-            // 
-            // lblExpira2
-            // 
-            this.lblExpira2.AutoSize = true;
-            this.lblExpira2.Location = new System.Drawing.Point(15, 132);
-            this.lblExpira2.Name = "lblExpira2";
-            this.lblExpira2.Size = new System.Drawing.Size(83, 20);
-            this.lblExpira2.TabIndex = 6;
-            this.lblExpira2.Text = "Expira em:";
-            // 
-            // lblFeitoData2
-            // 
-            this.lblFeitoData2.AutoSize = true;
-            this.lblFeitoData2.Location = new System.Drawing.Point(96, 112);
-            this.lblFeitoData2.Name = "lblFeitoData2";
-            this.lblFeitoData2.Size = new System.Drawing.Size(71, 20);
-            this.lblFeitoData2.TabIndex = 7;
-            this.lblFeitoData2.Text = "00/00/00";
-            // 
-            // lblExpiraData2
-            // 
-            this.lblExpiraData2.AutoSize = true;
-            this.lblExpiraData2.Location = new System.Drawing.Point(96, 132);
-            this.lblExpiraData2.Name = "lblExpiraData2";
-            this.lblExpiraData2.Size = new System.Drawing.Size(71, 20);
-            this.lblExpiraData2.TabIndex = 8;
-            this.lblExpiraData2.Text = "00/00/00";
-            // 
-            // lblKG2
-            // 
-            this.lblKG2.AutoSize = true;
-            this.lblKG2.Location = new System.Drawing.Point(444, 54);
-            this.lblKG2.Name = "lblKG2";
-            this.lblKG2.Size = new System.Drawing.Size(35, 20);
-            this.lblKG2.TabIndex = 9;
-            this.lblKG2.Text = "0kg";
-            // 
-            // lblQtde2
-            // 
-            this.lblQtde2.AutoSize = true;
-            this.lblQtde2.Location = new System.Drawing.Point(444, 74);
-            this.lblQtde2.Name = "lblQtde2";
-            this.lblQtde2.Size = new System.Drawing.Size(65, 20);
-            this.lblQtde2.TabIndex = 10;
-            this.lblQtde2.Text = "100 uni.";
-            // 
-            // lblKG1
-            // 
-            this.lblKG1.AutoSize = true;
-            this.lblKG1.Location = new System.Drawing.Point(444, 60);
-            this.lblKG1.Name = "lblKG1";
-            this.lblKG1.Size = new System.Drawing.Size(35, 20);
-            this.lblKG1.TabIndex = 5;
-            this.lblKG1.Text = "0kg";
-            // 
-            // lblQtde1
-            // 
-            this.lblQtde1.AutoSize = true;
-            this.lblQtde1.Location = new System.Drawing.Point(444, 80);
-            this.lblQtde1.Name = "lblQtde1";
-            this.lblQtde1.Size = new System.Drawing.Size(65, 20);
-            this.lblQtde1.TabIndex = 6;
-            this.lblQtde1.Text = "100 uni.";
-            // 
-            // lblFeito1
-            // 
-            this.lblFeito1.AutoSize = true;
-            this.lblFeito1.Location = new System.Drawing.Point(15, 135);
-            this.lblFeito1.Name = "lblFeito1";
-            this.lblFeito1.Size = new System.Drawing.Size(75, 20);
-            this.lblFeito1.TabIndex = 7;
-            this.lblFeito1.Text = "Feito em:";
-            // 
-            // lblExpira1
-            // 
-            this.lblExpira1.AutoSize = true;
-            this.lblExpira1.Location = new System.Drawing.Point(15, 155);
-            this.lblExpira1.Name = "lblExpira1";
-            this.lblExpira1.Size = new System.Drawing.Size(83, 20);
-            this.lblExpira1.TabIndex = 8;
-            this.lblExpira1.Text = "Expira em:";
-            // 
-            // lblExpiraData1
-            // 
-            this.lblExpiraData1.AutoSize = true;
-            this.lblExpiraData1.Location = new System.Drawing.Point(96, 155);
-            this.lblExpiraData1.Name = "lblExpiraData1";
-            this.lblExpiraData1.Size = new System.Drawing.Size(71, 20);
-            this.lblExpiraData1.TabIndex = 9;
-            this.lblExpiraData1.Text = "00/00/00";
-            // 
-            // lblFeitoData1
-            // 
-            this.lblFeitoData1.AutoSize = true;
-            this.lblFeitoData1.Location = new System.Drawing.Point(96, 135);
-            this.lblFeitoData1.Name = "lblFeitoData1";
-            this.lblFeitoData1.Size = new System.Drawing.Size(71, 20);
-            this.lblFeitoData1.TabIndex = 10;
-            this.lblFeitoData1.Text = "00/00/00";
             // 
             // FrmChamadosAtivos
             // 
