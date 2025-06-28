@@ -29,8 +29,8 @@ namespace EcoFinder
 
         private void lblCriarConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var cadastro = new FrmCadastro(this, pessoa, endereco);
-            cadastro.Show();
+            var cadastroTela = new FrmCadastro(this, pessoa, endereco);
+            cadastroTela.Show();
             this.Hide();
         }
 

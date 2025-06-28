@@ -24,24 +24,25 @@ namespace EcoFinder
         FrmUsuario usuarioTela; // apagar
         frmColetor coletorTela; // apagar
 
-        FrmPerfil perfilSolicitante;
+        FrmPerfil perfilTela;
         FrmPrincipalSolicitante p_solicitante;
 
         FrmPrincipalColetor p_coletor;
-        FrmPerfilColetor perfilcoletor;
-         
+
+
         Pessoa pessoa;
         Endereco endereco;
 
-        public frmCadEndereco(FrmPerfil perfilSolicitante, Pessoa pessoa, Endereco endereco)
+        public frmCadEndereco(FrmPerfil perfilTela, Pessoa pessoa, Endereco endereco, int tipoConta)
         {
             InitializeComponent();
-            this.perfilSolicitante = perfilSolicitante;
+            this.perfilTela = perfilTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
-         }
+            this.tipoConta = tipoConta;
+        }
 
-        public frmCadEndereco(FrmLogin loginTela,Pessoa pessoa, Endereco endereco, int tipoConta)
+        public frmCadEndereco(FrmLogin loginTela, Pessoa pessoa, Endereco endereco, int tipoConta)
         {
             InitializeComponent();
             this.pessoa = pessoa;
@@ -49,20 +50,12 @@ namespace EcoFinder
             this.tipoConta = tipoConta;
         }
 
-        public frmCadEndereco(FrmPerfilColetor perfilcoletor, Pessoa pessoa, Endereco endereco )
-        {
-            InitializeComponent();
-            this.perfilcoletor = perfilcoletor;
-            this.pessoa = pessoa;
-            this.endereco = endereco;
- 
-        }
 
         private void btnCadEndereco_Click(object sender, EventArgs e)
         {
             try
             {
-                if (perfilSolicitante == null || perfilcoletor == null)
+                if (perfilTela == null)
                 {
                     if (endereco.cadastrarEndereco())
                     {
@@ -75,7 +68,7 @@ namespace EcoFinder
                             p_coletor.Show();// por home
                             this.Close();
                         }
-                        else if(tipoConta == 2)
+                        else if (tipoConta == 2)
                         {
                             p_solicitante = new FrmPrincipalSolicitante(loginTela, endereco, pessoa);
                             p_solicitante.Show(); // home tbm
@@ -87,19 +80,19 @@ namespace EcoFinder
                         MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
                     }
                 }
-                else if (perfilSolicitante != null || perfilcoletor != null)
+                else if (perfilTela != null)
                 {
                     if (endereco.alterarEndereco())
                     {
 
                         MessageBox.Show("Endereço alterado!");
 
-                        if (perfilSolicitante == null)
+                        if (tipoConta == 1)
                         {
                             p_coletor.Show();
                             this.Close();
                         }
-                        else
+                        else if (tipoConta == 2)
                         {
                             p_solicitante.Show();
                             this.Close();
@@ -150,7 +143,7 @@ namespace EcoFinder
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            perfilSolicitante.Show();
+            perfilTela.Show();
         }
         private async void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
@@ -172,9 +165,9 @@ namespace EcoFinder
 
                         endereco.passarCoordenadas(latitude, longitude);
 
-                        
 
-                        
+
+
                     }
                 }
                 catch (Exception ex)
@@ -188,6 +181,6 @@ namespace EcoFinder
             }
         }
 
-        
+
     }
 }

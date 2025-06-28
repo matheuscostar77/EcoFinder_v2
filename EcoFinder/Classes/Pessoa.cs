@@ -18,7 +18,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
  
-        private string stringConexao = "datasource=localhost;username=root;password=mysqlpassword;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
 
 
         public Pessoa()
@@ -183,8 +183,56 @@ namespace EcoFinder
             }
 
         }// fim metodo login
-         
-        
+        public bool alterarDados(string emailAntigo)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(stringConexao))
+                {
+                    conn.Open();
+                    int idpessoa = 0;
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@email", emailAntigo);
+
+                        idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    }
+
+                    using (MySqlCommand cmd2 = new MySqlCommand("UPDATE tb_pessoa SET" +
+                                                                "nome = @nome " +
+                                                                "email = @email" +
+                                                                "senha = @senha" +
+                                                                "genero = @genero",
+                                                                conn))
+                    {
+
+                        cmd2.Parameters.AddWithValue("@nome", name);
+                        cmd2.Parameters.AddWithValue("@email", email);
+                        cmd2.Parameters.AddWithValue("@senha", senha);
+                        cmd2.Parameters.AddWithValue("@genero", sex);
+
+                        try
+                        {
+                            cmd2.ExecuteNonQuery();
+                            MessageBox.Show("Dados alterados com sucesso");
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
     }
 
 }

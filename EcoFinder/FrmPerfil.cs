@@ -14,21 +14,24 @@ namespace EcoFinder
     {
         Pessoa pessoa;
         Endereco endereco;
-        FrmPrincipalSolicitante telasolicitante;
-        FrmPrincipalColetor telacoletor;
-        public FrmPerfil(FrmPrincipalSolicitante telasolicitante, Pessoa pessoa, Endereco endereco)
+        FrmPrincipalSolicitante solicitanteTela;
+        FrmPrincipalColetor coletorTela;
+        int tipoConta;
+        public FrmPerfil(FrmPrincipalSolicitante solicitanteTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.telasolicitante = telasolicitante;
+            this.solicitanteTela = solicitanteTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
+            tipoConta = 2;
         }
-        public FrmPerfil(FrmPrincipalColetor telacoletor, Pessoa pessoa, Endereco endereco)
+        public FrmPerfil(FrmPrincipalColetor coletorTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.telacoletor = telacoletor;
+            this.coletorTela = coletorTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
+            tipoConta = 1;
         }
 
         private void FrmPerfil_Load(object sender, EventArgs e)
@@ -49,15 +52,16 @@ namespace EcoFinder
 
         private void btnalterarEndereco_Click(object sender, EventArgs e)
         {
-            var cadastrarEndereco = new frmCadEndereco(this, pessoa, endereco);
-            cadastrarEndereco.Show();
+            var alterarEndereco = new frmCadEndereco(this, pessoa, endereco, tipoConta);
+            alterarEndereco.Show();
             this.Hide();
         }
         
         private void btnAlterarPerfil_Click(object sender, EventArgs e)
         {
-            var cadastro = new FrmAlterarPerfil(this, pessoa, endereco);
-            cadastro.Show();
+            var alterarDados = new FrmCadastro(this, pessoa, endereco);
+            alterarDados.Show();
+            this.Hide();
         }
     }
 }

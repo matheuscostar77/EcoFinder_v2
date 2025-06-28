@@ -14,25 +14,38 @@ namespace EcoFinder
     public partial class FrmCadastro : Form
     {
 
-        
-        FrmLogin loginTela;
-        FrmPerfil perfilSolicitante;
-        FrmPerfilColetor perfilColetor;
-        Endereco endereco;
-         Pessoa pessoa;
 
-        public FrmCadastro(FrmLogin loginTela,Pessoa pessoa, Endereco endereco)
+        FrmLogin loginTela;
+        FrmPerfil perfilTela;
+
+        Endereco endereco;
+        Pessoa pessoa;
+
+        string emailAntigo;
+
+        public FrmCadastro(FrmLogin loginTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.loginTela = loginTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
-            
+
         }
-         
+
+        public FrmCadastro(FrmPerfil perfilTela, Pessoa pessoa, Endereco endereco)
+        {
+            InitializeComponent();
+            this.perfilTela = perfilTela;
+            this.pessoa = pessoa;
+            this.endereco = endereco;
+        }
+
         private void Cadastro_Load(object sender, EventArgs e)
         {
-
+            if (perfilTela != null)
+            {
+                emailAntigo = pessoa.getEmail();
+            }
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -80,44 +93,52 @@ namespace EcoFinder
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
 
             if (cbxTermos.Checked == true && txtNome.Text != "" && txtEmail.Text != ""
                 && pessoa.conferirSenhaIgual(txtSenha.Text, txtConfirmarSenha.Text)
                 && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro")
                 && (pessoa.getTipoConta() == "Coletor" || pessoa.getTipoConta() == "Usuário Comum"))
             {
-                bool cadastroSucesso = pessoa.CadastrarPessoa();
+                
                 string tipo = pessoa.getTipoConta();
 
-                if (cadastroSucesso && tipo == "Coletor" && 
-                    (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
+                if (perfilTela == null)
                 {
-                    
-                    var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 1);
-                    this.Close();
-                    cadastroEndTela.Show();
-                    
+                    bool cadastroSucesso = pessoa.CadastrarPessoa();
+                    if (cadastroSucesso && tipo == "Coletor" &&
+                        (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
+                    {
 
+                        var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 1);
+                        this.Close();
+                        cadastroEndTela.Show();
+
+
+                    }
+                    else if (cadastroSucesso && tipo == "Usuário Comum"
+                        && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
+                    {
+
+                        var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 2);
+                        this.Close();
+                        cadastroEndTela.Show();
+
+                    }
                 }
-                else if (cadastroSucesso && tipo == "Usuário Comum"
-                    && (pessoa.getSex() == "Masculino" || pessoa.getSex() == "Feminino" || pessoa.getSex() == "Outro"))
+                else if (perfilTela != null)
                 {
-                    
-                    var cadastroEndTela = new frmCadEndereco(loginTela, pessoa, endereco, 2);
-                    this.Close();
-                    cadastroEndTela.Show();
-
+                    pessoa.alterarDados(emailAntigo);
                 }
+                
             }
             else
             {
-                
                 MessageBox.Show("Falta dados");
             }
 
         }
 
-        
+
     }
 }
