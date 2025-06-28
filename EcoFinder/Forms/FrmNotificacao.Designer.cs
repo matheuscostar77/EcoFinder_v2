@@ -37,8 +37,8 @@
             this.lstNotificacao.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.lstNotificacao.HideSelection = false;
-            this.lstNotificacao.Location = new System.Drawing.Point(21, 30);
-            this.lstNotificacao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstNotificacao.Location = new System.Drawing.Point(137, 99);
+            this.lstNotificacao.Margin = new System.Windows.Forms.Padding(2);
             this.lstNotificacao.Name = "lstNotificacao";
             this.lstNotificacao.Size = new System.Drawing.Size(501, 224);
             this.lstNotificacao.TabIndex = 0;
@@ -54,10 +54,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(791, 450);
             this.Controls.Add(this.lstNotificacao);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmNotificacao";
             this.Text = "FrmNotificacao";
             this.Load += new System.EventHandler(this.FrmNotificacao_Load);

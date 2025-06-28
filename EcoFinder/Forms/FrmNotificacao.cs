@@ -82,12 +82,22 @@ namespace EcoFinder.Forms
                     {
                         cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
 
-                        idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
+                        var resultado = cmd.ExecuteScalar();
+                        if (resultado != DBNull.Value && resultado != null)
+                        {
+                            idpessoa = Convert.ToInt32(resultado);
 
-                        cmd.Parameters.Clear();
+                            cmd.Parameters.Clear();
 
-                        cmd.CommandText = "SELECT mensagem FROM tb_notifica_solicitante WHERE id_usuariocomum = @id_pessoa";
-                        cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
+                            cmd.CommandText = "SELECT mensagem FROM tb_notifica_solicitante WHERE id_usuariocomum = @id_pessoa";
+                            cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Conta não encontrada ou email inválido.");
+                            
+                        }
+
                     }
                 }
             }

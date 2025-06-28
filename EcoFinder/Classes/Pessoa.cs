@@ -18,7 +18,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
  
-        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=mysqlpassword;database=ecofinder";
 
 
         public Pessoa()
@@ -89,47 +89,29 @@ namespace EcoFinder
             return false;
         }
 
-       
-
         public bool CadastrarPessoa()
         {
             try
             {
-
-                using (MySqlConnection conn = new MySqlConnection(stringConexao))
+                using (var conn = new MySqlConnection(stringConexao))
                 {
+                    conn.Open();
 
-                    using (MySqlCommand cmd = conn.CreateCommand())
-                    {
-                        conn.Open();
+                    var cmd = new MySqlCommand("INSERT INTO tb_pessoa(nome,email,senha,genero) VALUES (@name,@email,@senha,@genero);", conn);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@senha", senha);
+                    cmd.Parameters.AddWithValue("@genero", sex);
+                    cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "INSERT INTO tb_pessoa(nome,email,senha,genero) " +
-                                            "VALUES (@name,@email,@senha,@genero);";
-                        cmd.Parameters.AddWithValue("@name", getName());
-                        cmd.Parameters.AddWithValue("@email", getEmail());
-                        cmd.Parameters.AddWithValue("@senha", getSenha());
-                        cmd.Parameters.AddWithValue("@genero", getSex());
+                    string tabela = tipoConta == "Coletor" ? "tb_coletor" : "tb_usuariocomum";
+                    string coluna = tipoConta == "Coletor" ? "id_coletor" : "id_usuarioComum";
 
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-
-                        if (tipoConta == "Coletor")
-                        {
-                            cmd.CommandText = "INSERT INTO tb_coletor(id_coletor) VALUES (LAST_INSERT_ID());";
-                            cmd.ExecuteNonQuery();  
-                        }
-                        else if (tipoConta == "Usuário Comum")
-                        {
-                            cmd.CommandText = "INSERT INTO tb_usuariocomum(id_usuarioComum) VALUES (LAST_INSERT_ID());";
-                            cmd.ExecuteNonQuery();  
-                        }
-
-                        MessageBox.Show("Cadastrado");
-                        return true;
-
-                    }
-
+                    cmd = new MySqlCommand($"INSERT INTO {tabela}({coluna}) VALUES (LAST_INSERT_ID());", conn);
+                    cmd.ExecuteNonQuery();
                 }
+                MessageBox.Show($"Bem-vindo(a), {name}! Sua conta foi criada com sucesso.");
+                return true;
             }
             catch (Exception ex)
             {
@@ -140,96 +122,67 @@ namespace EcoFinder
 
         public string validarLogin(string email, string senha)
         {
-            string tipoconta = "0";
-
-            using (MySqlConnection conn = new MySqlConnection(stringConexao))
+            using (var conn = new MySqlConnection(stringConexao))
             {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);", conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@senha", senha);
 
-                using (MySqlCommand cmd = conn.CreateCommand())
+                var result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
                 {
-                    conn.Open();
-                    
-
-                    cmd.CommandText = $"SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);";
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@senha", senha);
-
-                    Object result = cmd.ExecuteScalar();
-                    try
-                    {
-                        if (result != null)
-                        {
-                            if (Convert.ToInt32(result) == 1)
-                            {
-                                tipoconta = "1";
-                            }
-                            else if (Convert.ToInt32(result) == 2)
-                            {
-                                tipoconta = "2";
-                            }
-
-                        }
-                        
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Email ou senha incorretos!");
-                    }
-
-
+                    int tipo = int.Parse(result.ToString());
+                    return tipo.ToString();
                 }
-
-                return tipoconta;
+                else
+                {
+                    MessageBox.Show("Email ou senha incorretos!");
+                    return "0";
+                }
             }
+        }
 
-        }// fim metodo login
         public bool alterarDados(string emailAntigo)
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(stringConexao))
+                using (var conn = new MySqlConnection(stringConexao))
                 {
                     conn.Open();
-                    int idpessoa = 0;
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
+
+                    int idPessoa = -1;
+                    var buscarCmd = new MySqlCommand("SELECT f_identificar_a_conta(@email);", conn);
+                    buscarCmd.Parameters.AddWithValue("@email", emailAntigo);
+
+                    var result = buscarCmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                        idPessoa = int.Parse(result.ToString());
+                    else
                     {
-                        cmd.Parameters.AddWithValue("@email", emailAntigo);
-
-                        idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
-
+                        MessageBox.Show("Conta não encontrada.");
+                        return false;
                     }
 
-                    using (MySqlCommand cmd2 = new MySqlCommand("UPDATE tb_pessoa SET" +
-                                                                "nome = @nome " +
-                                                                "email = @email" +
-                                                                "senha = @senha" +
-                                                                "genero = @genero",
-                                                                conn))
-                    {
+                    var updateCmd = new MySqlCommand(@"
+                        UPDATE tb_pessoa
+                        SET nome = @nome, email = @novoEmail, senha = @senha, genero = @genero
+                        WHERE id_pessoa = @id;", conn);
 
-                        cmd2.Parameters.AddWithValue("@nome", name);
-                        cmd2.Parameters.AddWithValue("@email", email);
-                        cmd2.Parameters.AddWithValue("@senha", senha);
-                        cmd2.Parameters.AddWithValue("@genero", sex);
+                    updateCmd.Parameters.AddWithValue("@nome", name);
+                    updateCmd.Parameters.AddWithValue("@novoEmail", email);
+                    updateCmd.Parameters.AddWithValue("@senha", senha);
+                    updateCmd.Parameters.AddWithValue("@genero", sex);
+                    updateCmd.Parameters.AddWithValue("@id", idPessoa);
 
-                        try
-                        {
-                            cmd2.ExecuteNonQuery();
-                            MessageBox.Show("Dados alterados com sucesso");
-                            return true;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                            return false;
-                        }
-                    }
+                    updateCmd.ExecuteNonQuery();
+                    MessageBox.Show("Dados atualizados com sucesso.");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro ao alterar dados: " + ex.Message);
                 return false;
             }
         }

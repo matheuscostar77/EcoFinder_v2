@@ -332,29 +332,11 @@
     <Compile Include="Forms\FrmPrincipalSolicitante.Designer.cs">
       <DependentUpon>FrmPrincipalSolicitante.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAlterarPerfil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmAlterarPerfil.Designer.cs">
-      <DependentUpon>FrmAlterarPerfil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmAvisos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmAvisos.Designer.cs">
-      <DependentUpon>FrmAvisos.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPerfil.Designer.cs">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPerfilColetor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPerfilColetor.Designer.cs">
-      <DependentUpon>FrmPerfilColetor.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipalColetor.cs">
       <SubType>Form</SubType>
@@ -398,17 +380,8 @@
     <EmbeddedResource Include="Forms\FrmPrincipalSolicitante.resx">
       <DependentUpon>FrmPrincipalSolicitante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAlterarPerfil.resx">
-      <DependentUpon>FrmAlterarPerfil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmAvisos.resx">
-      <DependentUpon>FrmAvisos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmPerfil.resx">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPerfilColetor.resx">
-      <DependentUpon>FrmPerfilColetor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipalColetor.resx">
       <DependentUpon>FrmPrincipalColetor.cs</DependentUpon>

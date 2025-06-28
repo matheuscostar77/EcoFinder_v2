@@ -46,6 +46,7 @@ namespace EcoFinder
                 avisos.MdiParent = this;
                 avisos.Dock = DockStyle.Fill;
                 avisos.Show();
+                avisos.BringToFront();  
             }
             else
             {
@@ -64,11 +65,12 @@ namespace EcoFinder
         {
             if (perfil == null || perfil.IsDisposed)
             {
-                perfil = new FrmPerfil(this, pessoa,endereco);
-                perfil.FormClosed += Perfil_FormClosed; ;
+                perfil = new FrmPerfil(this, pessoa, endereco);
+                perfil.FormClosed += Perfil_FormClosed;
                 perfil.MdiParent = this;
                 perfil.Dock = DockStyle.Fill;
                 perfil.Show();
+                perfil.BringToFront();  
             }
             else
             {
@@ -88,10 +90,11 @@ namespace EcoFinder
             if (verChamados == null || verChamados.IsDisposed)
             {
                 verChamados = new FrmVerChamados(this, pessoa, endereco);
-                verChamados.FormClosed += VerChamados_FormClosed; ;
+                verChamados.FormClosed += VerChamados_FormClosed;
                 verChamados.MdiParent = this;
                 verChamados.Dock = DockStyle.Fill;
                 verChamados.Show();
+                verChamados.BringToFront(); 
             }
             else
             {
@@ -111,10 +114,11 @@ namespace EcoFinder
             if (home == null || home.IsDisposed)
             {
                 home = new frmColetor(this, pessoa, endereco);
-                home.FormClosed += Home_FormClosed; ; 
+                home.FormClosed += Home_FormClosed;
                 home.MdiParent = this;
                 home.Dock = DockStyle.Fill;
                 home.Show();
+                home.BringToFront();  
             }
             else
             {
@@ -130,9 +134,10 @@ namespace EcoFinder
         }
 
         private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        { 
+                this.Close();
             telalogin.Show();
+
         }
     }
 }

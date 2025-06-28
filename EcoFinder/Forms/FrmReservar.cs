@@ -34,50 +34,78 @@ namespace EcoFinder
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                // Verificação segura do índice
+                if (chamado.idChamado == null || numLinha < 0 || numLinha >= chamado.idChamado.Count)
+                {
+                    MessageBox.Show("Não foi possível carregar os dados da coleta.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    return;
+                }
+
+                using (var conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM vw_ver_chamado_reserva WHERE id_chamado = @id_chamado",conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id_chamado", chamado.idChamado[numLinha]);
+                    var cmd = new MySqlCommand("SELECT * FROM vw_ver_chamado_reserva WHERE id_chamado = @id_chamado", conn);
+                    cmd.Parameters.AddWithValue("@id_chamado", chamado.idChamado[numLinha]);
 
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                lblNome.Text = reader["nome"]?.ToString();
-                                lblEndereco.Text = reader["endereco_format"]?.ToString();
-                                lblAbertura.Text = reader["data_chamado"]?.ToString();
-                                lblExpira.Text = reader["data_expiracao"]?.ToString();
-                                lblStatus.Text = reader["status"]?.ToString();
-                                lblTipoMaterial.Text = reader["tipo"]?.ToString();
-                                lblQuantidade.Text = reader["qtde_unitaria"]?.ToString();
-                                lblPesoMaterial.Text = reader["kilograma"]?.ToString();
-                                lblTamanho.Text = reader["tamanho_material"]?.ToString();
-                            }
-                        }
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        lblNome.Text = reader["nome"] as string ?? "Não informado";
+                        lblEndereco.Text = reader["endereco_format"] as string ?? "Endereço não disponível";
+                        lblAbertura.Text = reader["data_chamado"] as string ?? "Não disponível";
+                        lblExpira.Text = reader["data_expiracao"] as string ?? "Não definido";
+                        lblStatus.Text = reader["status"] as string ?? "Indisponível";
+                        lblTipoMaterial.Text = reader["tipo"] as string ?? "Não especificado";
+                        lblQuantidade.Text = reader["qtde_unitaria"] as string ?? "0";
+                        lblPesoMaterial.Text = reader["kilograma"] as string ?? "0";
+                        lblTamanho.Text = reader["tamanho_material"] as string ?? "Não informado";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Coleta não encontrada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Close();
                     }
                 }
-            }        
-            catch (Exception ex)
+            }
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro ao carregar dados da coleta.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
         private void cmbPrevisao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chamado.setPrevisaoColeta(cmbPrevisao.SelectedItem.ToString());
+            if (cmbPrevisao.SelectedItem != null)
+            {
+                chamado.setPrevisaoColeta(cmbPrevisao.SelectedItem.ToString());
+            }
         }
 
         private void btnReservar_Click(object sender, EventArgs e)
         {
-            chamado.reservarChamado(chamado.idChamado[numLinha], chamado.getPrevisaoColeta());
-            var retornarVerChamados = new FrmVerChamados();
-            retornarVerChamados.Show();
-            this.Close();
-        }
+            if (cmbPrevisao.SelectedItem == null)
+            {
+                MessageBox.Show("Selecione uma data para a coleta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        
+            try
+            {
+                chamado.setPrevisaoColeta(cmbPrevisao.SelectedItem.ToString());
+                chamado.reservarChamado(chamado.idChamado[numLinha], chamado.getPrevisaoColeta());
+
+                MessageBox.Show("Reserva realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var retornarVerChamados = new FrmVerChamados(coletorTela, pessoa, endereco);
+                retornarVerChamados.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro ao realizar reserva.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

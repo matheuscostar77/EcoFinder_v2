@@ -15,6 +15,7 @@ namespace EcoFinder
     {
         private Pessoa pessoa;
         private Endereco endereco;
+        public FrmLogin() { }
         public FrmLogin(Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();

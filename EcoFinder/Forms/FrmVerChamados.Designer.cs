@@ -43,7 +43,7 @@
             // 
             this.lblDistancia3.AutoSize = true;
             this.lblDistancia3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDistancia3.Location = new System.Drawing.Point(411, 291);
+            this.lblDistancia3.Location = new System.Drawing.Point(479, 319);
             this.lblDistancia3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDistancia3.Name = "lblDistancia3";
             this.lblDistancia3.Size = new System.Drawing.Size(33, 13);
@@ -54,7 +54,7 @@
             // 
             this.lblDistancia2.AutoSize = true;
             this.lblDistancia2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDistancia2.Location = new System.Drawing.Point(411, 205);
+            this.lblDistancia2.Location = new System.Drawing.Point(479, 233);
             this.lblDistancia2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDistancia2.Name = "lblDistancia2";
             this.lblDistancia2.Size = new System.Drawing.Size(33, 13);
@@ -64,7 +64,7 @@
             // lblDistancia1
             // 
             this.lblDistancia1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDistancia1.Location = new System.Drawing.Point(411, 123);
+            this.lblDistancia1.Location = new System.Drawing.Point(479, 151);
             this.lblDistancia1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDistancia1.Name = "lblDistancia1";
             this.lblDistancia1.Size = new System.Drawing.Size(47, 12);
@@ -75,8 +75,8 @@
             // 
             this.btnChamado3.Image = ((System.Drawing.Image)(resources.GetObject("btnChamado3.Image")));
             this.btnChamado3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamado3.Location = new System.Drawing.Point(142, 248);
-            this.btnChamado3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChamado3.Location = new System.Drawing.Point(210, 276);
+            this.btnChamado3.Margin = new System.Windows.Forms.Padding(2);
             this.btnChamado3.Name = "btnChamado3";
             this.btnChamado3.Padding = new System.Windows.Forms.Padding(0, 0, 140, 0);
             this.btnChamado3.Size = new System.Drawing.Size(318, 63);
@@ -90,8 +90,8 @@
             this.btnChamado2.BackColor = System.Drawing.Color.Transparent;
             this.btnChamado2.Image = ((System.Drawing.Image)(resources.GetObject("btnChamado2.Image")));
             this.btnChamado2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamado2.Location = new System.Drawing.Point(142, 163);
-            this.btnChamado2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChamado2.Location = new System.Drawing.Point(210, 191);
+            this.btnChamado2.Margin = new System.Windows.Forms.Padding(2);
             this.btnChamado2.Name = "btnChamado2";
             this.btnChamado2.Padding = new System.Windows.Forms.Padding(0, 0, 140, 0);
             this.btnChamado2.Size = new System.Drawing.Size(318, 63);
@@ -104,8 +104,8 @@
             // 
             this.btnChamado1.Image = ((System.Drawing.Image)(resources.GetObject("btnChamado1.Image")));
             this.btnChamado1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamado1.Location = new System.Drawing.Point(142, 78);
-            this.btnChamado1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChamado1.Location = new System.Drawing.Point(210, 106);
+            this.btnChamado1.Margin = new System.Windows.Forms.Padding(2);
             this.btnChamado1.Name = "btnChamado1";
             this.btnChamado1.Padding = new System.Windows.Forms.Padding(0, 0, 140, 0);
             this.btnChamado1.Size = new System.Drawing.Size(318, 63);
@@ -125,8 +125,8 @@
             "Plástico",
             "Vidro",
             "Eletrônico"});
-            this.cmbClassificar.Location = new System.Drawing.Point(367, 43);
-            this.cmbClassificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbClassificar.Location = new System.Drawing.Point(435, 71);
+            this.cmbClassificar.Margin = new System.Windows.Forms.Padding(2);
             this.cmbClassificar.Name = "cmbClassificar";
             this.cmbClassificar.Size = new System.Drawing.Size(82, 21);
             this.cmbClassificar.TabIndex = 13;
@@ -135,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(288, 45);
+            this.label1.Location = new System.Drawing.Point(356, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
@@ -147,7 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(676, 387);
+            this.ClientSize = new System.Drawing.Size(791, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbClassificar);
             this.Controls.Add(this.lblDistancia1);
@@ -157,7 +157,7 @@
             this.Controls.Add(this.btnChamado2);
             this.Controls.Add(this.btnChamado1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmVerChamados";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 133, 0);
             this.Text = "FrmVerChamados";

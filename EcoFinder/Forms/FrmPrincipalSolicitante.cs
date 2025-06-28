@@ -29,6 +29,8 @@ namespace EcoFinder
             this.pessoa = pessoa;
             mdiProp();
         }
+
+         
         private void mdiProp()
         {
             this.SetBevel(false);
@@ -75,15 +77,14 @@ namespace EcoFinder
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            var notificaoTela = new FrmChamadosAtivos(this, pessoa, endereco);
-            notificaoTela.Show();
             if (perfil == null || perfil.IsDisposed)
             {
-                perfil = new FrmPerfil(this,pessoa,endereco);
+                perfil = new FrmPerfil(this, pessoa, endereco);
                 perfil.FormClosed += Perfil_FormClosed;
                 perfil.MdiParent = this;
                 perfil.Dock = DockStyle.Fill;
                 perfil.Show();
+                perfil.BringToFront();  
             }
             else
             {
@@ -139,7 +140,7 @@ namespace EcoFinder
 
         private void FrmPrincipalSolicitante_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnAvisos_Click(object sender, EventArgs e)
@@ -147,7 +148,7 @@ namespace EcoFinder
             if (avisos == null || avisos.IsDisposed)
             {
                 avisos = new FrmNotificacao(this, pessoa, endereco);
-                avisos.FormClosed += Avisos_FormClosed; ;
+                avisos.FormClosed += Avisos_FormClosed; 
                 avisos.MdiParent = this;
                 avisos.Dock = DockStyle.Fill;
                 avisos.Show();
@@ -205,9 +206,10 @@ namespace EcoFinder
             {
                 chamadosDisponiveis = new FrmChamadosAtivos(this, pessoa, endereco);
                 chamadosDisponiveis.FormClosed += ChamadosDisponiveis_FormClosed;
-                chamadosDisponiveis.MdiParent = this;
+                chamadosDisponiveis.MdiParent = this;  
                 chamadosDisponiveis.Dock = DockStyle.Fill;
                 chamadosDisponiveis.Show();
+                chamadosDisponiveis.BringToFront(); 
             }
             else
             {

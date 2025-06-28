@@ -81,21 +81,32 @@ namespace EcoFinder
         }
         public void realizarChamado(string email, string material, double quilograma, int qtdUnidade, string tamanho)
         {
-            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+            try
             {
-                using (MySqlCommand cmd = conn.CreateCommand())
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
-                    conn.Open();
+                    using (MySqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
 
-                    cmd.CommandText = " CALL proc_realizar_chamado(@email,@tipo,@quilograma,@qtdUnidade,@tamanho)";
-                    cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
-                    cmd.Parameters.AddWithValue("@tipo", material);
-                    cmd.Parameters.AddWithValue("@quilograma", quilograma);
-                    cmd.Parameters.AddWithValue("@qtdUnidade", qtdUnidade);
-                    cmd.Parameters.AddWithValue("@tamanho", tamanho);
+                        cmd.CommandText = "CALL proc_realizar_chamado(@email,@tipo,@quilograma,@qtdUnidade,@tamanho)";
+                        cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
+                        cmd.Parameters.AddWithValue("@tipo", material);
+                        cmd.Parameters.AddWithValue("@quilograma", quilograma);
+                        cmd.Parameters.AddWithValue("@qtdUnidade", qtdUnidade);
+                        cmd.Parameters.AddWithValue("@tamanho", tamanho);
 
-                    cmd.ExecuteReader();
+                        cmd.ExecuteNonQuery(); // Alterado para ExecuteNonQuery
+                    }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Erro no banco de dados: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro: {ex.Message}");
             }
         }
 
@@ -114,67 +125,69 @@ namespace EcoFinder
                         {
                             if (reader.Read())
                             {
-                                numeroDeChamados = reader.GetInt32(0);
-                                return numeroDeChamados;
+                                numeroDeChamados = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                             }
-
                         }
                     }
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show($"Erro no banco de dados: {ex.Message}");
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    MessageBox.Show($"Erro: {ex.Message}");
                 }
                 return numeroDeChamados;
             }
-
         }
 
         public string mostrarChamado(int linha, string tipoBotao, string tipomaterial)
         {
-            string tipo;
-            string distancia;
+            idChamado.Clear(); // Limpa a lista antes de usar
 
-            using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+            string tipo = "N/D";
+            string distancia = "N/D";
+
+            try
             {
-                conn.Open();
-                using (MySqlCommand cmd = new MySqlCommand("pc_ver_chamados", conn))
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@pc_email", pessoa.getEmail());
-                    cmd.Parameters.AddWithValue("@pc_linha", linha);
-                    cmd.Parameters.AddWithValue("@pc_material", tipomaterial);
-
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("pc_ver_chamados", conn))
                     {
-                        if (reader.Read())
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@pc_email", pessoa.getEmail());
+                        cmd.Parameters.AddWithValue("@pc_linha", linha);
+                        cmd.Parameters.AddWithValue("@pc_material", tipomaterial);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            tipo = reader["tipo"] as string ?? "N/D";
-                            distancia = reader["Distancia"] as string ?? "N/D";
-                            idChamado.Add(reader.GetInt32("id_chamado"));
-
-
-                            if (tipoBotao == "lbl")
+                            if (reader.Read())
                             {
-                                return distancia;
-                            }
-                            else if (tipoBotao == "btn")
-                            {
-                                return tipo;
-                            }
+                                tipo = reader["tipo"] as string ?? "N/D";
+                                distancia = reader["Distancia"] as string ?? "N/D";
 
+                                if (!reader.IsDBNull(reader.GetOrdinal("id_chamado")))
+                                {
+                                    idChamado.Add(reader.GetInt32("id_chamado"));
+                                }
 
+                                return tipoBotao == "lbl" ? distancia : tipo;
+                            }
                         }
-                        return "";
                     }
                 }
             }
-        }
-
-        internal void setQtdUnidade(object value)
-        {
-            throw new NotImplementedException();
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Erro no banco de dados: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro: {ex.Message}");
+            }
+            return "";
         }
 
         public void reservarChamado(int idChamado, string previsaoColeta)
@@ -196,36 +209,27 @@ namespace EcoFinder
                         resultadoParam.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(resultadoParam);
 
-                        // Executa a procedure
                         cmd.ExecuteNonQuery();
 
-                        // Captura o valor retornado
-                        bool resultado = false;
-                        if (resultadoParam.Value != DBNull.Value)
-                        {
-                            resultado = Convert.ToBoolean(resultadoParam.Value);
-                        }
-
-                        // Usa o resultado como quiser
-                        if (resultado)
-                        {
-                            MessageBox.Show("Reserva realizada com sucesso.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Não foi possível realizar a reserva.");
-                        }
+                        bool resultado = resultadoParam.Value != DBNull.Value && Convert.ToBoolean(resultadoParam.Value);
+                        MessageBox.Show(resultado ? "Reserva realizada com sucesso." : "Não foi possível realizar a reserva.");
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Erro no banco de dados: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao tentar reservar: " + ex.Message);
+                MessageBox.Show($"Erro ao tentar reservar: {ex.Message}");
             }
         }
 
         public string chamadosAtivos(string email, int numGroup, int endOuMaterial)
         {
+            idChamado.Clear(); // Limpa a lista antes de usar
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
@@ -237,105 +241,83 @@ namespace EcoFinder
                     {
                         cmdId.Parameters.AddWithValue("@email", email);
                         var result = cmdId.ExecuteScalar();
-                        idpessoa = result != null ? Convert.ToInt32(result) : 0;
+                        idpessoa = (result == null || result == DBNull.Value) ? 0 : Convert.ToInt32(result);
                     }
 
-                    if (idpessoa == 0)
-                    {
-                        return "Usuário não encontrado";
-                    }
+                    if (idpessoa == 0) return "Usuário não encontrado";
 
-                    using (MySqlCommand cmd = new MySqlCommand(@"SELECT * FROM vw_ver_chamado_reserva 
-                           WHERE id_pessoa = @id_pessoa ORDER BY (status = 'Disponivel')",
-                           conn))
-                    {
+                    string query = @"SELECT * FROM vw_ver_chamado_reserva 
+                                   WHERE id_pessoa = @id_pessoa 
+                                   ORDER BY (status = 'Disponivel') 
+                                   LIMIT @offset, 1";
 
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
                         cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
-
-                        switch (numGroup)
-                        {
-                            case 1:
-                                cmd.CommandText += " LIMIT 0,1";
-                                break;
-                            case 2:
-                                cmd.CommandText += " LIMIT 1,1";
-                                break;
-                            default:
-                                return "Número de grupo inválido";
-                        }
+                        cmd.Parameters.AddWithValue("@offset", numGroup - 1);
 
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                idChamado.Add(reader.GetInt32("id_chamado"));
+                                if (!reader.IsDBNull(reader.GetOrdinal("id_chamado")))
+                                {
+                                    idChamado.Add(reader.GetInt32("id_chamado"));
+                                }
+
                                 switch (endOuMaterial)
                                 {
-                                    case 0:
-                                        return reader["endereco_format"].ToString();
-                                    case 1:
-                                        return reader["tipo"].ToString();
-                                    case 2:
-                                        return reader["status"].ToString();
-                                    case 3:
-                                        return reader["data_expiracao"].ToString();
-                                    case 4:
-                                        return reader["data_chamado"].ToString();
-                                    case 5:
-                                        return reader["kilograma"].ToString() + "KG";
-                                    case 6:
-                                        return reader["qtde_unitaria"].ToString() + " uni.";
+                                    case 0: return reader["endereco_format"].ToString();
+                                    case 1: return reader["tipo"].ToString();
+                                    case 2: return reader["status"].ToString();
+                                    case 3: return reader["data_expiracao"].ToString();
+                                    case 4: return reader["data_chamado"].ToString();
+                                    case 5: return reader["kilograma"].ToString() + "KG";
+                                    case 6: return reader["qtde_unitaria"].ToString() + " uni.";
+                                    default: return "N/D";
                                 }
                             }
-                            return null;
                         }
                     }
                 }
             }
-            catch (MySqlException mysqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show($"Erro MySQL: {mysqlEx.Number} - {mysqlEx.Message}");
-                return null;
+                MessageBox.Show($"Erro MySQL: {ex.Number} - {ex.Message}");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro geral: {ex.Message}");
-                return null;
             }
+            return null;
         }
 
         public bool confirmarChamado(string tipoConta, int numColecao)
         {
             try
             {
-                using(MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("p_confirmar_coleta",conn))
+                    using (MySqlCommand cmd = new MySqlCommand("p_confirmar_coleta", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-
                         cmd.Parameters.AddWithValue("@p_id_chamado_reservado", idChamado[numColecao]);
                         cmd.Parameters.AddWithValue("@p_tipo_usuario", tipoConta);
-                        try
-                        {
-                            cmd.ExecuteNonQuery();
-                            return true;
 
-                        }
-                        catch (Exception ex)
-                        {
-
-                            MessageBox.Show(ex.Message);
-                            return false;
-                        }
+                        cmd.ExecuteNonQuery();
+                        return true;
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Erro no banco de dados: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Erro: {ex.Message}");
                 return false;
             }
         }
@@ -344,13 +326,12 @@ namespace EcoFinder
         {
             try
             {
-                using(MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
+                using (MySqlConnection conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("PR_CANCELANDO_RESERVA",conn))
+                    using (MySqlCommand cmd = new MySqlCommand("PR_CANCELANDO_RESERVA", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-
                         cmd.Parameters.AddWithValue("@P_ID_CHAMADO", idChamado[numColecao]);
 
                         var resultadoParam = new MySqlParameter("@RESULT", MySqlDbType.Bit);
@@ -359,27 +340,18 @@ namespace EcoFinder
 
                         cmd.ExecuteNonQuery();
 
-                        bool resultado = false;
-                        if (resultadoParam.Value != DBNull.Value)
-                        {
-                            resultado = Convert.ToBoolean(resultadoParam.Value);
-                        }
-
-                        if (resultado)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                        return resultadoParam.Value != DBNull.Value && Convert.ToBoolean(resultadoParam.Value);
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Erro no banco de dados: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                
+                MessageBox.Show($"Erro: {ex.Message}");
                 return false;
             }
         }

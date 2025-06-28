@@ -70,98 +70,110 @@
             this.gpbChamado1.Controls.Add(this.btnCancelar1);
             this.gpbChamado1.Controls.Add(this.btnConfirmar1);
             this.gpbChamado1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpbChamado1.Location = new System.Drawing.Point(126, 35);
+            this.gpbChamado1.Location = new System.Drawing.Point(175, 74);
+            this.gpbChamado1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gpbChamado1.Name = "gpbChamado1";
-            this.gpbChamado1.Size = new System.Drawing.Size(619, 178);
+            this.gpbChamado1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpbChamado1.Size = new System.Drawing.Size(413, 116);
             this.gpbChamado1.TabIndex = 0;
             this.gpbChamado1.TabStop = false;
             // 
             // lblFeitoData1
             // 
             this.lblFeitoData1.AutoSize = true;
-            this.lblFeitoData1.Location = new System.Drawing.Point(96, 135);
+            this.lblFeitoData1.Location = new System.Drawing.Point(64, 88);
+            this.lblFeitoData1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeitoData1.Name = "lblFeitoData1";
-            this.lblFeitoData1.Size = new System.Drawing.Size(71, 20);
+            this.lblFeitoData1.Size = new System.Drawing.Size(53, 13);
             this.lblFeitoData1.TabIndex = 10;
             this.lblFeitoData1.Text = "00/00/00";
             // 
             // lblExpiraData1
             // 
             this.lblExpiraData1.AutoSize = true;
-            this.lblExpiraData1.Location = new System.Drawing.Point(96, 155);
+            this.lblExpiraData1.Location = new System.Drawing.Point(64, 101);
+            this.lblExpiraData1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExpiraData1.Name = "lblExpiraData1";
-            this.lblExpiraData1.Size = new System.Drawing.Size(71, 20);
+            this.lblExpiraData1.Size = new System.Drawing.Size(53, 13);
             this.lblExpiraData1.TabIndex = 9;
             this.lblExpiraData1.Text = "00/00/00";
             // 
             // lblExpira1
             // 
             this.lblExpira1.AutoSize = true;
-            this.lblExpira1.Location = new System.Drawing.Point(15, 155);
+            this.lblExpira1.Location = new System.Drawing.Point(10, 101);
+            this.lblExpira1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExpira1.Name = "lblExpira1";
-            this.lblExpira1.Size = new System.Drawing.Size(83, 20);
+            this.lblExpira1.Size = new System.Drawing.Size(56, 13);
             this.lblExpira1.TabIndex = 8;
             this.lblExpira1.Text = "Expira em:";
             // 
             // lblFeito1
             // 
             this.lblFeito1.AutoSize = true;
-            this.lblFeito1.Location = new System.Drawing.Point(15, 135);
+            this.lblFeito1.Location = new System.Drawing.Point(10, 88);
+            this.lblFeito1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeito1.Name = "lblFeito1";
-            this.lblFeito1.Size = new System.Drawing.Size(75, 20);
+            this.lblFeito1.Size = new System.Drawing.Size(50, 13);
             this.lblFeito1.TabIndex = 7;
             this.lblFeito1.Text = "Feito em:";
             // 
             // lblQtde1
             // 
             this.lblQtde1.AutoSize = true;
-            this.lblQtde1.Location = new System.Drawing.Point(522, 87);
+            this.lblQtde1.Location = new System.Drawing.Point(348, 57);
+            this.lblQtde1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQtde1.Name = "lblQtde1";
-            this.lblQtde1.Size = new System.Drawing.Size(65, 20);
+            this.lblQtde1.Size = new System.Drawing.Size(45, 13);
             this.lblQtde1.TabIndex = 6;
             this.lblQtde1.Text = "100 uni.";
             // 
             // lblKG1
             // 
             this.lblKG1.AutoSize = true;
-            this.lblKG1.Location = new System.Drawing.Point(522, 67);
+            this.lblKG1.Location = new System.Drawing.Point(348, 44);
+            this.lblKG1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKG1.Name = "lblKG1";
-            this.lblKG1.Size = new System.Drawing.Size(35, 20);
+            this.lblKG1.Size = new System.Drawing.Size(25, 13);
             this.lblKG1.TabIndex = 5;
             this.lblKG1.Text = "0kg";
             // 
             // lblStatus1
             // 
             this.lblStatus1.AutoSize = true;
-            this.lblStatus1.Location = new System.Drawing.Point(522, 17);
+            this.lblStatus1.Location = new System.Drawing.Point(348, 11);
+            this.lblStatus1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus1.Name = "lblStatus1";
-            this.lblStatus1.Size = new System.Drawing.Size(56, 20);
+            this.lblStatus1.Size = new System.Drawing.Size(37, 13);
             this.lblStatus1.TabIndex = 4;
             this.lblStatus1.Text = "Status";
             // 
             // lblEndereco1
             // 
             this.lblEndereco1.AutoSize = true;
-            this.lblEndereco1.Location = new System.Drawing.Point(49, 41);
+            this.lblEndereco1.Location = new System.Drawing.Point(33, 27);
+            this.lblEndereco1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEndereco1.Name = "lblEndereco1";
-            this.lblEndereco1.Size = new System.Drawing.Size(78, 20);
+            this.lblEndereco1.Size = new System.Drawing.Size(53, 13);
             this.lblEndereco1.TabIndex = 3;
             this.lblEndereco1.Text = "Endereço";
             // 
             // lblMaterial1
             // 
             this.lblMaterial1.AutoSize = true;
-            this.lblMaterial1.Location = new System.Drawing.Point(7, 17);
+            this.lblMaterial1.Location = new System.Drawing.Point(5, 11);
+            this.lblMaterial1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMaterial1.Name = "lblMaterial1";
-            this.lblMaterial1.Size = new System.Drawing.Size(65, 20);
+            this.lblMaterial1.Size = new System.Drawing.Size(44, 13);
             this.lblMaterial1.TabIndex = 2;
             this.lblMaterial1.Text = "Material";
             // 
             // btnCancelar1
             // 
-            this.btnCancelar1.Location = new System.Drawing.Point(522, 125);
+            this.btnCancelar1.Location = new System.Drawing.Point(348, 81);
+            this.btnCancelar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar1.Name = "btnCancelar1";
-            this.btnCancelar1.Size = new System.Drawing.Size(91, 30);
+            this.btnCancelar1.Size = new System.Drawing.Size(61, 20);
             this.btnCancelar1.TabIndex = 1;
             this.btnCancelar1.Text = "Cancelar";
             this.btnCancelar1.UseVisualStyleBackColor = true;
@@ -169,9 +181,10 @@
             // 
             // btnConfirmar1
             // 
-            this.btnConfirmar1.Location = new System.Drawing.Point(425, 125);
+            this.btnConfirmar1.Location = new System.Drawing.Point(283, 81);
+            this.btnConfirmar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConfirmar1.Name = "btnConfirmar1";
-            this.btnConfirmar1.Size = new System.Drawing.Size(91, 30);
+            this.btnConfirmar1.Size = new System.Drawing.Size(61, 20);
             this.btnConfirmar1.TabIndex = 0;
             this.btnConfirmar1.Text = "Confirmar";
             this.btnConfirmar1.UseVisualStyleBackColor = true;
@@ -190,80 +203,90 @@
             this.gpbChamado2.Controls.Add(this.btnConfirmar2);
             this.gpbChamado2.Controls.Add(this.lblEndereco2);
             this.gpbChamado2.Controls.Add(this.lblMaterial2);
-            this.gpbChamado2.Location = new System.Drawing.Point(126, 219);
+            this.gpbChamado2.Location = new System.Drawing.Point(175, 193);
+            this.gpbChamado2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gpbChamado2.Name = "gpbChamado2";
-            this.gpbChamado2.Size = new System.Drawing.Size(619, 178);
+            this.gpbChamado2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpbChamado2.Size = new System.Drawing.Size(413, 116);
             this.gpbChamado2.TabIndex = 1;
             this.gpbChamado2.TabStop = false;
             // 
             // lblQtde2
             // 
             this.lblQtde2.AutoSize = true;
-            this.lblQtde2.Location = new System.Drawing.Point(522, 88);
+            this.lblQtde2.Location = new System.Drawing.Point(348, 57);
+            this.lblQtde2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQtde2.Name = "lblQtde2";
-            this.lblQtde2.Size = new System.Drawing.Size(65, 20);
+            this.lblQtde2.Size = new System.Drawing.Size(45, 13);
             this.lblQtde2.TabIndex = 10;
             this.lblQtde2.Text = "100 uni.";
             // 
             // lblKG2
             // 
             this.lblKG2.AutoSize = true;
-            this.lblKG2.Location = new System.Drawing.Point(522, 68);
+            this.lblKG2.Location = new System.Drawing.Point(348, 44);
+            this.lblKG2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKG2.Name = "lblKG2";
-            this.lblKG2.Size = new System.Drawing.Size(35, 20);
+            this.lblKG2.Size = new System.Drawing.Size(25, 13);
             this.lblKG2.TabIndex = 9;
             this.lblKG2.Text = "0kg";
             // 
             // lblExpiraData2
             // 
             this.lblExpiraData2.AutoSize = true;
-            this.lblExpiraData2.Location = new System.Drawing.Point(96, 155);
+            this.lblExpiraData2.Location = new System.Drawing.Point(64, 101);
+            this.lblExpiraData2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExpiraData2.Name = "lblExpiraData2";
-            this.lblExpiraData2.Size = new System.Drawing.Size(71, 20);
+            this.lblExpiraData2.Size = new System.Drawing.Size(53, 13);
             this.lblExpiraData2.TabIndex = 8;
             this.lblExpiraData2.Text = "00/00/00";
             // 
             // lblFeitoData2
             // 
             this.lblFeitoData2.AutoSize = true;
-            this.lblFeitoData2.Location = new System.Drawing.Point(96, 135);
+            this.lblFeitoData2.Location = new System.Drawing.Point(64, 88);
+            this.lblFeitoData2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeitoData2.Name = "lblFeitoData2";
-            this.lblFeitoData2.Size = new System.Drawing.Size(71, 20);
+            this.lblFeitoData2.Size = new System.Drawing.Size(53, 13);
             this.lblFeitoData2.TabIndex = 7;
             this.lblFeitoData2.Text = "00/00/00";
             // 
             // lblExpira2
             // 
             this.lblExpira2.AutoSize = true;
-            this.lblExpira2.Location = new System.Drawing.Point(15, 155);
+            this.lblExpira2.Location = new System.Drawing.Point(10, 101);
+            this.lblExpira2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExpira2.Name = "lblExpira2";
-            this.lblExpira2.Size = new System.Drawing.Size(83, 20);
+            this.lblExpira2.Size = new System.Drawing.Size(56, 13);
             this.lblExpira2.TabIndex = 6;
             this.lblExpira2.Text = "Expira em:";
             // 
             // lblFeito2
             // 
             this.lblFeito2.AutoSize = true;
-            this.lblFeito2.Location = new System.Drawing.Point(15, 135);
+            this.lblFeito2.Location = new System.Drawing.Point(10, 88);
+            this.lblFeito2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeito2.Name = "lblFeito2";
-            this.lblFeito2.Size = new System.Drawing.Size(75, 20);
+            this.lblFeito2.Size = new System.Drawing.Size(50, 13);
             this.lblFeito2.TabIndex = 5;
             this.lblFeito2.Text = "Feito em:";
             // 
             // lblStatus2
             // 
             this.lblStatus2.AutoSize = true;
-            this.lblStatus2.Location = new System.Drawing.Point(522, 17);
+            this.lblStatus2.Location = new System.Drawing.Point(348, 11);
+            this.lblStatus2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus2.Name = "lblStatus2";
-            this.lblStatus2.Size = new System.Drawing.Size(56, 20);
+            this.lblStatus2.Size = new System.Drawing.Size(37, 13);
             this.lblStatus2.TabIndex = 4;
             this.lblStatus2.Text = "Status";
             // 
             // btnCancelar2
             // 
-            this.btnCancelar2.Location = new System.Drawing.Point(522, 127);
+            this.btnCancelar2.Location = new System.Drawing.Point(348, 83);
+            this.btnCancelar2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar2.Name = "btnCancelar2";
-            this.btnCancelar2.Size = new System.Drawing.Size(91, 30);
+            this.btnCancelar2.Size = new System.Drawing.Size(61, 20);
             this.btnCancelar2.TabIndex = 3;
             this.btnCancelar2.Text = "Cancelar";
             this.btnCancelar2.UseVisualStyleBackColor = true;
@@ -271,9 +294,10 @@
             // 
             // btnConfirmar2
             // 
-            this.btnConfirmar2.Location = new System.Drawing.Point(425, 127);
+            this.btnConfirmar2.Location = new System.Drawing.Point(283, 83);
+            this.btnConfirmar2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConfirmar2.Name = "btnConfirmar2";
-            this.btnConfirmar2.Size = new System.Drawing.Size(91, 30);
+            this.btnConfirmar2.Size = new System.Drawing.Size(61, 20);
             this.btnConfirmar2.TabIndex = 2;
             this.btnConfirmar2.Text = "Confirmar";
             this.btnConfirmar2.UseVisualStyleBackColor = true;
@@ -282,29 +306,33 @@
             // lblEndereco2
             // 
             this.lblEndereco2.AutoSize = true;
-            this.lblEndereco2.Location = new System.Drawing.Point(53, 41);
+            this.lblEndereco2.Location = new System.Drawing.Point(35, 27);
+            this.lblEndereco2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEndereco2.Name = "lblEndereco2";
-            this.lblEndereco2.Size = new System.Drawing.Size(78, 20);
+            this.lblEndereco2.Size = new System.Drawing.Size(53, 13);
             this.lblEndereco2.TabIndex = 1;
             this.lblEndereco2.Text = "Endereço";
             // 
             // lblMaterial2
             // 
             this.lblMaterial2.AutoSize = true;
-            this.lblMaterial2.Location = new System.Drawing.Point(11, 17);
+            this.lblMaterial2.Location = new System.Drawing.Point(7, 11);
+            this.lblMaterial2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMaterial2.Name = "lblMaterial2";
-            this.lblMaterial2.Size = new System.Drawing.Size(65, 20);
+            this.lblMaterial2.Size = new System.Drawing.Size(44, 13);
             this.lblMaterial2.TabIndex = 0;
             this.lblMaterial2.Text = "Material";
             // 
             // FrmChamadosAtivos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(888, 479);
+            this.ClientSize = new System.Drawing.Size(775, 411);
             this.Controls.Add(this.gpbChamado2);
             this.Controls.Add(this.gpbChamado1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmChamadosAtivos";
             this.Text = "FrmChamadosAtivos";
             this.Load += new System.EventHandler(this.FrmChamadosAtivos_Load);

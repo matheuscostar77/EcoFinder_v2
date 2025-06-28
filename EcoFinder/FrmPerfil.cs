@@ -38,7 +38,7 @@ namespace EcoFinder
         {
             this.ControlBox = false;
 
-            txbEmail.Text = pessoa.getEmail();
+            /*txbEmail.Text = pessoa.getEmail();
             txbNome.Text = pessoa.getName();
             txbGenero.Text = pessoa.getSex();
             txbCep.Text = endereco.getCep();
@@ -46,7 +46,7 @@ namespace EcoFinder
             txbEstado.Text = endereco.getEstado();
             txbRua.Text = endereco.getNomeRua();
             txbnumerocasa.Text = endereco.getNumeroCasa();
-            txbBairro.Text = endereco.getNomeBairro();
+            txbBairro.Text = endereco.getNomeBairro();*/
 
         }
 
