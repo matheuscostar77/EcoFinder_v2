@@ -22,6 +22,12 @@ namespace EcoFinder
             this.endereco = endereco;
         }
 
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            var coletor = new FrmPrincipalColetor(this, pessoa, endereco);
+            
+
+        }
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -60,8 +66,10 @@ namespace EcoFinder
                     usuario.Show();
                     this.Hide();
                 }
-                
+                  
             }
+            tbxEmail.Text = "";
+            tbxSenha.Text = "";
         }
 
         private void tbxEmail_TextChanged(object sender, EventArgs e)
@@ -69,9 +77,6 @@ namespace EcoFinder
             pessoa.setEmail(tbxEmail.Text);
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-            var coletor = new FrmPrincipalColetor(this, pessoa, endereco);
-        }
+        
     }
 }
