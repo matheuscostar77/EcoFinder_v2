@@ -54,14 +54,12 @@ namespace EcoFinder
         {
             var alterarEndereco = new frmCadEndereco(this, pessoa, endereco, tipoConta);
             alterarEndereco.Show();
-            this.Hide();
-        }
+         }
         
         private void btnAlterarPerfil_Click(object sender, EventArgs e)
         {
             var alterarDados = new FrmCadastro(this, pessoa, endereco);
             alterarDados.Show();
-            this.Hide();
-        }
+         }
     }
 }

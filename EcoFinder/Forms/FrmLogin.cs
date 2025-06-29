@@ -69,8 +69,7 @@ namespace EcoFinder
                 }
                   
             }
-            tbxEmail.Text = "";
-            tbxSenha.Text = "";
+           
         }
 
         private void tbxEmail_TextChanged(object sender, EventArgs e)
