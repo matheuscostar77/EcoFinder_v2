@@ -302,6 +302,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmPerfil";
             this.Text = "FrmPerfil";
+            this.Activated += new System.EventHandler(this.FrmPerfil_Activated);
             this.Load += new System.EventHandler(this.FrmPerfil_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

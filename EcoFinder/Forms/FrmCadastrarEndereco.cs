@@ -20,8 +20,7 @@ namespace EcoFinder
         private int tipoConta;
 
         FrmLogin loginTela;
-
-        FrmUsuario usuarioTela; // apagar
+         FrmUsuario usuarioTela; // apagar
         frmColetor coletorTela; // apagar
 
         FrmPerfil perfilTela;
@@ -84,23 +83,14 @@ namespace EcoFinder
                 {
                     if (endereco.alterarEndereco())
                     {
-
-                        MessageBox.Show("Endereço alterado!");
-
-                        if (tipoConta == 1)
-                        {
-                            p_coletor.Show();
-                            this.Close();
-                        }
-                        else if (tipoConta == 2)
-                        {
-                            p_solicitante.Show();
-                            this.Close();
-                        }
+                        MessageBox.Show("Endereço atualizado com sucesso.");
+                        this.Close();
+                        perfilTela.PreencherCamposPerfil();
+                        perfilTela.Show(); // vorta novamente a tela de perfil
                     }
                     else
                     {
-                        MessageBox.Show("Endereço já foi cadastrado anteriormente, tente novamente");
+                        MessageBox.Show("Não foi possível atualizar o endereço. Tente novamente com dados diferentes.");
                     }
                 }
             }
