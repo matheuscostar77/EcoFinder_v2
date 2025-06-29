@@ -124,7 +124,7 @@ namespace EcoFinder
                         cmd.Parameters.AddWithValue("@numerocasa", getNumeroCasa());
 
                         object resultado = cmd.ExecuteScalar();
-                        if (Convert.ToInt32(resultado) == 0)
+                        if (Convert.ToInt32(resultado) != 0)
                         {
                             MessageBox.Show("Endereço já cadastrado para esse CEP e número.");
                             return false;

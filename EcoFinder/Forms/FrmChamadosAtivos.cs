@@ -60,7 +60,7 @@ namespace EcoFinder.Forms
                 gpbChamado2.Visible = false;
 
                 MessageBox.Show("Você não reservou nenhum chamado, volte mais tarde");
-                this.Close();
+                this.BeginInvoke((Action)(() => this.Close()));
             }
             else if (chamado.chamadosAtivos(pessoa.getEmail(), 2, 0) == null)
             {
