@@ -47,6 +47,7 @@ namespace EcoFinder
             this.pessoa = pessoa;
             this.endereco = endereco;
             this.tipoConta = tipoConta;
+
         }
 
 
@@ -133,7 +134,23 @@ namespace EcoFinder
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            perfilTela.Show();
+
+            if (perfilTela != null)
+            {
+                perfilTela.Show();
+            }
+            else if (loginTela != null)
+            {
+                // Voltar para uma tela principal alternativa, tipo:
+                if (tipoConta == 1)
+                {
+                    new FrmPrincipalColetor(loginTela, pessoa, endereco).Show();
+                }
+                else if (tipoConta == 2)
+                {
+                    new FrmPrincipalSolicitante(loginTela, endereco, pessoa).Show();
+                }
+            }
         }
         private async void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
