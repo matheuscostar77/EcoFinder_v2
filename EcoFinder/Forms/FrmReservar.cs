@@ -45,7 +45,7 @@ namespace EcoFinder
                 using (var conn = new MySqlConnection(pessoa.getStringConexao()))
                 {
                     conn.Open();
-                    var cmd = new MySqlCommand("SELECT * FROM vw_ver_chamado_reserva WHERE id_chamado = @id_chamado", conn);
+                    var cmd = new MySqlCommand("SELECT * FROM vw_ver_chamado_reserva_usuario WHERE id_chamado = @id_chamado", conn);
                     cmd.Parameters.AddWithValue("@id_chamado", chamado.idChamado[numLinha]);
 
                     var reader = cmd.ExecuteReader();
@@ -68,7 +68,7 @@ namespace EcoFinder
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar dados da coleta.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();

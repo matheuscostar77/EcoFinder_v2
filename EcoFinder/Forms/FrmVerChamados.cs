@@ -44,7 +44,7 @@ namespace EcoFinder.Forms
             {
                 BeginInvoke((MethodInvoker)delegate {
                     MessageBox.Show("Não há chamados disponíveis no momento, tente novamente mais tarde!");
-                    coletorTela.Show();
+                    this.Close();
                 });
                 return;
             }

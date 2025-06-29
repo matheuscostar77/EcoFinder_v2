@@ -20,13 +20,17 @@ namespace EcoFinder.Forms
         FrmPrincipalSolicitante homeUsuario;
         FrmPrincipalColetor homeColetor;
 
+        int tipoConta;
+
         public FrmChamadosAtivos(FrmPrincipalSolicitante homeUsuario, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
             this.pessoa = pessoa;
             this.endereco = endereco;
-            chamado = new Chamado(pessoa, endereco);
+            tipoConta = 2;
+            chamado = new Chamado(pessoa, endereco, tipoConta);
             this.homeUsuario = homeUsuario;
+
         }
 
         public FrmChamadosAtivos(FrmPrincipalColetor homeColetor, Pessoa pessoa, Endereco endereco)
@@ -34,8 +38,10 @@ namespace EcoFinder.Forms
             InitializeComponent();
             this.pessoa = pessoa;
             this.endereco = endereco;
-            chamado = new Chamado(pessoa, endereco);
+            tipoConta = 1;
+            chamado = new Chamado(pessoa, endereco, tipoConta);
             this.homeColetor = homeColetor;
+
         }
 
         private void FrmChamadosAtivos_Load(object sender, EventArgs e)
@@ -52,6 +58,9 @@ namespace EcoFinder.Forms
                 lblMaterial2.Visible = false;
                 lblStatus2.Visible = false;
                 gpbChamado2.Visible = false;
+
+                MessageBox.Show("Você não reservou nenhum chamado, volte mais tarde");
+                this.Close();
             }
             else if (chamado.chamadosAtivos(pessoa.getEmail(), 2, 0) == null)
             {
@@ -63,7 +72,6 @@ namespace EcoFinder.Forms
 
             lblEndereco1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 0);
             lblMaterial1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 1);
-            lblStatus1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 2);
             lblStatus1.ForeColor = Color.DarkSalmon;
             lblExpiraData1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 3);
             lblFeitoData1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 4);
@@ -72,20 +80,30 @@ namespace EcoFinder.Forms
 
             lblEndereco2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 0);
             lblMaterial2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 1);
-            lblStatus2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 2);
+
             lblStatus2.ForeColor = Color.DarkSalmon;
             lblExpiraData2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 3);
             lblFeitoData2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 4);
             lblKG2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 5);
             lblQtde2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 6);
 
+            if (tipoConta == 2)
+            {
+                lblStatus1.Text = chamado.chamadosAtivos(pessoa.getEmail(), 1, 2);
+                lblStatus2.Text = chamado.chamadosAtivos(pessoa.getEmail(), 2, 2);
+            }
+            else
+            {
+                lblStatus1.Visible = false;
+                lblStatus2.Visible = false;
+            }
             if (lblStatus1.Text == "Disponivel")
             {
                 btnConfirmar1.Visible = false;
                 lblStatus1.ForeColor = Color.Green;
-                
+
             }
-            
+
             if (lblStatus2.Text == "Disponivel")
             {
                 btnConfirmar2.Visible = false;
@@ -98,13 +116,15 @@ namespace EcoFinder.Forms
                 btnCancelar1.Visible = false;
                 lblStatus1.ForeColor = Color.Red;
             }
-            
+
             if (lblStatus2.Text == "Cancelado" || lblStatus2.Text == "Desistencia")
             {
                 btnConfirmar2.Visible = false;
                 btnCancelar2.Visible = false;
                 lblStatus2.ForeColor = Color.Red;
             }
+
+            
         }
 
         private void btnConfirmar1_Click(object sender, EventArgs e)

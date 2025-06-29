@@ -24,10 +24,18 @@ namespace EcoFinder
         private int qtdUnidade = 0;
         public List<int> idChamado = new List<int>();
         private string previsaoColeta;
+        private int tipoConta;
 
         private Pessoa pessoa;
         private Endereco endereco;
-        
+
+
+        public Chamado(Pessoa pessoa, Endereco endereco, int tipoConta)
+        {
+            this.pessoa = pessoa;
+            this.endereco = endereco;
+            this.tipoConta = tipoConta;
+        }
 
         public Chamado(Pessoa pessoa, Endereco endereco)
         {
@@ -258,39 +266,44 @@ namespace EcoFinder
 
                     if (idpessoa == 0) return "Usuário não encontrado";
 
-                    string query = @"SELECT * FROM vw_ver_chamado_reserva 
+                    string query =  @"SELECT * FROM vw_ver_chamado_reserva_usuario
                                    WHERE id_pessoa = @id_pessoa 
-                                   ORDER BY (status = 'Disponivel') 
                                    LIMIT @offset, 1";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    if (tipoConta == 1)
                     {
-                        cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
-                        cmd.Parameters.AddWithValue("@offset", numGroup - 1);
-
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        query = @"SELECT * FROM vw_ver_chamado_reserva_coletor 
+                                   WHERE id_coletor = @id_pessoa AND status_reserva <> 'Concluida'
+                                   LIMIT @offset, 1";
+                    }
+                    
+                        using (MySqlCommand cmd = new MySqlCommand(query, conn))
                         {
-                            if (reader.Read())
-                            {
-                                if (!reader.IsDBNull(reader.GetOrdinal("id_chamado")))
-                                {
-                                    idChamado.Add(reader.GetInt32("id_chamado"));
-                                }
+                            cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
+                            cmd.Parameters.AddWithValue("@offset", numGroup - 1);
 
-                                switch (endOuMaterial)
+                            using (MySqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
                                 {
-                                    case 0: return reader["endereco_format"].ToString();
-                                    case 1: return reader["tipo"].ToString();
-                                    case 2: return reader["status"].ToString();
-                                    case 3: return reader["data_expiracao"].ToString();
-                                    case 4: return reader["data_chamado"].ToString();
-                                    case 5: return reader["kilograma"].ToString() + "KG";
-                                    case 6: return reader["qtde_unitaria"].ToString() + " uni.";
-                                    default: return "N/D";
+                                    if (!reader.IsDBNull(reader.GetOrdinal("id_chamado")))
+                                    {
+                                        idChamado.Add(reader.GetInt32("id_chamado"));
+                                    }
+
+                                    switch (endOuMaterial)
+                                    {
+                                        case 0: return reader["endereco_format"].ToString();
+                                        case 1: return reader["tipo"].ToString();
+                                        case 2: return reader["status"].ToString();
+                                        case 3: return reader["data_expiracao"].ToString();
+                                        case 4: return reader["data_chamado"].ToString();
+                                        case 5: return reader["kilograma"].ToString() + "KG";
+                                        case 6: return reader["qtde_unitaria"].ToString() + " uni.";
+                                        default: return "N/D";
+                                    }
                                 }
                             }
                         }
-                    }
                 }
             }
             catch (MySqlException ex)
