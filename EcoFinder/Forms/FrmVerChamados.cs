@@ -15,7 +15,7 @@ namespace EcoFinder.Forms
 {
     public partial class FrmVerChamados : Form
     {
-       // private int quantChamados;
+        // private int quantChamados;
 
         Pessoa pessoa;
         Endereco endereco;
@@ -32,7 +32,7 @@ namespace EcoFinder.Forms
             this.pessoa = pessoa;
             this.endereco = endereco;
             this.coletorTela = coletorTela;
-            chamado = new Chamado(pessoa,endereco);
+            chamado = new Chamado(pessoa, endereco);
         }
 
         private void FrmVerChamados_Load(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace EcoFinder.Forms
             {
                 btnChamado1.Text = chamado.mostrarChamado(0, "btn", "N");
                 lblDistancia1.Text = chamado.mostrarChamado(0, "lbl", "N");
-                btnChamado2.Text = chamado.mostrarChamado(1, "btn", "N"); 
+                btnChamado2.Text = chamado.mostrarChamado(1, "btn", "N");
                 lblDistancia2.Text = chamado.mostrarChamado(1, "lbl", "N");
                 btnChamado3.Text = chamado.mostrarChamado(2, "btn", "N");
                 lblDistancia3.Text = chamado.mostrarChamado(2, "lbl", "N");
@@ -84,7 +84,7 @@ namespace EcoFinder.Forms
         {
 
         }
-       
+
 
         private void btnChamado1_Click(object sender, EventArgs e)
         {
@@ -107,6 +107,6 @@ namespace EcoFinder.Forms
             this.Close();
         }
 
-        
+
     }
 }

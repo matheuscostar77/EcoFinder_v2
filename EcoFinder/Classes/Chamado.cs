@@ -144,7 +144,7 @@ namespace EcoFinder
 
         public string mostrarChamado(int linha, string tipoBotao, string tipomaterial)
         {
-            idChamado.Clear(); // Limpa a lista antes de usar
+            
 
             string tipo = "N/D";
             string distancia = "N/D";
@@ -209,26 +209,38 @@ namespace EcoFinder
                         resultadoParam.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(resultadoParam);
 
+                        // Executa a procedure
                         cmd.ExecuteNonQuery();
 
-                        bool resultado = resultadoParam.Value != DBNull.Value && Convert.ToBoolean(resultadoParam.Value);
-                        MessageBox.Show(resultado ? "Reserva realizada com sucesso." : "Não foi possível realizar a reserva.");
+                        // Captura o valor retornado
+                        bool resultado = false;
+                        if (resultadoParam.Value != DBNull.Value)
+                        {
+                            resultado = Convert.ToBoolean(resultadoParam.Value);
+                        }
+
+                        // Usa o resultado como quiser
+                        if (resultado)
+                        {
+                            MessageBox.Show("Reserva realizada com sucesso.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi possível realizar a reserva.");
+                        }
                     }
                 }
             }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show($"Erro no banco de dados: {ex.Message}");
-            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao tentar reservar: {ex.Message}");
+                MessageBox.Show("Erro ao tentar reservar: " + ex.Message);
             }
         }
 
+
         public string chamadosAtivos(string email, int numGroup, int endOuMaterial)
         {
-            idChamado.Clear(); // Limpa a lista antes de usar
+            
 
             try
             {

@@ -63,6 +63,8 @@ namespace EcoFinder
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
+            var teste = new FrmChamadosAtivos(this, pessoa, endereco);
+            teste.Show();
             if (perfil == null || perfil.IsDisposed)
             {
                 perfil = new FrmPerfil(this, pessoa, endereco);
