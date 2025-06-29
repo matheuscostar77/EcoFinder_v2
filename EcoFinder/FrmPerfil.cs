@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace EcoFinder
 {
+
     public partial class FrmPerfil : Form
     {
         Pessoa pessoa;
@@ -17,10 +19,12 @@ namespace EcoFinder
         FrmPrincipalSolicitante solicitanteTela;
         FrmPrincipalColetor coletorTela;
         int tipoConta;
+
+        public FrmPerfil() { }
         public FrmPerfil(FrmPrincipalSolicitante solicitanteTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.solicitanteTela = solicitanteTela;
+             this.solicitanteTela = solicitanteTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
             tipoConta = 2;
@@ -28,7 +32,7 @@ namespace EcoFinder
         public FrmPerfil(FrmPrincipalColetor coletorTela, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
-            this.coletorTela = coletorTela;
+             this.coletorTela = coletorTela;
             this.pessoa = pessoa;
             this.endereco = endereco;
             tipoConta = 1;
@@ -37,17 +41,37 @@ namespace EcoFinder
         private void FrmPerfil_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+            PreencherCamposPerfil();
 
-            /*txbEmail.Text = pessoa.getEmail();
-            txbNome.Text = pessoa.getName();
-            txbGenero.Text = pessoa.getSex();
-            txbCep.Text = endereco.getCep();
-            txbCidade.Text = endereco.getCidade();
-            txbEstado.Text = endereco.getEstado();
-            txbRua.Text = endereco.getNomeRua();
-            txbnumerocasa.Text = endereco.getNumeroCasa();
-            txbBairro.Text = endereco.getNomeBairro();*/
+        }
 
+        public void PreencherCamposPerfil()
+        {
+            try
+            {
+                string[] dados = pessoa.ObterDadosPerfil();
+                if (dados == null || dados.Length < 9)
+                {
+                    MessageBox.Show("Não foi possível carregar seus dados de perfil.", "Erro ao Carregar Perfil",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                txbNome.Text = dados[0];
+                txbEmail.Text = dados[1];
+                txbGenero.Text = dados[2];
+                txbCep.Text = dados[3];
+                txbEstado.Text = dados[4];
+                txbCidade.Text = dados[5];
+                txbBairro.Text = dados[6];
+                txbRua.Text = dados[7];
+                txbnumerocasa.Text = dados[8];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar perfil: " + ex.Message,
+                                "Erro Interno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnalterarEndereco_Click(object sender, EventArgs e)
@@ -61,5 +85,10 @@ namespace EcoFinder
             var alterarDados = new FrmCadastro(this, pessoa, endereco);
             alterarDados.Show();
          }
+
+        private void FrmPerfil_Activated(object sender, EventArgs e)
+        {
+            PreencherCamposPerfil();
+        }
     }
 }

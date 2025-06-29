@@ -18,7 +18,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
  
-        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=mysqlpassword;database=ecofinder";
 
 
         public Pessoa()
@@ -184,6 +184,64 @@ namespace EcoFinder
             {
                 MessageBox.Show("Erro ao alterar dados: " + ex.Message);
                 return false;
+            }
+        }
+
+
+        public string[] ObterDadosPerfil()
+        {
+            string[] dados = new string[9];
+            try
+            {
+                using (var conn = new MySqlConnection(stringConexao))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = @"SELECT p.nome, p.email, p.genero,
+                                               e.cep, e.estado, e.cidade,
+                                               e.bairro, e.rua, e.numerocasa
+                                        FROM tb_pessoa p
+                                        JOIN tb_endereco e ON e.id_pessoa_endereco = p.id_pessoa
+                                        WHERE p.id_pessoa = (
+                                            SELECT f_identificar_a_conta(@emailParam)
+                                        )";
+                    cmd.Parameters.AddWithValue("@emailParam", email);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            dados[0] = reader.GetString(0);
+                            dados[1] = reader.GetString(1);
+                            dados[2] = reader.GetString(2);
+                            dados[3] = reader.GetString(3);
+                            dados[4] = reader.GetString(4);
+                            dados[5] = reader.GetString(5);
+                            dados[6] = reader.GetString(6);
+                            dados[7] = reader.GetString(7);
+                            dados[8] = reader.GetString(8);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não encontramos seus dados de perfil. Por favor, tente novamente mais tarde.",
+                                            "Perfil Não Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return null;
+                        }
+                    }
+                }
+                return dados;
+            }
+            catch (MySqlException mysqlEx)
+            {
+                MessageBox.Show("Houve um problema ao acessar suas informações. Verifique sua conexão de internet ou tente novamente mais tarde.\n\nDetalhes técnicos: " + mysqlEx.Message,
+                                "Erro de Conexão ao Banco", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Desculpe, ocorreu um erro inesperado ao carregar seu perfil:\n" + ex.Message + "\nPor favor, contate o suporte.",
+                                "Erro Interno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }

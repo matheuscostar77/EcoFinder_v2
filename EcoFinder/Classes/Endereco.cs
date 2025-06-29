@@ -217,8 +217,6 @@ namespace EcoFinder
                         cmd.Parameters.AddWithValue("@numerocasa", getNumeroCasa());
  
                         object resultado = cmd.ExecuteScalar();
-                        MessageBox.Show($"Retorno da função F_CHECK_ENDERECO_REPETIDO: {resultado}");
-
                         if (resultado != null && Convert.ToInt32(resultado) != 0)
                         {
                             MessageBox.Show("Este endereço já está cadastrado.");
@@ -267,8 +265,7 @@ namespace EcoFinder
                             return false;
                         }
 
-                        MessageBox.Show("Endereço atualizado com sucesso.");
-                        return true;
+                         return true;
                     }
                 }
             }
