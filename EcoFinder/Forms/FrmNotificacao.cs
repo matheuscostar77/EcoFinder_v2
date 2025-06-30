@@ -22,7 +22,6 @@ namespace EcoFinder.Forms
             InitializeComponent();
 
             lstNotificacao.View = View.Details;
-            
             lstNotificacao.GridLines = true;
 
             
@@ -34,6 +33,10 @@ namespace EcoFinder.Forms
         public FrmNotificacao(FrmPrincipalSolicitante p_solicitante, Pessoa pessoa, Endereco endereco)
         {
             InitializeComponent();
+
+            lstNotificacao.View = View.Details;
+            lstNotificacao.GridLines = true;
+
 
             this.p_solicitante = p_solicitante;
             this.pessoa = pessoa;
@@ -55,7 +58,6 @@ namespace EcoFinder.Forms
                         idpessoa = Convert.ToInt32(cmd.ExecuteScalar());
 
                         cmd.Parameters.Clear();
-
                         cmd.CommandText = "SELECT mensagem FROM tb_notifica_coletor WHERE id_coletor = @id_pessoa";
                         cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
 
@@ -91,6 +93,22 @@ namespace EcoFinder.Forms
 
                             cmd.CommandText = "SELECT mensagem FROM tb_notifica_solicitante WHERE id_usuariocomum = @id_pessoa";
                             cmd.Parameters.AddWithValue("@id_pessoa", idpessoa);
+
+                            lstNotificacao.Items.Clear();
+
+                            using (MySqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    string row = reader.GetString(0);
+
+                                    var linha_listview = new ListViewItem(row);
+
+                                    lstNotificacao.Items.Add(linha_listview);
+                                }
+
+
+                            }
                         }
                         else
                         {

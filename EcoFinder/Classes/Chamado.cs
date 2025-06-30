@@ -267,7 +267,7 @@ namespace EcoFinder
                     if (idpessoa == 0) return "Usuário não encontrado";
 
                     string query =  @"SELECT * FROM vw_ver_chamado_reserva_usuario
-                                   WHERE id_pessoa = @id_pessoa 
+                                   WHERE id_pessoa = @id_pessoa AND status <> 'Concluido'
                                    LIMIT @offset, 1";
                     if (tipoConta == 1)
                     {

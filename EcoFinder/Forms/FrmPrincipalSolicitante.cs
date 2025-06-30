@@ -168,8 +168,15 @@ namespace EcoFinder
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Close();
-            loginTela.Show();
+            try
+            {
+                this.Close();
+                loginTela.Show();
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnHome_Click(object sender, EventArgs e)

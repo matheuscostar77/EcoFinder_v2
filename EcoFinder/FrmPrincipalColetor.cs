@@ -124,6 +124,8 @@ namespace EcoFinder
                 chamadosAtivos.Show();
             }
             chamadosAtivos.BringToFront();
+
+
         }
 
         private void ChamadosAtivos_FormClosed(object sender, FormClosedEventArgs e)
