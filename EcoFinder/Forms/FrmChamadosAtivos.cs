@@ -100,6 +100,7 @@ namespace EcoFinder.Forms
             if (lblStatus1.Text == "Disponivel")
             {
                 btnConfirmar1.Visible = false;
+                btnCancelar1.Visible = false;
                 lblStatus1.ForeColor = Color.Green;
 
             }
@@ -107,6 +108,7 @@ namespace EcoFinder.Forms
             if (lblStatus2.Text == "Disponivel")
             {
                 btnConfirmar2.Visible = false;
+                btnCancelar2.Visible = false;
                 lblStatus2.ForeColor = Color.Green;
             }
 

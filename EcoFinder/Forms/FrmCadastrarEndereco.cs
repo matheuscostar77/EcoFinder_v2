@@ -60,8 +60,6 @@ namespace EcoFinder
                     if (endereco.cadastrarEndereco())
                     {
 
-                        MessageBox.Show("Endereço cadastrado!");
-
                         if (tipoConta == 1)
                         {
                             p_coletor = new FrmPrincipalColetor(loginTela, pessoa, endereco);

@@ -46,6 +46,8 @@ namespace EcoFinder
             if (perfilTela != null)
             {
                 emailAntigo = pessoa.getEmail();
+                lblTipoConta.Visible = false;
+                cmbTipoConta.Visible = false;
             }
         }
 
@@ -130,6 +132,8 @@ namespace EcoFinder
                 else if (perfilTela != null)
                 {
                     pessoa.alterarDados(emailAntigo);
+                    lblTipoConta.Visible = false;
+                    cmbTipoConta.Visible = false;
                 }
                 
             }
