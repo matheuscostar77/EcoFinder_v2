@@ -63,6 +63,26 @@ namespace EcoFinder.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8a404f72_8ed6_4e24_8432_8590766daf27 {
+            get {
+                object obj = ResourceManager.GetObject("8a404f72-8ed6-4e24-8432-8590766daf27", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coletor {
+            get {
+                object obj = ResourceManager.GetObject("coletor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_recycle_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-recycle-48", resourceCulture);
@@ -86,6 +106,16 @@ namespace EcoFinder.Properties {
         internal static System.Drawing.Bitmap pngtree_green_recycling_symbol_picture_image_13103938 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-green-recycling-symbol-picture-image_13103938", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usuario {
+            get {
+                object obj = ResourceManager.GetObject("usuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

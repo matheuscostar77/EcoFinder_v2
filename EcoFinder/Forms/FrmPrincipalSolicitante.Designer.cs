@@ -32,22 +32,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipalSolicitante));
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnPerfil = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnCriarChamado = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnAvisos = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnChamadosDisponiveis = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnSair = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnHam = new System.Windows.Forms.PictureBox();
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
+            this.btnPerfil = new System.Windows.Forms.Button();
+            this.btnCriarChamado = new System.Windows.Forms.Button();
+            this.btnAvisos = new System.Windows.Forms.Button();
+            this.btnChamadosDisponiveis = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnHam = new System.Windows.Forms.PictureBox();
             this.sidebar.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             // sidebar
             // 
-            this.sidebar.BackColor = System.Drawing.Color.ForestGreen;
+            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Controls.Add(this.panel7);
@@ -87,21 +87,18 @@
             this.panel6.Size = new System.Drawing.Size(284, 92);
             this.panel6.TabIndex = 8;
             // 
-            // btnPerfil
+            // btnHome
             // 
-            this.btnPerfil.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnPerfil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPerfil.ForeColor = System.Drawing.Color.White;
-            this.btnPerfil.Image = ((System.Drawing.Image)(resources.GetObject("btnPerfil.Image")));
-            this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerfil.Location = new System.Drawing.Point(-8, -21);
-            this.btnPerfil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPerfil.Name = "btnPerfil";
-            this.btnPerfil.Size = new System.Drawing.Size(306, 144);
-            this.btnPerfil.TabIndex = 2;
-            this.btnPerfil.Text = "Perfil";
-            this.btnPerfil.UseVisualStyleBackColor = false;
-            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnHome.Location = new System.Drawing.Point(-51, -42);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(387, 192);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panel4
             // 
@@ -113,22 +110,6 @@
             this.panel4.Size = new System.Drawing.Size(284, 92);
             this.panel4.TabIndex = 5;
             // 
-            // btnCriarChamado
-            // 
-            this.btnCriarChamado.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnCriarChamado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCriarChamado.ForeColor = System.Drawing.Color.White;
-            this.btnCriarChamado.Image = ((System.Drawing.Image)(resources.GetObject("btnCriarChamado.Image")));
-            this.btnCriarChamado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCriarChamado.Location = new System.Drawing.Point(-6, -30);
-            this.btnCriarChamado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCriarChamado.Name = "btnCriarChamado";
-            this.btnCriarChamado.Size = new System.Drawing.Size(302, 137);
-            this.btnCriarChamado.TabIndex = 2;
-            this.btnCriarChamado.Text = "Criar Chamados";
-            this.btnCriarChamado.UseVisualStyleBackColor = false;
-            this.btnCriarChamado.Click += new System.EventHandler(this.btnCriarChamado_Click);
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.ForestGreen;
@@ -138,19 +119,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(284, 92);
             this.panel7.TabIndex = 8;
-            // 
-            // btnHome
-            // 
-            this.btnHome.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnHome.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHome.Location = new System.Drawing.Point(-51, -42);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(387, 192);
-            this.btnHome.TabIndex = 0;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = false;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panel3
             // 
@@ -162,22 +130,6 @@
             this.panel3.Size = new System.Drawing.Size(284, 92);
             this.panel3.TabIndex = 4;
             // 
-            // btnAvisos
-            // 
-            this.btnAvisos.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnAvisos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAvisos.ForeColor = System.Drawing.Color.White;
-            this.btnAvisos.Image = ((System.Drawing.Image)(resources.GetObject("btnAvisos.Image")));
-            this.btnAvisos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAvisos.Location = new System.Drawing.Point(-6, -15);
-            this.btnAvisos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAvisos.Name = "btnAvisos";
-            this.btnAvisos.Size = new System.Drawing.Size(302, 137);
-            this.btnAvisos.TabIndex = 2;
-            this.btnAvisos.Text = "Avisos";
-            this.btnAvisos.UseVisualStyleBackColor = false;
-            this.btnAvisos.Click += new System.EventHandler(this.btnAvisos_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.ForestGreen;
@@ -187,21 +139,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(284, 92);
             this.panel2.TabIndex = 7;
-            // 
-            // btnChamadosDisponiveis
-            // 
-            this.btnChamadosDisponiveis.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnChamadosDisponiveis.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnChamadosDisponiveis.Image = ((System.Drawing.Image)(resources.GetObject("btnChamadosDisponiveis.Image")));
-            this.btnChamadosDisponiveis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChamadosDisponiveis.Location = new System.Drawing.Point(-6, -23);
-            this.btnChamadosDisponiveis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnChamadosDisponiveis.Name = "btnChamadosDisponiveis";
-            this.btnChamadosDisponiveis.Size = new System.Drawing.Size(302, 152);
-            this.btnChamadosDisponiveis.TabIndex = 8;
-            this.btnChamadosDisponiveis.Text = "      Meus Chamados";
-            this.btnChamadosDisponiveis.UseVisualStyleBackColor = false;
-            this.btnChamadosDisponiveis.Click += new System.EventHandler(this.btnChamadosDisponiveis_Click);
             // 
             // panel8
             // 
@@ -215,28 +152,12 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
             this.panel5.Location = new System.Drawing.Point(4, 617);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(284, 92);
             this.panel5.TabIndex = 6;
-            // 
-            // btnSair
-            // 
-            this.btnSair.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(-8, -19);
-            this.btnSair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(304, 160);
-            this.btnSair.TabIndex = 2;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // panel1
             // 
@@ -262,6 +183,90 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "ECOFINDER";
             // 
+            // sidebarTransition
+            // 
+            this.sidebarTransition.Interval = 10;
+            this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
+            // 
+            // btnPerfil
+            // 
+            this.btnPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnPerfil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerfil.ForeColor = System.Drawing.Color.White;
+            this.btnPerfil.Image = ((System.Drawing.Image)(resources.GetObject("btnPerfil.Image")));
+            this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPerfil.Location = new System.Drawing.Point(-8, -21);
+            this.btnPerfil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPerfil.Name = "btnPerfil";
+            this.btnPerfil.Size = new System.Drawing.Size(306, 144);
+            this.btnPerfil.TabIndex = 2;
+            this.btnPerfil.Text = "Perfil";
+            this.btnPerfil.UseVisualStyleBackColor = false;
+            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
+            // 
+            // btnCriarChamado
+            // 
+            this.btnCriarChamado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnCriarChamado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCriarChamado.ForeColor = System.Drawing.Color.White;
+            this.btnCriarChamado.Image = ((System.Drawing.Image)(resources.GetObject("btnCriarChamado.Image")));
+            this.btnCriarChamado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCriarChamado.Location = new System.Drawing.Point(-6, -30);
+            this.btnCriarChamado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCriarChamado.Name = "btnCriarChamado";
+            this.btnCriarChamado.Size = new System.Drawing.Size(302, 137);
+            this.btnCriarChamado.TabIndex = 2;
+            this.btnCriarChamado.Text = "Criar Chamados";
+            this.btnCriarChamado.UseVisualStyleBackColor = false;
+            this.btnCriarChamado.Click += new System.EventHandler(this.btnCriarChamado_Click);
+            // 
+            // btnAvisos
+            // 
+            this.btnAvisos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnAvisos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvisos.ForeColor = System.Drawing.Color.White;
+            this.btnAvisos.Image = ((System.Drawing.Image)(resources.GetObject("btnAvisos.Image")));
+            this.btnAvisos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvisos.Location = new System.Drawing.Point(-6, -15);
+            this.btnAvisos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAvisos.Name = "btnAvisos";
+            this.btnAvisos.Size = new System.Drawing.Size(302, 137);
+            this.btnAvisos.TabIndex = 2;
+            this.btnAvisos.Text = "Avisos";
+            this.btnAvisos.UseVisualStyleBackColor = false;
+            this.btnAvisos.Click += new System.EventHandler(this.btnAvisos_Click);
+            // 
+            // btnChamadosDisponiveis
+            // 
+            this.btnChamadosDisponiveis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnChamadosDisponiveis.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnChamadosDisponiveis.Image = ((System.Drawing.Image)(resources.GetObject("btnChamadosDisponiveis.Image")));
+            this.btnChamadosDisponiveis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChamadosDisponiveis.Location = new System.Drawing.Point(-6, -23);
+            this.btnChamadosDisponiveis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnChamadosDisponiveis.Name = "btnChamadosDisponiveis";
+            this.btnChamadosDisponiveis.Size = new System.Drawing.Size(302, 152);
+            this.btnChamadosDisponiveis.TabIndex = 8;
+            this.btnChamadosDisponiveis.Text = "      Meus Chamados";
+            this.btnChamadosDisponiveis.UseVisualStyleBackColor = false;
+            this.btnChamadosDisponiveis.Click += new System.EventHandler(this.btnChamadosDisponiveis_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.Color.White;
+            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(-8, -19);
+            this.btnSair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(304, 160);
+            this.btnSair.TabIndex = 2;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
             // btnHam
             // 
             this.btnHam.Image = ((System.Drawing.Image)(resources.GetObject("btnHam.Image")));
@@ -273,11 +278,6 @@
             this.btnHam.TabIndex = 1;
             this.btnHam.TabStop = false;
             this.btnHam.Click += new System.EventHandler(this.btnHam_Click);
-            // 
-            // sidebarTransition
-            // 
-            this.sidebarTransition.Interval = 10;
-            this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
             // 
             // FrmPrincipalSolicitante
             // 

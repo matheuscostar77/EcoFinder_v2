@@ -428,6 +428,15 @@
   <ItemGroup>
     <None Include="Resources\icons8-recycle-48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8a404f72-8ed6-4e24-8432-8590766daf27.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coletor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
