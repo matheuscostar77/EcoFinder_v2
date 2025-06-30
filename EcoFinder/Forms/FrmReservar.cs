@@ -20,7 +20,7 @@ namespace EcoFinder
         FrmPrincipalColetor coletorTela;
         private Chamado chamado;
         int numLinha;
-        public FrmReservar(FrmPrincipalColetor coletorTela, Pessoa pessoa, Endereco endereco,Chamado chamado, int numLinha)
+        public FrmReservar(FrmPrincipalColetor coletorTela, Pessoa pessoa, Endereco endereco, Chamado chamado, int numLinha)
         {
             InitializeComponent();
             this.coletorTela = coletorTela;
@@ -28,13 +28,13 @@ namespace EcoFinder
             this.endereco = endereco;
             this.chamado = chamado;
             this.numLinha = numLinha;
+            this.StartPosition = FormStartPosition.CenterParent;
         }
 
         private void FrmReservar_Load(object sender, EventArgs e)
         {
             try
             {
-                // Verificação segura do índice
                 if (chamado.idChamado == null || numLinha < 0 || numLinha >= chamado.idChamado.Count)
                 {
                     MessageBox.Show("Não foi possível carregar os dados da coleta.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -75,14 +75,6 @@ namespace EcoFinder
             }
         }
 
-        private void cmbPrevisao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbPrevisao.SelectedItem != null)
-            {
-                chamado.setPrevisaoColeta(cmbPrevisao.SelectedItem.ToString());
-            }
-        }
-
         private void btnReservar_Click(object sender, EventArgs e)
         {
             if (cmbPrevisao.SelectedItem == null)
@@ -98,13 +90,27 @@ namespace EcoFinder
 
                 MessageBox.Show("Reserva realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                var retornarVerChamados = new FrmVerChamados(coletorTela, pessoa, endereco);
-                retornarVerChamados.Show();
+                // ABRE FrmVerChamados CORRETAMENTE COMO MDI MAXIMIZADA
+                var verChamados = new FrmVerChamados(coletorTela, pessoa, endereco);
+                verChamados.MdiParent = coletorTela;                     // Mantém como MDI
+                 verChamados.StartPosition = FormStartPosition.CenterScreen; // <-- OPCIONAL para garantir centralização
+                verChamados.Dock = DockStyle.Fill;
+
+                verChamados.Show();
+
                 this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro ao realizar reserva.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao realizar reserva: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbPrevisao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPrevisao.SelectedItem != null)
+            {
+                chamado.setPrevisaoColeta(cmbPrevisao.SelectedItem.ToString());
             }
         }
     }

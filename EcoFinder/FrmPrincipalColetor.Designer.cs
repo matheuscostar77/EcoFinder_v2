@@ -38,20 +38,23 @@
             this.btnAvisos = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnChamadosDisponiveis = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnSair = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnHam = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnMinhasReservas = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -61,6 +64,7 @@
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel2);
+            this.sidebar.Controls.Add(this.panel9);
             this.sidebar.Controls.Add(this.panel5);
             this.sidebar.Controls.Add(this.panel8);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -159,38 +163,6 @@
             this.btnChamadosDisponiveis.UseVisualStyleBackColor = false;
             this.btnChamadosDisponiveis.Click += new System.EventHandler(this.btnChamadosDisponiveis_Click);
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.ForestGreen;
-            this.panel5.Location = new System.Drawing.Point(3, 267);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(189, 60);
-            this.panel5.TabIndex = 9;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.ForestGreen;
-            this.panel8.Controls.Add(this.btnSair);
-            this.panel8.Location = new System.Drawing.Point(3, 333);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(189, 60);
-            this.panel8.TabIndex = 7;
-            // 
-            // btnSair
-            // 
-            this.btnSair.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(-4, -22);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(203, 104);
-            this.btnSair.TabIndex = 2;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -222,6 +194,61 @@
             this.btnHam.TabIndex = 1;
             this.btnHam.TabStop = false;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel5.Location = new System.Drawing.Point(3, 333);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(189, 60);
+            this.panel5.TabIndex = 9;
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.Color.White;
+            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(-4, -22);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(203, 104);
+            this.btnSair.TabIndex = 2;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel8.Controls.Add(this.btnSair);
+            this.panel8.Location = new System.Drawing.Point(3, 399);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(189, 60);
+            this.panel8.TabIndex = 7;
+            // 
+            // btnMinhasReservas
+            // 
+            this.btnMinhasReservas.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnMinhasReservas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMinhasReservas.Image = ((System.Drawing.Image)(resources.GetObject("btnMinhasReservas.Image")));
+            this.btnMinhasReservas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMinhasReservas.Location = new System.Drawing.Point(-4, -15);
+            this.btnMinhasReservas.Name = "btnMinhasReservas";
+            this.btnMinhasReservas.Size = new System.Drawing.Size(201, 99);
+            this.btnMinhasReservas.TabIndex = 8;
+            this.btnMinhasReservas.Text = "    Minhas Reservas";
+            this.btnMinhasReservas.UseVisualStyleBackColor = false;
+            this.btnMinhasReservas.Click += new System.EventHandler(this.btnMinhasReservas_Click);
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel9.Controls.Add(this.btnMinhasReservas);
+            this.panel9.Location = new System.Drawing.Point(3, 267);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(189, 60);
+            this.panel9.TabIndex = 11;
+            // 
             // FrmPrincipalColetor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,16 +259,16 @@
             this.IsMdiContainer = true;
             this.Name = "FrmPrincipalColetor";
             this.Text = "FrmPrincipalColetor";
-            this.Load += new System.EventHandler(this.FrmPrincipalColetor_Load);
             this.sidebar.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -260,8 +287,10 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnChamadosDisponiveis;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnMinhasReservas;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Panel panel5;
     }
 }

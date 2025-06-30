@@ -21,6 +21,7 @@ namespace EcoFinder
         FrmPerfil perfil;
         Endereco endereco;
         frmColetor home;
+        FrmChamadosAtivos chamadosAtivos;
         FrmNotificacao avisos;
          FrmVerChamados verChamados;
         public FrmPrincipalColetor(FrmLogin telalogin, Pessoa pessoa, Endereco endereco)
@@ -29,12 +30,9 @@ namespace EcoFinder
             this.pessoa = pessoa;
             this.endereco = endereco;
             this.telalogin = telalogin;
-          
-        }
 
-        private void FrmPrincipalColetor_Load(object sender, EventArgs e)
-        {
-
+            // Abre a tela home automaticamente ao iniciar
+            btnHome_Click(null, null);
         }
 
         private void btnAvisos_Click(object sender, EventArgs e)
@@ -46,14 +44,8 @@ namespace EcoFinder
                 avisos.MdiParent = this;
                 avisos.Dock = DockStyle.Fill;
                 avisos.Show();
-                avisos.BringToFront();  
             }
-            else
-            {
-                avisos.WindowState = FormWindowState.Normal;
-                avisos.BringToFront();
-                avisos.Activate();
-            }
+            avisos.BringToFront();
         }
 
         private void Avisos_FormClosed(object sender, FormClosedEventArgs e)
@@ -63,8 +55,6 @@ namespace EcoFinder
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            var teste = new FrmChamadosAtivos(this, pessoa, endereco);
-            teste.Show();
             if (perfil == null || perfil.IsDisposed)
             {
                 perfil = new FrmPerfil(this, pessoa, endereco);
@@ -72,14 +62,8 @@ namespace EcoFinder
                 perfil.MdiParent = this;
                 perfil.Dock = DockStyle.Fill;
                 perfil.Show();
-                perfil.BringToFront();  
             }
-            else
-            {
-                perfil.WindowState = FormWindowState.Normal;
-                perfil.BringToFront();
-                perfil.Activate();
-            }
+            perfil.BringToFront();
         }
 
         private void Perfil_FormClosed(object sender, FormClosedEventArgs e)
@@ -96,14 +80,8 @@ namespace EcoFinder
                 verChamados.MdiParent = this;
                 verChamados.Dock = DockStyle.Fill;
                 verChamados.Show();
-                verChamados.BringToFront(); 
             }
-            else
-            {
-                verChamados.WindowState = FormWindowState.Normal;
-                verChamados.BringToFront();
-                verChamados.Activate();
-            }
+            verChamados.BringToFront();
         }
 
         private void VerChamados_FormClosed(object sender, FormClosedEventArgs e)
@@ -120,14 +98,8 @@ namespace EcoFinder
                 home.MdiParent = this;
                 home.Dock = DockStyle.Fill;
                 home.Show();
-                home.BringToFront();  
             }
-            else
-            {
-                home.WindowState = FormWindowState.Normal;
-                home.BringToFront();
-                home.Activate();
-            }
+            home.BringToFront();
         }
 
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
@@ -136,10 +108,27 @@ namespace EcoFinder
         }
 
         private void btnSair_Click(object sender, EventArgs e)
-        { 
-                this.Close();
+        {
+            this.Close();
             telalogin.Show();
+        }
 
+        private void btnMinhasReservas_Click(object sender, EventArgs e)
+        {
+            if (chamadosAtivos == null || chamadosAtivos.IsDisposed)
+            {
+                chamadosAtivos = new FrmChamadosAtivos(this, pessoa, endereco);
+                chamadosAtivos.FormClosed += ChamadosAtivos_FormClosed; 
+                chamadosAtivos.MdiParent = this;
+                chamadosAtivos.Dock = DockStyle.Fill;
+                chamadosAtivos.Show();
+            }
+            chamadosAtivos.BringToFront();
+        }
+
+        private void ChamadosAtivos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            chamadosAtivos = null;
         }
     }
 }

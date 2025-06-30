@@ -89,21 +89,22 @@ namespace EcoFinder.Forms
         private void btnChamado1_Click(object sender, EventArgs e)
         {
             var reservarTela = new FrmReservar(coletorTela, pessoa, endereco, chamado, 0);
-            reservarTela.Show();
+            reservarTela.ShowDialog();  
             this.Close();
         }
 
         private void btnChamado2_Click(object sender, EventArgs e)
         {
             var reservarTela = new FrmReservar(coletorTela, pessoa, endereco, chamado, 1);
-            reservarTela.Show();
+            reservarTela.ShowDialog(); 
             this.Close();
+
         }
 
         private void btnChamado3_Click(object sender, EventArgs e)
         {
             var reservarTela = new FrmReservar(coletorTela, pessoa, endereco, chamado, 2);
-            reservarTela.Show();
+            reservarTela.ShowDialog(); 
             this.Close();
         }
 
