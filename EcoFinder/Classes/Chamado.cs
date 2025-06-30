@@ -266,13 +266,13 @@ namespace EcoFinder
 
                     if (idpessoa == 0) return "Usuário não encontrado";
 
-                    string query =  @"SELECT * FROM vw_ver_chamado_reserva_usuario
-                                   WHERE id_pessoa = @id_pessoa AND status <> 'Concluido'
+                    string query = @"SELECT * FROM vw_ver_chamado_reserva_usuario
+                                   WHERE id_pessoa = @id_pessoa AND status NOT IN ('Concluido','Cancelado')
                                    LIMIT @offset, 1";
                     if (tipoConta == 1)
                     {
                         query = @"SELECT * FROM vw_ver_chamado_reserva_coletor 
-                                   WHERE id_coletor = @id_pessoa AND status_reserva <> 'Concluida'
+                                   WHERE id_coletor = @id_pessoa AND status_reserva NOT IN ('Concluida','Cancelada')
                                    LIMIT @offset, 1";
                     }
                     
