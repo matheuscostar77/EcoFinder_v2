@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EcoFinder.Forms;
 using MySql.Data.MySqlClient;
 
 namespace EcoFinder
@@ -139,6 +140,10 @@ namespace EcoFinder
 
         }
 
-
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var termosTela = new FrmTermos();
+            termosTela.Show();
+        }
     }
 }

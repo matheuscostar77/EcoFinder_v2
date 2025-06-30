@@ -109,8 +109,17 @@ namespace EcoFinder
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Close();
-            telalogin.Show();
+            try
+            {
+                this.Close();
+                telalogin.Show();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btnMinhasReservas_Click(object sender, EventArgs e)
