@@ -31,7 +31,7 @@ namespace EcoFinder
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
-
+            lblUsuarioComum.Text = $"Olá {pessoa.getPrimeiroNome()}, oque deseja fazer?";
         }
 
         private void FrmUsuario_FormClosed(object sender, FormClosedEventArgs e)

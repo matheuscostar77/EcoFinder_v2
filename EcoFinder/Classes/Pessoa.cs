@@ -12,36 +12,38 @@ namespace EcoFinder
 {
     public class Pessoa
     {
-        protected string name;
+        protected string nomeCompleto;
+        protected string primeiroNome;
         protected string email;
         protected string sex;
         protected string senha;
         protected string tipoConta;
- 
+
         private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
 
 
         public Pessoa()
         {
-
-        }
-        public string getSenha()
-        {
-            return senha;
         }
 
         public void setSenha(string senha)
         {
             this.senha = senha;
         }
-        public string getName()
+        public string getNomeCompleto()
         {
-            return name;
+            return nomeCompleto;
         }
 
-        public void setName(string name)
+        public string getPrimeiroNome()
         {
-            this.name = name;
+            return primeiroNome;
+        }
+
+        public void setNomeCompleto(string nomeCompleto)
+        {
+            this.nomeCompleto = nomeCompleto;
+            primeiroNome = nomeCompleto.Substring(0, nomeCompleto.IndexOf(","));
         }
         public string getEmail()
         {
@@ -58,7 +60,7 @@ namespace EcoFinder
             return sex;
         }
 
-        public void setSex(string sex) 
+        public void setSex(string sex)
         {
             this.sex = sex;
         }
@@ -98,7 +100,7 @@ namespace EcoFinder
                     conn.Open();
 
                     var cmd = new MySqlCommand("INSERT INTO tb_pessoa(nome,email,senha,genero) VALUES (@name,@email,@senha,@genero);", conn);
-                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@name", nomeCompleto);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
                     cmd.Parameters.AddWithValue("@genero", sex);
@@ -110,7 +112,7 @@ namespace EcoFinder
                     cmd = new MySqlCommand($"INSERT INTO {tabela}({coluna}) VALUES (LAST_INSERT_ID());", conn);
                     cmd.ExecuteNonQuery();
                 }
-                MessageBox.Show($"Bem-vindo(a), {name}! Sua conta foi criada com sucesso.");
+                MessageBox.Show($"Bem-vindo(a), {primeiroNome}! Sua conta foi criada com sucesso.");
                 return true;
             }
             catch (Exception ex)
@@ -169,7 +171,7 @@ namespace EcoFinder
                         SET nome = @nome, email = @novoEmail, senha = @senha, genero = @genero
                         WHERE id_pessoa = @id;", conn);
 
-                    updateCmd.Parameters.AddWithValue("@nome", name);
+                    updateCmd.Parameters.AddWithValue("@nome", nomeCompleto);
                     updateCmd.Parameters.AddWithValue("@novoEmail", email);
                     updateCmd.Parameters.AddWithValue("@senha", senha);
                     updateCmd.Parameters.AddWithValue("@genero", sex);
@@ -244,6 +246,8 @@ namespace EcoFinder
                 return null;
             }
         }
+
+        
     }
 
 }

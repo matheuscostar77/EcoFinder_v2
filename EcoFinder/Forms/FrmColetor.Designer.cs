@@ -57,6 +57,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EcoFinder";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmColetor_FormClosed);
+            this.Load += new System.EventHandler(this.frmColetor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

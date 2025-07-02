@@ -26,6 +26,11 @@ namespace EcoFinder
             this.endereco = endereco;
          }
 
+        private void frmColetor_Load(object sender, EventArgs e)
+        {
+            lblFraseTitulo.Text = $"Olá {pessoa.getPrimeiroNome()}, oque deseja fazer?";
+        }
+
         private void frmColetor_FormClosed(object sender, FormClosedEventArgs e)
         {
 

@@ -52,9 +52,9 @@ namespace EcoFinder
                     if (reader.Read())
                     {
                         lblNome.Text = reader["nome"] as string ?? "Não informado";
-                        lblEndereco.Text = reader["endereco_format"] as string ?? "Endereço não disponível";
-                        lblAbertura.Text = reader["data_chamado"] as string ?? "Não disponível";
-                        lblExpira.Text = reader["data_expiracao"] as string ?? "Não definido";
+                        lblEndereco.Text = reader["endereco_format"].ToString();
+                        lblAbertura.Text = reader["data_chamado"].ToString();
+                        lblExpira.Text = reader["data_expiracao"].ToString();
                         lblStatus.Text = reader["status"] as string ?? "Indisponível";
                         lblTipoMaterial.Text = reader["tipo"] as string ?? "Não especificado";
                         lblQuantidade.Text = reader["qtde_unitaria"] as string ?? "0";

@@ -58,12 +58,14 @@ namespace EcoFinder
                 if (int.Parse(contavalida) == 1)
                 {
                     var coletor = new FrmPrincipalColetor(this,pessoa, endereco);
+                    pessoa.setTipoConta("Coletor");
                     coletor.Show();
                     this.Hide();
                 }
                 else if (int.Parse(contavalida) == 2)
                 {
                     var usuario = new FrmPrincipalSolicitante(this, endereco, pessoa);
+                    pessoa.setTipoConta("Usuário Comum");
                     usuario.Show();
                     this.Hide();
                 }

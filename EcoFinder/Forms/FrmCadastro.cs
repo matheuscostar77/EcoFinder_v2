@@ -53,7 +53,7 @@ namespace EcoFinder
 
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
-            pessoa.setName(txtNome.Text);
+            pessoa.setNomeCompleto(txtNome.Text);
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -134,6 +134,7 @@ namespace EcoFinder
                     pessoa.alterarDados(emailAntigo);
                     lblTipoConta.Visible = false;
                     cmbTipoConta.Visible = false;
+                    this.Close();
                 }
                 
             }
