@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Prepare;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,10 +41,22 @@ namespace EcoFinder
             return primeiroNome;
         }
 
+        public void setPrimeiroNome(string nomeCompleto)
+        {
+            if (nomeCompleto.Contains(" "))
+            {
+                primeiroNome = nomeCompleto.Substring(0, nomeCompleto.IndexOf(" "));
+            }
+            else
+            {
+                primeiroNome = nomeCompleto;
+            }
+        }
         public void setNomeCompleto(string nomeCompleto)
         {
             this.nomeCompleto = nomeCompleto;
-            primeiroNome = nomeCompleto.Substring(0, nomeCompleto.IndexOf(","));
+            
+            
         }
         public string getEmail()
         {
@@ -127,21 +140,41 @@ namespace EcoFinder
             using (var conn = new MySqlConnection(stringConexao))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);", conn);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@senha", senha);
+                using (var cmd = new MySqlCommand("SELECT ecofinder.f_identificar_tipo_conta(@email, @senha);", conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@senha", senha);
 
-                var result = cmd.ExecuteScalar();
-                if (result != null && result != DBNull.Value)
-                {
-                    int tipo = int.Parse(result.ToString());
-                    return tipo.ToString();
+                    var result = cmd.ExecuteScalar();
+
+                    using (var cmd2 = new MySqlCommand("SELECT nome FROM tb_pessoa WHERE email = @email;",conn))
+                    {
+                        cmd2.Parameters.AddWithValue("@email", email);
+                        using (MySqlDataReader reader = cmd2.ExecuteReader())
+                        {
+                            if(reader.Read()) 
+                            {
+                                setPrimeiroNome(reader.GetString(0)); 
+                            }
+                        }
+                    }
+
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            int tipo = int.Parse(result.ToString());
+
+
+                            return tipo.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email ou senha incorretos!");
+                            return "0";
+                        }
                 }
-                else
-                {
-                    MessageBox.Show("Email ou senha incorretos!");
-                    return "0";
-                }
+
+                
             }
         }
 
@@ -154,7 +187,7 @@ namespace EcoFinder
                     conn.Open();
 
                     int idPessoa = -1;
-                    var buscarCmd = new MySqlCommand("SELECT f_identificar_a_conta(@email);", conn);
+                    var buscarCmd = new MySqlCommand("SELECT f_identificar_id_conta(@email);", conn);
                     buscarCmd.Parameters.AddWithValue("@email", emailAntigo);
 
                     var result = buscarCmd.ExecuteScalar();
@@ -205,7 +238,7 @@ namespace EcoFinder
                                         FROM tb_pessoa p
                                         JOIN tb_endereco e ON e.id_pessoa_endereco = p.id_pessoa
                                         WHERE p.id_pessoa = (
-                                            SELECT f_identificar_a_conta(@emailParam)
+                                            SELECT f_identificar_id_conta(@emailParam)
                                         )";
                     cmd.Parameters.AddWithValue("@emailParam", email);
 

@@ -257,7 +257,7 @@ namespace EcoFinder
                     conn.Open();
 
                     int idpessoa;
-                    using (MySqlCommand cmdId = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
+                    using (MySqlCommand cmdId = new MySqlCommand("SELECT f_identificar_id_conta(@email)", conn))
                     {
                         cmdId.Parameters.AddWithValue("@email", email);
                         var result = cmdId.ExecuteScalar();

@@ -131,7 +131,7 @@ namespace EcoFinder
                         }
 
                         cmd.Parameters.Clear();
-                        cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
+                        cmd.CommandText = "SELECT f_identificar_id_conta(@email)";
                         cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
 
                         object resultado_identifica_conta = cmd.ExecuteScalar();
@@ -225,7 +225,7 @@ namespace EcoFinder
                         }
 
                         cmd.Parameters.Clear();
-                        cmd.CommandText = "SELECT f_identificar_a_conta(@email)";
+                        cmd.CommandText = "SELECT f_identificar_id_conta(@email)";
                         cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
 
                         object resultado_identifica_conta = cmd.ExecuteScalar();
