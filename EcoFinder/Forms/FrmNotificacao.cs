@@ -51,7 +51,7 @@ namespace EcoFinder.Forms
                 conn.Open();
                 if (p_coletor != null)
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_id_conta(@email)", conn))
                     {
                         cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
 
@@ -80,7 +80,7 @@ namespace EcoFinder.Forms
                 }
                 else if (p_solicitante != null)
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_a_conta(@email)", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT f_identificar_id_conta(@email)", conn))
                     {
                         cmd.Parameters.AddWithValue("@email", pessoa.getEmail());
 
