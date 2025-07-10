@@ -324,7 +324,7 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Classes\Material.cs" />
     <Compile Include="Forms\FrmVerChamados.cs">
       <SubType>Form</SubType>
@@ -338,16 +338,16 @@
     <Compile Include="Forms\FrmPrincipalSolicitante.Designer.cs">
       <DependentUpon>FrmPrincipalSolicitante.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPerfil.cs">
+    <Compile Include="Forms\FrmPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPerfil.Designer.cs">
+    <Compile Include="Forms\FrmPerfil.Designer.cs">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPrincipalColetor.cs">
+    <Compile Include="Forms\FrmPrincipalColetor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrincipalColetor.Designer.cs">
+    <Compile Include="Forms\FrmPrincipalColetor.Designer.cs">
       <DependentUpon>FrmPrincipalColetor.cs</DependentUpon>
     </Compile>
     <Compile Include="mdiProperties.cs" />
@@ -389,10 +389,10 @@
     <EmbeddedResource Include="Forms\FrmPrincipalSolicitante.resx">
       <DependentUpon>FrmPrincipalSolicitante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPerfil.resx">
+    <EmbeddedResource Include="Forms\FrmPerfil.resx">
       <DependentUpon>FrmPerfil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrincipalColetor.resx">
+    <EmbeddedResource Include="Forms\FrmPrincipalColetor.resx">
       <DependentUpon>FrmPrincipalColetor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
