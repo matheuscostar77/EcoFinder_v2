@@ -13,6 +13,7 @@ Caso deseje saber mais sobre o projeto, acesse a nossa documentação clicando [
 ## 🚀 Tecnologias utilizadas
 
 - C#
+- .NET
 - MySQL 8
 - Microsoft Visual Studio 2022
 - Windows Forms
