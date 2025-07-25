@@ -20,7 +20,7 @@ namespace EcoFinder
         protected string senha;
         protected string tipoConta;
 
-        private string stringConexao = "datasource=localhost;username=root;password=M@theusdavi26;database=ecofinder";
+        private string stringConexao = "datasource=localhost;username=root;password=;database=ecofinder";
 
 
         public Pessoa()
